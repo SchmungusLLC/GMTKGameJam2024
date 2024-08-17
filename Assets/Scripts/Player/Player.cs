@@ -67,6 +67,13 @@ public partial class Player : MonoBehaviour
         else if (currentSP != maxSP) { SPTimer(); }
     }
 
+    private void LateUpdate()
+    {
+        animator.SetFloat("XVelocity", rb3D.velocity.x);
+        animator.SetFloat("ZVelocity", rb3D.velocity.z);
+        animator.SetFloat("TotalVelocity", rb3D.velocity.magnitude);
+    }
+
     void FixedUpdate()
     {
         Move();
