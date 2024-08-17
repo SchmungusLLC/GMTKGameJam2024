@@ -73,3 +73,9 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+#Debug folder screenshots
+/[Aa]ssets/[Dd]ebug/[Ss]creenshots/*.png
+/[Aa]ssets/[Dd]ebug/[Ss]creenshots/*.meta
+/[Aa]ssets/[Dd]ebug/[Ss]creenshots/**/*.png
+/[Aa]ssets/[Dd]ebug/[Ss]creenshots/**/*.meta

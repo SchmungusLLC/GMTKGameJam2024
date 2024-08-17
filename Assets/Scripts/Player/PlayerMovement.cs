@@ -7,7 +7,8 @@ public partial class Player
 {
     [Header("Movement")]
     [Tooltip("Movement speed in m/s")]
-    public float moveSpeed;
+    public float scaledMoveSpeed;
+    public float defaultMoveSpeed;
     [Tooltip("Rotation speed in degrees/s")]
     public float turnSpeed;
     [Tooltip("Movement speed when dashing")]
@@ -49,7 +50,7 @@ public partial class Player
         if (!isDashing)
         {
             if (targetMoveDirection == Vector3.zero) { return; }
-            targetPos = currentPos + targetMoveDirection * moveSpeed * Time.deltaTime;
+            targetPos = currentPos + targetMoveDirection * scaledMoveSpeed * Time.deltaTime;
         }
         else
         {

@@ -15,7 +15,7 @@ public partial class Player : MonoBehaviour
     public GameObject mainCamera;
 
     // Vector to hold camera-facing direction
-    private Vector3 cameraFaceDir;
+    public Vector3 cameraFaceDir;
 
     [Header("UI")]
     [Tooltip("Canvas GameObject holding player's in-world UI elements")]
@@ -45,8 +45,7 @@ public partial class Player : MonoBehaviour
     void Start()
     {
         currentAttackState = AttackState.None;
-        animator.SetFloat("SmallAttackSpeed", 1 / smallAttackDuration);
-        animator.SetFloat("BigAttackSpeed", 1 / bigAttackDuration);
+        AddScalesValue(0);
 
         SPBar.maxValue = currentSP = maxSP;
         SPBar.value = currentSP;
@@ -67,16 +66,22 @@ public partial class Player : MonoBehaviour
         else if (currentSP != maxSP) { SPTimer(); }
     }
 
-    private void LateUpdate()
-    {
-        animator.SetFloat("XVelocity", rb3D.velocity.x);
-        animator.SetFloat("ZVelocity", rb3D.velocity.z);
-        animator.SetFloat("TotalVelocity", rb3D.velocity.magnitude);
-    }
+    Vector3 lastPosition;
 
     void FixedUpdate()
     {
         Move();
+
+        Vector3 deltaPosition = transform.position - lastPosition;
+        float speedX = deltaPosition.x / Time.deltaTime;
+        float speedZ = deltaPosition.z / Time.deltaTime;
+        float speedTotal = Mathf.Sqrt(speedX * speedX + speedZ * speedZ);
+
+        animator.SetFloat("XVelocity", speedX);
+        animator.SetFloat("ZVelocity", speedZ);
+        animator.SetFloat("TotalVelocity", speedTotal);
+
+        lastPosition = transform.position;
     }
 
     void OnDeviceLost()

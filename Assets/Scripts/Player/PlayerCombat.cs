@@ -1,6 +1,8 @@
 using System.Collections.Generic;
+using TMPro;
 using Unity.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public partial class Player
 // ============================================================
@@ -9,13 +11,21 @@ public partial class Player
 {
     [Header("Attack Stats")]
     [Tooltip("Total duration of small attacks in seconds")]
-    public float smallAttackDuration;
+    public float defaultSmallAttackDuration;
+    public float scaledSmallAttackDuration;
     [Tooltip("Total duration of big attacks in seconds")]
-    public float bigAttackDuration;
+    public float scaledBigAttackDuration;
+    public float defaultBigAttackDuration;
 
     // force applied by attack types
-    public float smallAttackForce;
-    public float bigAttackForce;
+    public float defaultSmallAttackForce;
+    public float defaultBigAttackForce;
+    public float scaledSmallAttackForce;
+    public float scaledBigAttackForce;
+
+    // scales
+    public float currentScalesValue = 1;
+    public Slider scalesSlider;
 
     // Current attack being executed
     public AttackState currentAttackState;
@@ -71,8 +81,16 @@ public partial class Player
                 direction.Normalize();
 
                 // Apply force to the Rigidbody
-                float attackForce = currentAttackState == AttackState.BigAttack ? bigAttackForce : smallAttackForce;
-                enemy.rb3D.AddForce(direction * attackForce, ForceMode.Impulse);
+                if (currentAttackState == AttackState.BigAttack)
+                {
+                    enemy.rb3D.AddForce(direction * scaledBigAttackForce, ForceMode.Impulse);
+                    AddScalesValue(0.1f);
+                }
+                else
+                {
+                    enemy.rb3D.AddForce(direction * scaledSmallAttackForce, ForceMode.Impulse);
+                    AddScalesValue(-0.1f);
+                }
 
                 enemy.IncomingAttack(currentAttackState);
             }
@@ -81,6 +99,32 @@ public partial class Player
                 destructible.Struck(rb3D);
             }
         }
+    }
+
+    public void AddScalesValue(float value)
+    {
+        // edit scales value
+        currentScalesValue += value;
+        if (currentScalesValue < 0.5)
+        {
+            currentScalesValue = 0.5f;
+        }
+        else if (currentScalesValue > 1.5)
+        {
+            currentScalesValue = 1.5f;
+        }
+        scalesSlider.value = currentScalesValue;
+
+        // update scaled stats
+        scaledMoveSpeed = defaultMoveSpeed * currentScalesValue;
+        scaledBigAttackDuration = defaultBigAttackDuration * currentScalesValue;
+        scaledSmallAttackDuration = defaultSmallAttackDuration * currentScalesValue;
+        scaledBigAttackForce = defaultBigAttackForce * currentScalesValue;
+        scaledSmallAttackForce = defaultSmallAttackForce * currentScalesValue;
+        scaledMaxHP = defaultMaxHP * currentScalesValue;
+
+        animator.SetFloat("SmallAttackSpeed", 1 / scaledSmallAttackDuration);
+        animator.SetFloat("BigAttackSpeed", 1 / scaledBigAttackDuration);
     }
 
     private void OnDrawGizmosSelected()
