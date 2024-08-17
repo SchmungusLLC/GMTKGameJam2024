@@ -7,17 +7,17 @@ public partial class Player
 {
     [Header("Movement")]
     [Tooltip("Movement speed in m/s")]
-    [SerializeField] float moveSpeed;
+    public float moveSpeed;
     [Tooltip("Rotation speed in degrees/s")]
-    [SerializeField] float turnSpeed;
+    public float turnSpeed;
     [Tooltip("Movement speed when dashing")]
-    [SerializeField] float dashSpeed;
+    public float dashSpeed;
     [Tooltip("Time in seconds from dash start to stop")]
-    [SerializeField] float dashDuration;
+    public float dashDuration;
     [Tooltip("Time in seconds between dash uses")]
-    [SerializeField] float dashCooldown;
+    public float dashCooldown;
     [Tooltip("SP cost of dashing")]
-    [SerializeField] float dashSPCost;
+    public float dashSPCost;
 
     // bool to check if dash is currently being performed
     [HideInInspector] public bool isDashing;
@@ -34,7 +34,7 @@ public partial class Player
     Quaternion targetLookDirection;
 
     // layers by which the player will be obstructed
-    [SerializeField] LayerMask obstructionLayers;
+    public LayerMask obstructionLayers;
 
     void Turn()
     {

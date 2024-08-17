@@ -117,6 +117,9 @@ public partial class Enemy : MonoBehaviour
     public void IncomingAttack(char playerAttackDir)
     {
         Debug.Log($"Enemy was hit from {playerAttackDir}");
+
+        animator.Play("Hit");
+
         switch (playerAttackDir)
         {
             case 'U':
@@ -134,6 +137,16 @@ public partial class Enemy : MonoBehaviour
         }
     }
 
+    public void StartHitStun()
+    {
+        isHitStunned = true;
+    }
+
+    public void EndHitStun()
+    {
+        isHitStunned = false;
+    }
+
     public void TakeDamage(int damage)
     {
         currentHP -= damage;
@@ -141,10 +154,6 @@ public partial class Enemy : MonoBehaviour
         if (currentHP < 0)
         {
             EnemyDies();
-        }
-        else
-        {
-            animator.Play("Hit");
         }
     }
 

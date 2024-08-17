@@ -447,6 +447,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 290882176360117748, guid: ec22d5155f541364e9b5616e32ca5421, type: 3}
+      propertyPath: bigAttackForce
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 290882176360117748, guid: ec22d5155f541364e9b5616e32ca5421, type: 3}
+      propertyPath: baseAttackForce
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 3714134188260971087, guid: ec22d5155f541364e9b5616e32ca5421, type: 3}
       propertyPath: m_Name
       value: Player
@@ -2263,6 +2271,14 @@ PrefabInstance:
     - target: {fileID: 3822748171260380054, guid: a16405a69fcdcc54db8c9d519ee73b86, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5282155416436127132, guid: a16405a69fcdcc54db8c9d519ee73b86, type: 3}
+      propertyPath: maxHP
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5282155416436127132, guid: a16405a69fcdcc54db8c9d519ee73b86, type: 3}
+      propertyPath: fightDistance
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 6450825759997957306, guid: a16405a69fcdcc54db8c9d519ee73b86, type: 3}
       propertyPath: m_RootOrder
