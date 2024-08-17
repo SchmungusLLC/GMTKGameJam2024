@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.Collections;
 using UnityEngine;
 
 public partial class Player
@@ -8,19 +9,22 @@ public partial class Player
 {
     [Header("Attack Stats")]
     [Tooltip("Total duration of attacks in seconds")]
-    [SerializeField] float attackDuration;
+    public float attackDuration;
+    public float baseAttackForce;
+    public float bigAttackForce;
     // Current attack being exeuted (UDLR = Up, Down, Left, Right; N = none)
-    [HideInInspector] public char attackState;
+    public char attackState;
+
 
     [Header("Hitbox Settings")]
     [Tooltip("Layers which this attack's hitbox should check against")]
-    [SerializeField] LayerMask hitLayers;
+    public LayerMask hitLayers;
     [Tooltip("Half-extents for horizontal hitbox")]
-    [SerializeField] Vector3 hbSizeH;
+    public Vector3 hbSizeH;
     [Tooltip("Half-extents for vertical hitbox")]
-    [SerializeField] Vector3 hbSizeV;
+    public Vector3 hbSizeV;
     [Tooltip("Forward offset for hitboxes")]
-    [SerializeField] float hbOffset;
+    public float hbOffset;
 
     // list of targets struck by attack hitbox
     private Collider[] targetsStruck;
@@ -47,8 +51,22 @@ public partial class Player
         foreach (Collider target in targetsStruck)
         {
             Debug.Log("Hit target " + target.gameObject.name);
-            target.gameObject.GetComponent<Enemy>()?.IncomingAttack(attackState);
-            target.gameObject.GetComponent<Destructible>()?.Struck(rb3D, attackState);
+
+            if (target.gameObject.TryGetComponent(out Enemy enemy))
+            {
+                // Calculate direction from the attack source to the enemy
+                Vector3 direction = enemy.rb3D.position - rb3D.position;
+                direction.y = 0; // Ensure force is applied on the horizontal plane
+                direction.Normalize();
+
+                // Apply force to the Rigidbody
+                enemy.rb3D.AddForce(direction * baseAttackForce, ForceMode.Impulse);
+                enemy.IncomingAttack(attackState);
+            }
+            else if (target.gameObject.TryGetComponent(out Destructible destructible))
+            {
+                destructible.Struck(rb3D, attackState);
+            }
         }
     }
 

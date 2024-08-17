@@ -7,11 +7,11 @@ public partial class Player
 {
     [Header("Stamina Stats")]
     [Tooltip("Total Number of Stamina Points (SP)")]
-    [SerializeField] float maxSP;
+    public float maxSP;
     [Tooltip("Number of SP regenerated per second")]
-    [SerializeField] float SPRegenRate;
+    public float SPRegenRate;
     [Tooltip("Time in seconds after last expending SP before regen starts")]
-    [SerializeField] float SPRegenDelay;
+    public float SPRegenDelay;
 
     // current SP value
     private float currentSP;
