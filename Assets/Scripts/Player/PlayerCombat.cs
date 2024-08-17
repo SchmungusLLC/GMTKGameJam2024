@@ -8,13 +8,24 @@ public partial class Player
 // ============================================================
 {
     [Header("Attack Stats")]
-    [Tooltip("Total duration of attacks in seconds")]
-    public float attackDuration;
-    public float baseAttackForce;
-    public float bigAttackForce;
-    // Current attack being exeuted (UDLR = Up, Down, Left, Right; N = none)
-    public char attackState;
+    [Tooltip("Total duration of small attacks in seconds")]
+    public float smallAttackDuration;
+    [Tooltip("Total duration of big attacks in seconds")]
+    public float bigAttackDuration;
 
+    // force applied by attack types
+    public float smallAttackForce;
+    public float bigAttackForce;
+
+    // Current attack being executed
+    public AttackState currentAttackState;
+
+    public enum AttackState
+    {
+        None,
+        BigAttack,
+        SmallAttack,
+    }
 
     [Header("Hitbox Settings")]
     [Tooltip("Layers which this attack's hitbox should check against")]
@@ -29,17 +40,17 @@ public partial class Player
     // list of targets struck by attack hitbox
     private Collider[] targetsStruck;
 
-    void StartAttack(char direction)
+    void StartAttack(AttackState state)
     {
-        if (attackState != 'N') { return; }
+        if (currentAttackState != AttackState.None) { return; }
 
-        attackState = direction;
-        animator.Play("Attack" + direction);
+        currentAttackState = state;
+        animator.Play(state.ToString());
     }
 
     void AttackHitBox()
     {
-        if (attackState == 'U' || attackState == 'D')
+        if (currentAttackState == AttackState.SmallAttack)
         {
             targetsStruck = Physics.OverlapBox(transform.position + transform.forward * hbOffset, hbSizeV, transform.rotation, hitLayers);
         }
@@ -60,12 +71,14 @@ public partial class Player
                 direction.Normalize();
 
                 // Apply force to the Rigidbody
-                enemy.rb3D.AddForce(direction * baseAttackForce, ForceMode.Impulse);
-                enemy.IncomingAttack(attackState);
+                float attackForce = currentAttackState == AttackState.BigAttack ? bigAttackForce : smallAttackForce;
+                enemy.rb3D.AddForce(direction * attackForce, ForceMode.Impulse);
+
+                enemy.IncomingAttack(currentAttackState);
             }
             else if (target.gameObject.TryGetComponent(out Destructible destructible))
             {
-                destructible.Struck(rb3D, attackState);
+                destructible.Struck(rb3D);
             }
         }
     }
@@ -81,7 +94,7 @@ public partial class Player
 
     void EndAttack()
     {
-        attackState = 'N';
+        currentAttackState = AttackState.None;
     }
 
     void TakeDamage()

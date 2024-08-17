@@ -13,7 +13,7 @@ public class Destructible : MonoBehaviour
         hits = 0;
     }
 
-    public void Struck(Rigidbody attacker, char attackDir)
+    public void Struck(Rigidbody attacker)
     {
         hits++;
         if (hits == hitMax)

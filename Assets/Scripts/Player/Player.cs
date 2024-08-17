@@ -44,8 +44,9 @@ public partial class Player : MonoBehaviour
 
     void Start()
     {
-        attackState = 'N';
-        animator.SetFloat("AttackSpeed", 1 / attackDuration);
+        currentAttackState = AttackState.None;
+        animator.SetFloat("SmallAttackSpeed", 1 / smallAttackDuration);
+        animator.SetFloat("BigAttackSpeed", 1 / bigAttackDuration);
 
         SPBar.maxValue = currentSP = maxSP;
         SPBar.value = currentSP;
@@ -104,21 +105,21 @@ public partial class Player : MonoBehaviour
 
     void OnUpAttackInput()
     {
-        StartAttack('U');
+        StartAttack(AttackState.SmallAttack);
     }
 
     void OnDownAttackInput()
     {
-        StartAttack('D');
+        StartAttack(AttackState.SmallAttack);
     }
 
     void OnLeftAttackInput()
     {
-        StartAttack('L');
+        StartAttack(AttackState.BigAttack);
     }
 
     void OnRightAttackInput()
     {
-        StartAttack('R');
+        StartAttack(AttackState.BigAttack);
     }
 }

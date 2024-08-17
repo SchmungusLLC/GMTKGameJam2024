@@ -140,23 +140,20 @@ public partial class Enemy : MonoBehaviour
         animator.Play("Attack");
     }
 
-    public void IncomingAttack(char playerAttackDir)
+    public void IncomingAttack(AttackState playerAttackState)
     {
         //Debug.Log($"Enemy was hit from {playerAttackDir}");
 
-        switch (playerAttackDir)
+        switch (playerAttackState)
         {
-            case 'U':
+            case AttackState.BigAttack:
                 TakeDamage(20);
                 break;
-            case 'D':
+            case AttackState.SmallAttack:
                 TakeDamage(10);
                 break;
-            case 'L':
-                TakeDamage(10);
-                break;
-            case 'R':
-                TakeDamage(10);
+            default:
+                Debug.LogWarning("WARNING: no attack state");
                 break;
         }
     }
