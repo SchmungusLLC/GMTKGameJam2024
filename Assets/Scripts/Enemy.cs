@@ -74,6 +74,7 @@ public partial class Enemy : MonoBehaviour
     {
         //if (isRegenHP) { RegenHP(); }
         //else if (currentHP != maxHP) { HPTimer(); }
+        HPBarTransform.eulerAngles = player.cameraFaceDir;
     }
 
     private void FixedUpdate()
