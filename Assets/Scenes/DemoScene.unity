@@ -449,11 +449,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 290882176360117748, guid: ec22d5155f541364e9b5616e32ca5421, type: 3}
       propertyPath: bigAttackForce
-      value: 100
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 290882176360117748, guid: ec22d5155f541364e9b5616e32ca5421, type: 3}
       propertyPath: baseAttackForce
-      value: 100
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3714134188260971085, guid: ec22d5155f541364e9b5616e32ca5421, type: 3}
+      propertyPath: m_Mass
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3714134188260971087, guid: ec22d5155f541364e9b5616e32ca5421, type: 3}
       propertyPath: m_Name
@@ -2272,9 +2276,21 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4638246079239666487, guid: a16405a69fcdcc54db8c9d519ee73b86, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4638246079239666487, guid: a16405a69fcdcc54db8c9d519ee73b86, type: 3}
+      propertyPath: m_Constraints
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 5282155416436127132, guid: a16405a69fcdcc54db8c9d519ee73b86, type: 3}
       propertyPath: maxHP
-      value: 1000
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5282155416436127132, guid: a16405a69fcdcc54db8c9d519ee73b86, type: 3}
+      propertyPath: moveSpeed
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5282155416436127132, guid: a16405a69fcdcc54db8c9d519ee73b86, type: 3}
       propertyPath: fightDistance

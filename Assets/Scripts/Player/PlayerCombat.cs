@@ -50,7 +50,7 @@ public partial class Player
 
         foreach (Collider target in targetsStruck)
         {
-            Debug.Log("Hit target " + target.gameObject.name);
+            //Debug.Log("Hit target " + target.gameObject.name);
 
             if (target.gameObject.TryGetComponent(out Enemy enemy))
             {
