@@ -30,7 +30,7 @@ public partial class Player
         if (attackState != 'N') { return; }
 
         attackState = direction;
-        _animator.SetTrigger(direction + "Attack");
+        _animator.Play("Attack" + direction);
     }
 
     void AttackHitBox()
