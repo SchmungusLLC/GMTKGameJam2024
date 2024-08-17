@@ -17,6 +17,8 @@ public partial class Enemy : MonoBehaviour
     public float fightDistance = 1;
 
     public bool isHitStunned;
+    public bool isRecovering;
+    public float fallThreshold;
 
     [Header("Combat Stats")]
     [Tooltip("Total duration of attacks in seconds")]
@@ -72,13 +74,37 @@ public partial class Enemy : MonoBehaviour
     {
         //if (isRegenHP) { RegenHP(); }
         //else if (currentHP != maxHP) { HPTimer(); }
-        CombatActions();
+    }
+
+    private void FixedUpdate()
+    {
+        if (isHitStunned)
+        {
+            if (!isRecovering && rb3D.velocity.magnitude < 0.01f)
+            {
+                // Trigger recovery animation
+                //Debug.Log("Recovering");
+                animator.SetTrigger("Recover");
+                isRecovering = true;
+            }
+        }
+        else
+        {
+            CombatActions();
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        // Get the magnitude of the collision
+        float collisionMagnitude = collision.relativeVelocity.magnitude;
+
+        Debug.Log("Taking collision damage: " + collisionMagnitude);
+        TakeDamage(collisionMagnitude);
     }
 
     public void CombatActions()
     {
-        if (isHitStunned) { return; }
-
         if (aggroPlayer)
         {
             if (Vector3.Distance(rb3D.position, player.rb3D.position) < fightDistance)
@@ -98,7 +124,7 @@ public partial class Enemy : MonoBehaviour
         {
             if (Vector3.Distance(rb3D.position, player.rb3D.position) < aggroDistance)
             {
-                Debug.Log("Enemy " + gameObject.name + " aggroed");
+                //Debug.Log("Enemy " + gameObject.name + " aggroed");
                 aggroPlayer = true;
             }
             else
@@ -110,29 +136,27 @@ public partial class Enemy : MonoBehaviour
 
     public void Attack()
     {
-        Debug.Log("Enemy Attacking");
+        //Debug.Log("Enemy Attacking");
         animator.Play("Attack");
     }
 
     public void IncomingAttack(char playerAttackDir)
     {
-        Debug.Log($"Enemy was hit from {playerAttackDir}");
-
-        animator.Play("Hit");
+        //Debug.Log($"Enemy was hit from {playerAttackDir}");
 
         switch (playerAttackDir)
         {
             case 'U':
-                TakeDamage(2);
+                TakeDamage(20);
                 break;
             case 'D':
-                TakeDamage(1);
+                TakeDamage(10);
                 break;
             case 'L':
-                TakeDamage(1);
+                TakeDamage(10);
                 break;
             case 'R':
-                TakeDamage(1);
+                TakeDamage(10);
                 break;
         }
     }
@@ -140,15 +164,18 @@ public partial class Enemy : MonoBehaviour
     public void StartHitStun()
     {
         isHitStunned = true;
+        isRecovering = false;
     }
 
     public void EndHitStun()
     {
         isHitStunned = false;
+        isRecovering = false;
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
+        animator.Play("Hit");
         currentHP -= damage;
         HPBar.value = currentHP;
         if (currentHP < 0)
