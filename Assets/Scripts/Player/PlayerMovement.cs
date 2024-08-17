@@ -38,14 +38,14 @@ public partial class Player
 
     void Turn()
     {
-        if (_transform.rotation == targetLookDirection) { return; }
-        _transform.rotation = Quaternion.RotateTowards(_transform.rotation, targetLookDirection, turnSpeed * Time.deltaTime);
+        if (transform.rotation == targetLookDirection) { return; }
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetLookDirection, turnSpeed * Time.deltaTime);
         SPBarTransform.eulerAngles = cameraFaceDir;
     }
 
     void Move()
     {
-        currentPos = _rigidbody.position;
+        currentPos = rb3D.position;
         if (!isDashing)
         {
             if (targetMoveDirection == Vector3.zero) { return; }
@@ -55,7 +55,7 @@ public partial class Player
         {
             if (targetMoveDirection == Vector3.zero)
             {
-                targetPos = currentPos + _transform.TransformDirection(Vector3.forward) * dashSpeed * Time.deltaTime;
+                targetPos = currentPos + transform.TransformDirection(Vector3.forward) * dashSpeed * Time.deltaTime;
             }
             else
             {
@@ -65,7 +65,7 @@ public partial class Player
 
         if (Physics.CheckSphere(targetPos, 0.5f, obstructionLayers)) { return; }
 
-        _rigidbody.MovePosition(targetPos);
+        rb3D.MovePosition(targetPos);
     }
 
     void DashTimer()

@@ -7,25 +7,23 @@ public partial class Player : MonoBehaviour
     public static Player player;
 
     [Header("Components")]
-    [Tooltip("Player's Transform component")]
-    [SerializeField] Transform _transform;
     [Tooltip("Player's RigidBody component")]
-    [SerializeField] Rigidbody _rigidbody;
+    public Rigidbody rb3D;
     [Tooltip("Player's Animator component")]
-    [SerializeField] Animator _animator;
+    public Animator animator;
     [Tooltip("Main Camera GameObject")]
-    [SerializeField] GameObject _camera;
+    public GameObject mainCamera;
 
     // Vector to hold camera-facing direction
     private Vector3 cameraFaceDir;
 
     [Header("UI")]
     [Tooltip("Canvas GameObject holding player's in-world UI elements")]
-    [SerializeField] GameObject playerWorldCanvas;
+    public GameObject playerWorldCanvas;
     [Tooltip("UI Slider for SP Points")]
-    [SerializeField] Slider SPBar;
+    public Slider SPBar;
     [Tooltip("Transform of the player's SP bar (used to lock rotation)")]
-    [SerializeField] Transform SPBarTransform;
+    public Transform SPBarTransform;
 
     void Awake()
     {
@@ -38,12 +36,16 @@ public partial class Player : MonoBehaviour
             player = this;
         }
         DontDestroyOnLoad(gameObject);
+
+        rb3D = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
+        mainCamera = Camera.main.gameObject;
     }
 
     void Start()
     {
         attackState = 'N';
-        _animator.SetFloat("AttackSpeed", 1 / attackDuration);
+        animator.SetFloat("AttackSpeed", 1 / attackDuration);
 
         SPBar.maxValue = currentSP = maxSP;
         SPBar.value = currentSP;
@@ -52,7 +54,7 @@ public partial class Player : MonoBehaviour
         isDashing = false;
         canDash = true;
 
-        cameraFaceDir = _camera.transform.eulerAngles;
+        cameraFaceDir = mainCamera.transform.eulerAngles;
     }
 
     void Update()
@@ -97,7 +99,7 @@ public partial class Player : MonoBehaviour
         isDashing = true;
         canDash = false;
         dashTime = 0f;
-        _animator.SetTrigger("Sheathe");
+        animator.SetTrigger("Sheathe");
     }
 
     void OnUpAttackInput()

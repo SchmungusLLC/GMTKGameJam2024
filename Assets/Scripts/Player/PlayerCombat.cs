@@ -30,32 +30,32 @@ public partial class Player
         if (attackState != 'N') { return; }
 
         attackState = direction;
-        _animator.Play("Attack" + direction);
+        animator.Play("Attack" + direction);
     }
 
     void AttackHitBox()
     {
         if (attackState == 'U' || attackState == 'D')
         {
-            targetsStruck = Physics.OverlapBox(_transform.position + _transform.forward * hbOffset, hbSizeV, _transform.rotation, hitLayers);
+            targetsStruck = Physics.OverlapBox(transform.position + transform.forward * hbOffset, hbSizeV, transform.rotation, hitLayers);
         }
         else
         {
-            targetsStruck = Physics.OverlapBox(_transform.position + _transform.forward * hbOffset, hbSizeH, _transform.rotation, hitLayers);
+            targetsStruck = Physics.OverlapBox(transform.position + transform.forward * hbOffset, hbSizeH, transform.rotation, hitLayers);
         }
 
         foreach (Collider target in targetsStruck)
         {
             Debug.Log("Hit target " + target.gameObject.name);
             target.gameObject.GetComponent<Enemy>()?.IncomingAttack(attackState);
-            target.gameObject.GetComponent<Destructible>()?.Struck(_rigidbody, attackState);
+            target.gameObject.GetComponent<Destructible>()?.Struck(rb3D, attackState);
         }
     }
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.matrix = Matrix4x4.TRS(_transform.position + _transform.forward * hbOffset, _transform.rotation, transform.localScale);
+        Gizmos.matrix = Matrix4x4.TRS(transform.position + transform.forward * hbOffset, transform.rotation, transform.localScale);
         Gizmos.DrawCube(Vector3.zero, new Vector3(hbSizeH.x * 2, hbSizeH.y * 2, hbSizeH.z * 2));
         Gizmos.color = Color.blue;
         Gizmos.DrawCube(Vector3.zero, new Vector3(hbSizeV.x * 2, hbSizeV.y * 2, hbSizeV.z * 2));

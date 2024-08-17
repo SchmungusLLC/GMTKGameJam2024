@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6983657186977831898}
   - component: {fileID: 6057214510975575059}
   - component: {fileID: 6966710735999764804}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 912957048825811153}
   - component: {fileID: 912957048825811154}
   - component: {fileID: 912957048825811155}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,7 +173,7 @@ GameObject:
   - component: {fileID: 912957048891817234}
   - component: {fileID: 912957048891817235}
   - component: {fileID: 912957048891817260}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: LeftEye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -271,7 +271,7 @@ GameObject:
   - component: {fileID: 912957048964101085}
   - component: {fileID: 912957048964101086}
   - component: {fileID: 912957048964101087}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: RightEye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -370,7 +370,7 @@ GameObject:
   - component: {fileID: 4355440627178169982}
   - component: {fileID: 1832933472562250886}
   - component: {fileID: 5282155416436127132}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -431,9 +431,9 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2344272772318980003}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cabfa5d387386fa499af77e4b7af3312, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -456,19 +456,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3623b5b86e38424499588412a8a2e5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerWorldCanvas: {fileID: 3045901141293979128}
-  SPBar: {fileID: 9063072167011606092}
-  SPBarTransform: {fileID: 2217694772114696713}
-  attackDuration: 0
+  rb3D: {fileID: 0}
+  animator: {fileID: 0}
+  moveSpeed: 3
+  aggroPlayer: 0
+  aggroDistance: 10
+  fightDistance: 1
+  isHitStunned: 0
+  attackDuration: 0.5
+  maxHP: 5
+  HPRegenRate: 0
+  HPRegenDelay: 0
   hitLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   hbSizeH: {x: 0, y: 0, z: 0}
   hbSizeV: {x: 0, y: 0, z: 0}
   hbOffset: 0
-  maxSP: 100
-  SPRegenRate: 40
-  SPRegenDelay: 2
+  playerWorldCanvas: {fileID: 3045901141293979128}
+  HPBar: {fileID: 9063072167011606092}
+  HPBarTransform: {fileID: 0}
 --- !u!1 &2795747586602503876
 GameObject:
   m_ObjectHideFlags: 0
@@ -479,8 +486,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2217694772114696713}
   - component: {fileID: 9063072167011606092}
-  m_Layer: 8
-  m_Name: Stamina Bar
+  m_Layer: 6
+  m_Name: Health Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -572,7 +579,7 @@ GameObject:
   - component: {fileID: 3807067546512727988}
   - component: {fileID: 8490342082415300994}
   - component: {fileID: 9006906025747249115}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: WorldCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -672,7 +679,7 @@ GameObject:
   - component: {fileID: 3822748171260380054}
   - component: {fileID: 4940905432738285650}
   - component: {fileID: 9219221978476547728}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -746,7 +753,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7835180836741304700}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -782,7 +789,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7613451808182939340}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
