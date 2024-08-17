@@ -324,6 +324,7 @@ MonoBehaviour:
   rb3D: {fileID: 0}
   animator: {fileID: 0}
   mainCamera: {fileID: 0}
+  cameraFaceDir: {x: 0, y: 0, z: 0}
   playerWorldCanvas: {fileID: 7427934773766629401}
   SPBar: {fileID: 3331171102975629139}
   SPBarTransform: {fileID: 4903959762533114202}
@@ -331,6 +332,8 @@ MonoBehaviour:
   bigAttackDuration: 0.3
   smallAttackForce: 10
   bigAttackForce: 20
+  scalesCurrentValue: 0
+  scalesSlider: {fileID: 0}
   currentAttackState: 0
   hitLayers:
     serializedVersion: 2

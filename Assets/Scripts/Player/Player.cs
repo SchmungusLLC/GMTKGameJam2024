@@ -45,8 +45,7 @@ public partial class Player : MonoBehaviour
     void Start()
     {
         currentAttackState = AttackState.None;
-        animator.SetFloat("SmallAttackSpeed", 1 / smallAttackDuration);
-        animator.SetFloat("BigAttackSpeed", 1 / bigAttackDuration);
+        AddScalesValue(0);
 
         SPBar.maxValue = currentSP = maxSP;
         SPBar.value = currentSP;
