@@ -471,7 +471,7 @@ MonoBehaviour:
   collisionDamageThreshold: 0.1
   damagingColliders:
     serializedVersion: 2
-    m_Bits: 328
+    m_Bits: 321
   hitLayers:
     serializedVersion: 2
     m_Bits: 8
