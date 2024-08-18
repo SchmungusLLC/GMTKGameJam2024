@@ -21,6 +21,5 @@ public partial class Player
         }
     }
 
-    public float defaultMaxHP;
     public float currentHP;
 }

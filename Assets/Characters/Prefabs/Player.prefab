@@ -328,12 +328,26 @@ MonoBehaviour:
   playerWorldCanvas: {fileID: 7427934773766629401}
   SPBar: {fileID: 3331171102975629139}
   SPBarTransform: {fileID: 4903959762533114202}
-  smallAttackDuration: 0.1
-  bigAttackDuration: 0.3
-  smallAttackForce: 10
-  bigAttackForce: 20
-  scalesCurrentValue: 0
+  lightMoveSpeed: 16
+  heavyMoveSpeed: 8
+  lightMaxHP: 50
+  heavyMaxHP: 150
+  lightBigAttackDuration: 0.3
+  heavyBigAttackDuration: 0.5
+  lightSmallAttackDuration: 0.1
+  heavySmallAttackDuration: 0.3
+  lightBigAttackForce: 10
+  heavyBigAttackForce: 25
+  lightSmallAttackForce: 5
+  heavySmallAttackForce: 10
+  scaledMoveSpeed: 0
+  scaledBigAttackDuration: 0
+  scaledSmallAttackDuration: 0
+  scaledBigAttackForce: 0
+  scaledSmallAttackForce: 0
+  currentScalesValue: 0.5
   scalesSlider: {fileID: 0}
+  scaledStatsTB: {fileID: 0}
   currentAttackState: 0
   hitLayers:
     serializedVersion: 2
@@ -341,7 +355,7 @@ MonoBehaviour:
   hbSizeH: {x: 2.35, y: 0.01, z: 1.5}
   hbSizeV: {x: 1, y: 0.01, z: 1.5}
   hbOffset: 1.5
-  moveSpeed: 12
+  currentHP: 100
   turnSpeed: 720
   dashSpeed: 40
   dashDuration: 0.15

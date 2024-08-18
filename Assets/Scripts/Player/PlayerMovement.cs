@@ -6,9 +6,6 @@ public partial class Player
 // ============================================================
 {
     [Header("Movement")]
-    [Tooltip("Movement speed in m/s")]
-    public float scaledMoveSpeed;
-    public float defaultMoveSpeed;
     [Tooltip("Rotation speed in degrees/s")]
     public float turnSpeed;
     [Tooltip("Movement speed when dashing")]

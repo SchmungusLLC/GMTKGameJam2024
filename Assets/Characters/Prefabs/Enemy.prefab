@@ -466,7 +466,7 @@ MonoBehaviour:
   isRecovering: 0
   fallThreshold: 0
   attackDuration: 0.5
-  maxHP: 100
+  maxHP: 1000
   HPRegenRate: 0
   HPRegenDelay: 0
   hitLayers:

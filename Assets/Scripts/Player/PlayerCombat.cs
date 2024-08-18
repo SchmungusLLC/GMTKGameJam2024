@@ -9,23 +9,30 @@ public partial class Player
 //                      PLAYER COMBAT
 // ============================================================
 {
-    [Header("Attack Stats")]
-    [Tooltip("Total duration of small attacks in seconds")]
-    public float defaultSmallAttackDuration;
-    public float scaledSmallAttackDuration;
-    [Tooltip("Total duration of big attacks in seconds")]
-    public float scaledBigAttackDuration;
-    public float defaultBigAttackDuration;
+    [Header("Scaled Stats")]
+    public float lightMoveSpeed;
+    public float heavyMoveSpeed;
+    public float lightMaxHP;
+    public float heavyMaxHP;
+    public float lightBigAttackDuration;
+    public float heavyBigAttackDuration = 3f;
+    public float lightSmallAttackDuration = 0.5f;
+    public float heavySmallAttackDuration = 1.5f;
+    public float lightBigAttackForce = 5f;
+    public float heavyBigAttackForce = 20f;
+    public float lightSmallAttackForce = 2f;
+    public float heavySmallAttackForce = 10f;
 
-    // force applied by attack types
-    public float defaultSmallAttackForce;
-    public float defaultBigAttackForce;
-    public float scaledSmallAttackForce;
+    public float scaledMoveSpeed;
+    public float scaledBigAttackDuration;
+    public float scaledSmallAttackDuration;
     public float scaledBigAttackForce;
+    public float scaledSmallAttackForce;
 
     // scales
     public float currentScalesValue = 1;
     public Slider scalesSlider;
+    public TextMeshProUGUI scaledStatsTB;
 
     // Current attack being executed
     public AttackState currentAttackState;
@@ -105,26 +112,26 @@ public partial class Player
     {
         // edit scales value
         currentScalesValue += value;
-        if (currentScalesValue < 0.5)
-        {
-            currentScalesValue = 0.5f;
-        }
-        else if (currentScalesValue > 1.5)
-        {
-            currentScalesValue = 1.5f;
-        }
+        currentScalesValue = Mathf.Clamp01(currentScalesValue);
         scalesSlider.value = currentScalesValue;
 
         // update scaled stats
-        scaledMoveSpeed = defaultMoveSpeed * currentScalesValue;
-        scaledBigAttackDuration = defaultBigAttackDuration * currentScalesValue;
-        scaledSmallAttackDuration = defaultSmallAttackDuration * currentScalesValue;
-        scaledBigAttackForce = defaultBigAttackForce * currentScalesValue;
-        scaledSmallAttackForce = defaultSmallAttackForce * currentScalesValue;
-        scaledMaxHP = defaultMaxHP * currentScalesValue;
+        scaledMoveSpeed = Mathf.Lerp(lightMoveSpeed, heavyMoveSpeed, currentScalesValue);
+        scaledMaxHP = Mathf.Lerp(lightMaxHP, heavyMaxHP, currentScalesValue);
+        scaledBigAttackDuration = Mathf.Lerp(lightBigAttackDuration, heavyBigAttackDuration, currentScalesValue);
+        scaledSmallAttackDuration = Mathf.Lerp(lightSmallAttackDuration, heavySmallAttackDuration, currentScalesValue);
+        scaledBigAttackForce = Mathf.Lerp(lightBigAttackForce, heavyBigAttackForce, currentScalesValue);
+        scaledSmallAttackForce = Mathf.Lerp(lightSmallAttackForce, heavySmallAttackForce, currentScalesValue);
 
         animator.SetFloat("SmallAttackSpeed", 1 / scaledSmallAttackDuration);
         animator.SetFloat("BigAttackSpeed", 1 / scaledBigAttackDuration);
+
+        scaledStatsTB.text = $"Move: {scaledMoveSpeed}\n" +
+            $"BigDuration: {scaledBigAttackDuration}\n" +
+            $"SmallDuration: {scaledSmallAttackDuration}\n" +
+            $"BigForce: {scaledBigAttackForce}\n" +
+            $"SmallForce: {scaledSmallAttackForce}\n" +
+            $"MaxHP: {scaledMaxHP}";
     }
 
     private void OnDrawGizmosSelected()
