@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using static Enemy;
 
 public partial class Player : MonoBehaviour
 {
@@ -61,14 +62,33 @@ public partial class Player : MonoBehaviour
     void Update()
     {
         if (!canDash) { DashTimer(); }
-        Turn();
+        if (!isStunned)
+        {
+            Turn();
+        }
+
+        if (waitingForRecoveryMinimum)
+        {
+            RecoveryMinimumTimer();
+        }
     }
 
     Vector3 lastPosition;
 
     void FixedUpdate()
     {
-        Move();
+        if (isStunned)
+        {
+            if (!waitingForRecoveryMinimum && rb3D.velocity.magnitude < 0.1f)
+            {
+                //Debug.Log("Velocity = " + rb3D.velocity.magnitude);
+                EndHitStun();
+            }
+        }
+        else
+        {
+            Move();
+        }
 
         Vector3 deltaPosition = transform.position - lastPosition;
         float speedX = deltaPosition.x / Time.deltaTime;
@@ -112,6 +132,8 @@ public partial class Player : MonoBehaviour
 
     void OnMoveInput(InputValue value)
     {
+        //if (isStunned) { return; }
+
         moveInput = value.Get<Vector2>();
         targetMoveDirection = new Vector3(moveInput.x, 0, moveInput.y).IsoRotation();
 
@@ -121,7 +143,7 @@ public partial class Player : MonoBehaviour
 
     void OnDashInput()
     {
-        if (!canDash) { return; }
+        if (!canDash || isStunned) { return; }
 
         isDashing = true;
         canDash = false;
@@ -131,21 +153,29 @@ public partial class Player : MonoBehaviour
 
     void OnUpAttackInput()
     {
+        if (isStunned) { return; }
+
         StartAttack(AttackState.SmallAttack);
     }
 
     void OnDownAttackInput()
     {
+        if (isStunned) { return; }
+
         StartAttack(AttackState.SmallAttack);
     }
 
     void OnLeftAttackInput()
     {
+        if (isStunned) { return; }
+
         StartAttack(AttackState.BigAttack);
     }
 
     void OnRightAttackInput()
     {
+        if (isStunned) { return; }
+
         StartAttack(AttackState.BigAttack);
     }
 }
