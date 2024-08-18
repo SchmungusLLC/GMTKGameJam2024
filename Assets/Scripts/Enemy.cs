@@ -8,22 +8,27 @@ using System.IO;
 
 public partial class Enemy : MonoBehaviour
 {
+    [Header("Components")]
     // components
     public Rigidbody rb3D;
     public Animator animator;
-
-    public NavMeshPath path;
-    public int currentPathIndex;
+    public NavMeshAgent agent;
 
     [Header("Movement")]
     public float moveSpeed = 3;
-    public bool aggroPlayer = false;
-
     public float aggroDistance = 10;
-    public float fightDistance = 1;
 
-    public bool isHitStunned;
-    public bool isRecovering;
+    public EnemyState currentEnemyState;
+
+    public enum EnemyState
+    {
+        Idle,
+        MovingToPlayer,
+        Attacking,
+        Stunned,
+        Recovering
+    }
+
     public float fallThreshold;
 
     [Header("Combat Stats")]
@@ -66,6 +71,10 @@ public partial class Enemy : MonoBehaviour
     {
         rb3D = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+        agent = GetComponent<NavMeshAgent>();
+
+        agent.updatePosition = false;
+        agent.updateRotation = true;
     }
 
     // Start is called before the first frame update
@@ -74,40 +83,59 @@ public partial class Enemy : MonoBehaviour
         HPBar.maxValue = currentHP = maxHP;
         HPBar.value = currentHP;
         HPBarTransform = HPBar.gameObject.transform;
-
-        path = new NavMeshPath();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //if (isRegenHP) { RegenHP(); }
-        //else if (currentHP != maxHP) { HPTimer(); }
         HPBarTransform.eulerAngles = player.cameraFaceDir;
     }
 
     private void FixedUpdate()
     {
-        if (isHitStunned)
+        switch (currentEnemyState)
         {
-            if (!isRecovering && rb3D.velocity.magnitude < 0.01f)
-            {
-                // Trigger recovery animation
-                //Debug.Log("Recovering");
-                animator.SetTrigger("Recover");
-                isRecovering = true;
-            }
+            case EnemyState.Idle:
+                SearchForPlayer();
+                break;
+            case EnemyState.MovingToPlayer:
+                MoveToPlayer();
+                break;
+            case EnemyState.Attacking:
+                Attack();
+                break;
+            case EnemyState.Stunned:
+                WaitToRecover();
+                break;
+        }
+    }
+
+    public void SearchForPlayer()
+    {
+        if (Vector3.Distance(rb3D.position, player.rb3D.position) < aggroDistance)
+        {
+            //Debug.Log("Enemy " + gameObject.name + " aggroed");
+            currentEnemyState = EnemyState.MovingToPlayer;
         }
         else
         {
-            CombatActions();
+            // wander around?
+        }
+    }
+
+    public void WaitToRecover()
+    {
+        if (rb3D.velocity.magnitude < 0.1f)
+        {
+            // Trigger recovery animation
+            //Debug.Log("Recovering");
+            animator.SetTrigger("Recover");
+            currentEnemyState = EnemyState.Recovering;
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        path = new();
-
         if (damagingColliders.ContainsLayer(collision.gameObject.layer))
         {
             // Get the magnitude of the collision
@@ -116,62 +144,27 @@ public partial class Enemy : MonoBehaviour
             if (collisionMagnitude >= collisionDamageThreshold)
             {
                 Debug.Log("Taking collision damage.  Velocity: " + collisionMagnitude);
+                rb3D.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
                 TakeDamage(collisionMagnitude * collisionDamageMultiplier);
             }
         }
-        else
-        {
-            Debug.Log("Not " + collision.gameObject);
-        }
     }
 
-    public void CombatActions()
+    public void MoveToPlayer()
     {
-        if (aggroPlayer)
+        // Calculate the direction to the player
+        //Vector3 direction = (player.transform.position - transform.position).normalized;
+        // Move the Rigidbody towards the player
+        //rb3D.velocity = direction * moveSpeed;
+
+        agent.nextPosition = transform.position;
+        agent.SetDestination(player.transform.position);
+
+        rb3D.MovePosition(transform.position + agent.velocity * Time.fixedDeltaTime);
+
+        if (Vector3.Distance(rb3D.position, player.rb3D.position) <= agent.stoppingDistance)
         {
-            if (NavMesh.CalculatePath(transform.position, player.transform.position, NavMesh.AllAreas, path))
-            {
-                if (path.corners.Length > 1 && currentPathIndex < path.corners.Length)
-                {
-                    // Adjust the direction to ignore the Y component
-                    Vector3 targetPosition = path.corners[currentPathIndex];
-                    targetPosition.y = transform.position.y; // Keep the Y component constant
-
-                    Vector3 direction = (targetPosition - transform.position).normalized;
-                    //Vector3 force = direction * moveSpeed;
-
-                    //Debug.Log($"Applying force: {force} towards corner: {currentPathIndex}");
-
-                    // Move the Rigidbody towards the player
-                    rb3D.velocity = direction * moveSpeed;
-
-                    // Check if we are close to the current path corner
-                    if (Vector3.Distance(transform.position, targetPosition) < 1f)
-                    {
-                        currentPathIndex++;
-                        if (currentPathIndex >= path.corners.Length)
-                        {
-                            currentPathIndex = path.corners.Length - 1;
-                        }
-                    }
-                }
-            }
-            else
-            {
-                Debug.Log("No path");
-            }
-        }
-        else
-        {
-            if (Vector3.Distance(rb3D.position, player.rb3D.position) < aggroDistance)
-            {
-                //Debug.Log("Enemy " + gameObject.name + " aggroed");
-                aggroPlayer = true;
-            }
-            else
-            {
-                // wander around?
-            }
+            currentEnemyState = EnemyState.Attacking;
         }
     }
 
@@ -179,6 +172,12 @@ public partial class Enemy : MonoBehaviour
     {
         //Debug.Log("Enemy Attacking");
         animator.Play("Attack");
+
+        // if player is now too far away, start moving toward them again
+        if (Vector3.Distance(rb3D.position, player.rb3D.position) > agent.stoppingDistance)
+        {
+            currentEnemyState = EnemyState.MovingToPlayer;
+        }
     }
 
     public void IncomingAttack(AttackState playerAttackState)
@@ -201,14 +200,17 @@ public partial class Enemy : MonoBehaviour
 
     public void StartHitStun()
     {
-        isHitStunned = true;
-        isRecovering = false;
+        currentEnemyState = EnemyState.Stunned;
+        //rb3D.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+
+        //agent.updatePosition = false;
+        //agent.updateRotation = true;
     }
 
     public void EndHitStun()
     {
-        isHitStunned = false;
-        isRecovering = false;
+        currentEnemyState = EnemyState.MovingToPlayer;
+        rb3D.constraints = RigidbodyConstraints.FreezeRotation;
     }
 
     public void TakeDamage(float damage)

@@ -317,8 +317,6 @@ MonoBehaviour:
   SPBarTransform: {fileID: 4903959762533114202}
   lightMoveSpeed: 16
   heavyMoveSpeed: 8
-  lightMaxHP: 50
-  heavyMaxHP: 150
   lightBigAttackDuration: 0.3
   heavyBigAttackDuration: 0.5
   lightSmallAttackDuration: 0.1
@@ -341,7 +339,7 @@ MonoBehaviour:
   hitLayers:
     serializedVersion: 2
     m_Bits: 320
-  hbSizeH: {x: 2.35, y: 1, z: 1.5}
+  hbSizeH: {x: 2.35, y: 1, z: 2}
   hbSizeV: {x: 1, y: 1, z: 1.5}
   hbOffset: 1.5
   currentHP: 100

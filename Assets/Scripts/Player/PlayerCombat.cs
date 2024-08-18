@@ -12,8 +12,6 @@ public partial class Player
     [Header("Scaled Stats")]
     public float lightMoveSpeed;
     public float heavyMoveSpeed;
-    public float lightMaxHP;
-    public float heavyMaxHP;
     public float lightBigAttackDuration;
     public float heavyBigAttackDuration = 3f;
     public float lightSmallAttackDuration = 0.5f;
@@ -95,11 +93,13 @@ public partial class Player
                 if (currentAttackState == AttackState.BigAttack)
                 {
                     enemy.rb3D.AddForce(direction * scaledBigAttackForce, ForceMode.Impulse);
+                    enemy.rb3D.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
                     AddScalesValue(0.1f);
                 }
                 else
                 {
                     enemy.rb3D.AddForce(direction * scaledSmallAttackForce, ForceMode.Impulse);
+                    enemy.rb3D.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
                     AddScalesValue(-0.1f);
                 }
 
@@ -138,7 +138,6 @@ public partial class Player
 
         // update scaled stats
         scaledMoveSpeed = Mathf.Lerp(lightMoveSpeed, heavyMoveSpeed, currentScalesValue);
-        scaledMaxHP = Mathf.Lerp(lightMaxHP, heavyMaxHP, currentScalesValue);
         scaledBigAttackDuration = Mathf.Lerp(lightBigAttackDuration, heavyBigAttackDuration, currentScalesValue);
         scaledSmallAttackDuration = Mathf.Lerp(lightSmallAttackDuration, heavySmallAttackDuration, currentScalesValue);
         scaledBigAttackForce = Mathf.Lerp(lightBigAttackForce, heavyBigAttackForce, currentScalesValue);
@@ -151,8 +150,7 @@ public partial class Player
             $"BigDuration: {scaledBigAttackDuration}\n" +
             $"SmallDuration: {scaledSmallAttackDuration}\n" +
             $"BigForce: {scaledBigAttackForce}\n" +
-            $"SmallForce: {scaledSmallAttackForce}\n" +
-            $"MaxHP: {scaledMaxHP}";
+            $"SmallForce: {scaledSmallAttackForce}\n";
     }
 
     private void OnDrawGizmosSelected()

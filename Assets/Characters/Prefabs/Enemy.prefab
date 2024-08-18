@@ -370,6 +370,7 @@ GameObject:
   - component: {fileID: 1832933472562250886}
   - component: {fileID: 5282155416436127132}
   - component: {fileID: 7974397074279976232}
+  - component: {fileID: 7974397074279976237}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
@@ -408,7 +409,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!95 &1832933472562250886
 Animator:
@@ -445,15 +446,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb3D: {fileID: 0}
   animator: {fileID: 0}
+  agent: {fileID: 0}
   moveSpeed: 5
-  aggroPlayer: 0
   aggroDistance: 10
-  fightDistance: 2.5
-  isHitStunned: 0
-  isRecovering: 0
+  currentEnemyState: 0
   fallThreshold: 0
   attackDuration: 0.5
-  maxHP: 100
+  maxHP: 1000
   collisionDamageMultiplier: 1
   collisionDamageThreshold: 0.1
   damagingColliders:
@@ -482,6 +481,28 @@ CapsuleCollider:
   m_Height: 2.5
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!195 &7974397074279976237
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2344272772318980003}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 1
+  m_Speed: 12
+  m_Acceleration: 12
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 4
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2.5
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &2795747586602503876
 GameObject:
   m_ObjectHideFlags: 0
