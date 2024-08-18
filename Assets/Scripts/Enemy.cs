@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using static Player;
+using static HelperMethods;
 
 public partial class Enemy : MonoBehaviour
 {
@@ -26,10 +27,11 @@ public partial class Enemy : MonoBehaviour
 
     [Tooltip("Total Number of Health Points (HP)")]
     public float maxHP;
-    [Tooltip("Number of HP regenerated per second")]
-    public float HPRegenRate;
-    [Tooltip("Time in seconds after last expending HP before regen starts")]
-    public float HPRegenDelay;
+
+    public float collisionDamageMultiplier;
+    public float collisionDamageThreshold;
+
+    public LayerMask damagingColliders;
 
     // current HP value
     private float currentHP;
@@ -97,25 +99,31 @@ public partial class Enemy : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        // Get the magnitude of the collision
-        float collisionMagnitude = collision.relativeVelocity.magnitude;
+        if (damagingColliders.ContainsLayer(collision.gameObject.layer))
+        {
+            // Get the magnitude of the collision
+            float collisionMagnitude = collision.relativeVelocity.magnitude;
 
-        Debug.Log("Taking collision damage: " + collisionMagnitude);
-        TakeDamage(collisionMagnitude);
+            if (collisionMagnitude >= collisionDamageThreshold)
+            {
+                Debug.Log("Taking collision damage.  Velocity: " + collisionMagnitude);
+                TakeDamage(collisionMagnitude * collisionDamageMultiplier);
+            }
+        }
     }
 
     public void CombatActions()
     {
         if (aggroPlayer)
         {
-            if (Vector3.Distance(rb3D.position, player.rb3D.position) < fightDistance)
+            if (Vector3.Distance(transform.position, player.transform.position) < fightDistance)
             {
                 Attack();
             }
             else
             {
                 // Calculate the direction to the player
-                Vector3 direction = (player.rb3D.position - rb3D.position).normalized;
+                Vector3 direction = (player.transform.position - transform.position).normalized;
 
                 // Move the Rigidbody towards the player
                 rb3D.velocity = direction * moveSpeed;
@@ -148,10 +156,10 @@ public partial class Enemy : MonoBehaviour
         switch (playerAttackState)
         {
             case AttackState.BigAttack:
-                TakeDamage(20);
+                TakeDamage(player.bigAttackDamage);
                 break;
             case AttackState.SmallAttack:
-                TakeDamage(10);
+                TakeDamage(player.smallAttackDamage);
                 break;
             default:
                 Debug.LogWarning("WARNING: no attack state");
@@ -174,6 +182,8 @@ public partial class Enemy : MonoBehaviour
     public void TakeDamage(float damage)
     {
         animator.Play("Hit");
+
+        //Debug.Log("Taking damage: " + damage);
         currentHP -= damage;
         HPBar.value = currentHP;
         if (currentHP < 0)

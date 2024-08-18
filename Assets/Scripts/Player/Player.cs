@@ -35,7 +35,6 @@ public partial class Player : MonoBehaviour
         {
             player = this;
         }
-        DontDestroyOnLoad(gameObject);
 
         rb3D = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();

@@ -34,6 +34,10 @@ public partial class Player
     public Slider scalesSlider;
     public TextMeshProUGUI scaledStatsTB;
 
+    [Header("Attack")]
+    public float smallAttackDamage;
+    public float bigAttackDamage;
+
     // Current attack being executed
     public AttackState currentAttackState;
 
