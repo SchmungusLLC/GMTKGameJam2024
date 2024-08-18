@@ -3,12 +3,17 @@ using UnityEngine;
 using UnityEngine.UI;
 using static Player;
 using static HelperMethods;
+using UnityEngine.AI;
+using System.IO;
 
 public partial class Enemy : MonoBehaviour
 {
     // components
     public Rigidbody rb3D;
     public Animator animator;
+
+    public NavMeshPath path;
+    public int currentPathIndex;
 
     [Header("Movement")]
     public float moveSpeed = 3;
@@ -69,6 +74,8 @@ public partial class Enemy : MonoBehaviour
         HPBar.maxValue = currentHP = maxHP;
         HPBar.value = currentHP;
         HPBarTransform = HPBar.gameObject.transform;
+
+        path = new NavMeshPath();
     }
 
     // Update is called once per frame
@@ -99,6 +106,8 @@ public partial class Enemy : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        path = new();
+
         if (damagingColliders.ContainsLayer(collision.gameObject.layer))
         {
             // Get the magnitude of the collision
@@ -110,23 +119,46 @@ public partial class Enemy : MonoBehaviour
                 TakeDamage(collisionMagnitude * collisionDamageMultiplier);
             }
         }
+        else
+        {
+            Debug.Log("Not " + collision.gameObject);
+        }
     }
 
     public void CombatActions()
     {
         if (aggroPlayer)
         {
-            if (Vector3.Distance(transform.position, player.transform.position) < fightDistance)
+            if (NavMesh.CalculatePath(transform.position, player.transform.position, NavMesh.AllAreas, path))
             {
-                Attack();
+                if (path.corners.Length > 1 && currentPathIndex < path.corners.Length)
+                {
+                    // Adjust the direction to ignore the Y component
+                    Vector3 targetPosition = path.corners[currentPathIndex];
+                    targetPosition.y = transform.position.y; // Keep the Y component constant
+
+                    Vector3 direction = (targetPosition - transform.position).normalized;
+                    //Vector3 force = direction * moveSpeed;
+
+                    //Debug.Log($"Applying force: {force} towards corner: {currentPathIndex}");
+
+                    // Move the Rigidbody towards the player
+                    rb3D.velocity = direction * moveSpeed;
+
+                    // Check if we are close to the current path corner
+                    if (Vector3.Distance(transform.position, targetPosition) < 1f)
+                    {
+                        currentPathIndex++;
+                        if (currentPathIndex >= path.corners.Length)
+                        {
+                            currentPathIndex = path.corners.Length - 1;
+                        }
+                    }
+                }
             }
             else
             {
-                // Calculate the direction to the player
-                Vector3 direction = (player.transform.position - transform.position).normalized;
-
-                // Move the Rigidbody towards the player
-                rb3D.velocity = direction * moveSpeed;
+                Debug.Log("No path");
             }
         }
         else
