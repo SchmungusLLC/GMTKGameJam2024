@@ -16,20 +16,9 @@ public class Destructible : MonoBehaviour
         rb3D = GetComponent<Rigidbody>();
     }
 
-    public void Struck(AttackState playerAttackState)
+    public void Struck(float damage)
     {
-        switch (playerAttackState)
-        {
-            case AttackState.BigAttack:
-                TakeDamage(20);
-                break;
-            case AttackState.SmallAttack:
-                TakeDamage(10);
-                break;
-            default:
-                Debug.LogWarning("WARNING: no attack state");
-                break;
-        }
+        TakeDamage(damage);
     }
 
     public void TakeDamage(float damage)

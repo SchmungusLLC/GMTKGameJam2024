@@ -14,11 +14,25 @@ public partial class Enemy : MonoBehaviour
     public Animator animator;
     public NavMeshAgent agent;
 
-    [Header("Movement")]
-    public float moveSpeed = 3;
+    [Header("Combat Stats")]
+    [Tooltip("Total Number of Health Points (HP)")]
+    public float maxHP;
+    // current HP value
+    private float currentHP;
+
+    public float moveSpeed;
+    public float bigAttackDuration;
+    public float smallAttackDuration;
+    public float bigAttackForce;
+    public float smallAttackForce;
+    public float bigAttackDamage;
+    public float smallAttackDamage;
+
+    [Header("States")]
     public float aggroDistance = 10;
 
     public EnemyState currentEnemyState;
+    public AttackState currentAttackState;
 
     public enum EnemyState
     {
@@ -31,20 +45,10 @@ public partial class Enemy : MonoBehaviour
 
     public float fallThreshold;
 
-    [Header("Combat Stats")]
-    [Tooltip("Total duration of attacks in seconds")]
-    public float attackDuration;
-
-    [Tooltip("Total Number of Health Points (HP)")]
-    public float maxHP;
-
     public float collisionDamageMultiplier;
     public float collisionDamageThreshold;
 
     public LayerMask damagingColliders;
-
-    // current HP value
-    private float currentHP;
 
     [Header("Hitbox Settings")]
     [Tooltip("Layers which this attack's hitbox should check against")]
@@ -75,6 +79,9 @@ public partial class Enemy : MonoBehaviour
 
         agent.updatePosition = false;
         agent.updateRotation = true;
+
+        currentAttackState = AttackState.None;
+        currentEnemyState = EnemyState.Idle;
     }
 
     // Start is called before the first frame update
@@ -83,6 +90,9 @@ public partial class Enemy : MonoBehaviour
         HPBar.maxValue = currentHP = maxHP;
         HPBar.value = currentHP;
         HPBarTransform = HPBar.gameObject.transform;
+
+        animator.SetFloat("SmallAttackSpeed", 1 / smallAttackDuration);
+        animator.SetFloat("BigAttackSpeed", 1 / bigAttackDuration);
     }
 
     // Update is called once per frame
@@ -143,7 +153,7 @@ public partial class Enemy : MonoBehaviour
 
             if (collisionMagnitude >= collisionDamageThreshold)
             {
-                Debug.Log("Taking collision damage.  Velocity: " + collisionMagnitude);
+                //Debug.Log("Taking collision damage.  Velocity: " + collisionMagnitude);
                 rb3D.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
                 TakeDamage(collisionMagnitude * collisionDamageMultiplier);
             }
@@ -170,37 +180,108 @@ public partial class Enemy : MonoBehaviour
 
     public void Attack()
     {
-        //Debug.Log("Enemy Attacking");
-        animator.Play("Attack");
-
-        // if player is now too far away, start moving toward them again
-        if (Vector3.Distance(rb3D.position, player.rb3D.position) > agent.stoppingDistance)
+        if (currentAttackState != AttackState.None)
         {
+            // enemy is mid-attack, stop here
+            return;
+        }
+        else if (Vector3.Distance(rb3D.position, player.rb3D.position) > agent.stoppingDistance)
+        {
+            // if player is now too far away, start moving toward them again
             currentEnemyState = EnemyState.MovingToPlayer;
+        }
+        else
+        {
+            // enemy is in-range but not attacking - start an attack
+            //Debug.Log("Enemy Attacking");
+
+            if (Random.Range(0, 2) == 0)
+            {
+                animator.Play("SmallAttack");
+                currentAttackState = AttackState.SmallAttack;
+            }
+            else
+            {
+                animator.Play("BigAttack");
+                currentAttackState = AttackState.BigAttack;
+            }
         }
     }
 
-    public void IncomingAttack(AttackState playerAttackState)
+    public void AttackHitBox()
+    {
+        //Debug.Log("Enemy AttackHitBox");
+        if (currentAttackState == AttackState.SmallAttack)
+        {
+            targetsStruck = Physics.OverlapBox(transform.position + transform.forward * hbOffset, hbSizeV, transform.rotation, hitLayers);
+        }
+        else
+        {
+            targetsStruck = Physics.OverlapBox(transform.position + transform.forward * hbOffset, hbSizeH, transform.rotation, hitLayers);
+        }
+
+        foreach (Collider target in targetsStruck)
+        {
+            //Debug.Log("Hit target " + target.gameObject.name);
+
+            if (target.gameObject.TryGetComponent(out Player player))
+            {
+                // Calculate direction from the attack source to the player
+                Vector3 direction = player.rb3D.position - rb3D.position;
+                direction.y = 0; // Ensure force is applied on the horizontal plane
+                direction.Normalize();
+
+                // Apply force to the Rigidbody
+                if (currentAttackState == AttackState.BigAttack)
+                {
+                    player.rb3D.AddForce(direction * bigAttackForce, ForceMode.Impulse);
+                    player.IncomingAttack(this, bigAttackDamage);
+                    //player.rb3D.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+                }
+                else
+                {
+                    player.rb3D.AddForce(direction * smallAttackForce, ForceMode.Impulse);
+                    player.IncomingAttack(this, smallAttackDamage);
+                    //player.rb3D.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+                }
+            }
+            else if (target.gameObject.TryGetComponent(out Destructible destructible))
+            {
+                // Calculate direction from the attack source to the destructible
+                Vector3 direction = destructible.rb3D.position - rb3D.position;
+                direction.y = 0; // Ensure force is applied on the horizontal plane
+                direction.Normalize();
+
+                // Apply force to the Rigidbody
+                if (currentAttackState == AttackState.BigAttack)
+                {
+                    destructible.rb3D.AddForce(direction * bigAttackForce, ForceMode.Impulse);
+                    destructible.Struck(bigAttackDamage);
+                }
+                else
+                {
+                    destructible.rb3D.AddForce(direction * smallAttackForce, ForceMode.Impulse);
+                    destructible.Struck(smallAttackDamage);
+                }
+            }
+        }
+    }
+
+    void EndAttack()
+    {
+        currentAttackState = AttackState.None;
+    }
+
+    public void IncomingAttack(float damage)
     {
         //Debug.Log($"Enemy was hit from {playerAttackDir}");
-
-        switch (playerAttackState)
-        {
-            case AttackState.BigAttack:
-                TakeDamage(player.bigAttackDamage);
-                break;
-            case AttackState.SmallAttack:
-                TakeDamage(player.smallAttackDamage);
-                break;
-            default:
-                Debug.LogWarning("WARNING: no attack state");
-                break;
-        }
+        TakeDamage(damage);
     }
 
     public void StartHitStun()
     {
         currentEnemyState = EnemyState.Stunned;
+        currentAttackState = AttackState.None;
         //rb3D.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
 
         //agent.updatePosition = false;
@@ -229,5 +310,14 @@ public partial class Enemy : MonoBehaviour
     public void EnemyDies()
     {
         gameObject.SetActive(false);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.matrix = Matrix4x4.TRS(transform.position + transform.forward * hbOffset, transform.rotation, transform.localScale);
+        Gizmos.DrawCube(Vector3.zero, new Vector3(hbSizeH.x * 2, hbSizeH.y * 2, hbSizeH.z * 2));
+        Gizmos.color = Color.blue;
+        Gizmos.DrawCube(Vector3.zero, new Vector3(hbSizeV.x * 2, hbSizeV.y * 2, hbSizeV.z * 2));
     }
 }

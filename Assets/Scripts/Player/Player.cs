@@ -17,6 +17,12 @@ public partial class Player : MonoBehaviour
     // Vector to hold camera-facing direction
     public Vector3 cameraFaceDir;
 
+    [Header("Collision")]
+    public float collisionDamageMultiplier;
+    public float collisionDamageThreshold;
+
+    public LayerMask damagingColliders;
+
     [Header("UI")]
     [Tooltip("Canvas GameObject holding player's in-world UI elements")]
     public GameObject playerWorldCanvas;
@@ -74,6 +80,22 @@ public partial class Player : MonoBehaviour
         animator.SetFloat("TotalVelocity", speedTotal);
 
         lastPosition = transform.position;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (damagingColliders.ContainsLayer(collision.gameObject.layer))
+        {
+            // Get the magnitude of the collision
+            float collisionMagnitude = collision.relativeVelocity.magnitude;
+
+            if (collisionMagnitude >= collisionDamageThreshold)
+            {
+                //Debug.Log("Taking collision damage.  Velocity: " + collisionMagnitude);
+                //rb3D.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+                TakeDamage(collisionMagnitude * collisionDamageMultiplier);
+            }
+        }
     }
 
     void OnDeviceLost()

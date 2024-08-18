@@ -67,8 +67,9 @@ public partial class Player
         animator.Play(state.ToString());
     }
 
-    void AttackHitBox()
+    public void AttackHitBox()
     {
+        //Debug.Log("Player attack hitbox");
         if (currentAttackState == AttackState.SmallAttack)
         {
             targetsStruck = Physics.OverlapBox(transform.position + transform.forward * hbOffset, hbSizeV, transform.rotation, hitLayers);
@@ -92,18 +93,18 @@ public partial class Player
                 // Apply force to the Rigidbody
                 if (currentAttackState == AttackState.BigAttack)
                 {
+                    enemy.IncomingAttack(bigAttackDamage);
                     enemy.rb3D.AddForce(direction * scaledBigAttackForce, ForceMode.Impulse);
                     enemy.rb3D.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
                     AddScalesValue(0.1f);
                 }
                 else
                 {
+                    enemy.IncomingAttack(smallAttackDamage);
                     enemy.rb3D.AddForce(direction * scaledSmallAttackForce, ForceMode.Impulse);
                     enemy.rb3D.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
                     AddScalesValue(-0.1f);
                 }
-
-                enemy.IncomingAttack(currentAttackState);
             }
             else if (target.gameObject.TryGetComponent(out Destructible destructible))
             {
@@ -115,16 +116,16 @@ public partial class Player
                 // Apply force to the Rigidbody
                 if (currentAttackState == AttackState.BigAttack)
                 {
+                    destructible.Struck(bigAttackDamage);
                     destructible.rb3D.AddForce(direction * scaledBigAttackForce, ForceMode.Impulse);
                     AddScalesValue(0.1f);
                 }
                 else
                 {
+                    destructible.Struck(smallAttackDamage);
                     destructible.rb3D.AddForce(direction * scaledSmallAttackForce, ForceMode.Impulse);
                     AddScalesValue(-0.1f);
                 }
-
-                destructible.Struck(currentAttackState);
             }
         }
     }
@@ -153,6 +154,23 @@ public partial class Player
             $"SmallForce: {scaledSmallAttackForce}\n";
     }
 
+    void EndAttack()
+    {
+        currentAttackState = AttackState.None;
+    }
+
+    void TakeDamage(float damage)
+    {
+        Debug.Log("Player took Damage: " + damage);
+        currentHP -= damage;
+    }
+
+    public void IncomingAttack(Enemy attacker, float damage)
+    {
+        //Debug.Log("Player was hit by " + attackState);
+        TakeDamage(damage);
+    }
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
@@ -160,20 +178,5 @@ public partial class Player
         Gizmos.DrawCube(Vector3.zero, new Vector3(hbSizeH.x * 2, hbSizeH.y * 2, hbSizeH.z * 2));
         Gizmos.color = Color.blue;
         Gizmos.DrawCube(Vector3.zero, new Vector3(hbSizeV.x * 2, hbSizeV.y * 2, hbSizeV.z * 2));
-    }
-
-    void EndAttack()
-    {
-        currentAttackState = AttackState.None;
-    }
-
-    void TakeDamage()
-    {
-        Debug.Log("Player took Damage");
-    }
-
-    public void IncomingAttack(char attackDir)
-    {
-        Debug.Log("Player was hit from " + attackDir);
     }
 }
