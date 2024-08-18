@@ -103,7 +103,24 @@ public partial class Player
             }
             else if (target.gameObject.TryGetComponent(out Destructible destructible))
             {
-                destructible.Struck(rb3D);
+                // Calculate direction from the attack source to the destructible
+                Vector3 direction = destructible.rb3D.position - rb3D.position;
+                direction.y = 0; // Ensure force is applied on the horizontal plane
+                direction.Normalize();
+
+                // Apply force to the Rigidbody
+                if (currentAttackState == AttackState.BigAttack)
+                {
+                    destructible.rb3D.AddForce(direction * scaledBigAttackForce, ForceMode.Impulse);
+                    AddScalesValue(0.1f);
+                }
+                else
+                {
+                    destructible.rb3D.AddForce(direction * scaledSmallAttackForce, ForceMode.Impulse);
+                    AddScalesValue(-0.1f);
+                }
+
+                destructible.Struck(currentAttackState);
             }
         }
     }

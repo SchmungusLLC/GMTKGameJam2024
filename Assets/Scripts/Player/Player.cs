@@ -47,10 +47,6 @@ public partial class Player : MonoBehaviour
         currentAttackState = AttackState.None;
         AddScalesValue(0);
 
-        SPBar.maxValue = currentSP = maxSP;
-        SPBar.value = currentSP;
-        isRegenSP = false;
-
         isDashing = false;
         canDash = true;
 
@@ -61,9 +57,6 @@ public partial class Player : MonoBehaviour
     {
         if (!canDash) { DashTimer(); }
         Turn();
-
-        if (isRegenSP) { RegenSP(); }
-        else if (currentSP != maxSP) { SPTimer(); }
     }
 
     Vector3 lastPosition;
@@ -107,7 +100,7 @@ public partial class Player : MonoBehaviour
 
     void OnDashInput()
     {
-        if (!canDash || !SpendSP(dashSPCost)) { return; }
+        if (!canDash) { return; }
 
         isDashing = true;
         canDash = false;
