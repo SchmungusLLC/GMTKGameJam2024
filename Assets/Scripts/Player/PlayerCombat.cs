@@ -3,7 +3,6 @@ using TMPro;
 using Unity.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-using static Enemy;
 
 public partial class Player
 // ============================================================

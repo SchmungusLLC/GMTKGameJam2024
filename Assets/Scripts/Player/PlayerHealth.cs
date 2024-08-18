@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public partial class Player
 // ============================================================
@@ -6,17 +7,19 @@ public partial class Player
 // ============================================================
 {
     [Space]
-    [Header("Health Stats")]
-    private float _maxHP;
-    public float maxHP
+    [Header("Health")]
+    public float maxHP;
+    private float _currentHP;
+    public float currentHP
     {
-        get { return _maxHP; }
+        get { return _currentHP; }
         set
         {
-            _maxHP = value;
-            if (currentHP > _maxHP)
+            _currentHP = value;
+            HPBar.value = currentHP;
+            if (currentHP > maxHP)
             {
-                currentHP = _maxHP;
+                currentHP = maxHP;
             }
             else if (currentHP < 0)
             {
@@ -25,7 +28,7 @@ public partial class Player
         }
     }
 
-    public float currentHP;
+    public Slider HPBar;
 
     public void PlayerDies()
     {

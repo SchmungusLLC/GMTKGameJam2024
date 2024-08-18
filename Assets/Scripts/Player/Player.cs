@@ -27,10 +27,10 @@ public partial class Player : MonoBehaviour
     [Header("UI")]
     [Tooltip("Canvas GameObject holding player's in-world UI elements")]
     public GameObject playerWorldCanvas;
-    [Tooltip("UI Slider for SP Points")]
-    public Slider SPBar;
-    [Tooltip("Transform of the player's SP bar (used to lock rotation)")]
-    public Transform SPBarTransform;
+    public GameObject ScalesUI;
+
+    //public Slider SPBar;
+    //public Transform SPBarTransform;
 
     void Awake()
     {
@@ -56,6 +56,8 @@ public partial class Player : MonoBehaviour
         isDashing = false;
         canDash = true;
 
+        HPBar.maxValue = currentHP = maxHP;
+        HPBar.value = currentHP;
         cameraFaceDir = mainCamera.transform.eulerAngles;
     }
 
