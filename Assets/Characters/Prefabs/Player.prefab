@@ -551,7 +551,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3714134189673279610
 Transform:
   m_ObjectHideFlags: 0
@@ -988,7 +988,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1596347115631426854, guid: 9d1989c08e00ef944a749f5387c00c03, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1.14
       objectReference: {fileID: 0}
     - target: {fileID: 1596347115631426854, guid: 9d1989c08e00ef944a749f5387c00c03, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1025,6 +1025,14 @@ PrefabInstance:
     - target: {fileID: 3178972145287955336, guid: 9d1989c08e00ef944a749f5387c00c03, type: 3}
       propertyPath: m_Name
       value: LadyJustice
+      objectReference: {fileID: 0}
+    - target: {fileID: 8183587367993915309, guid: 9d1989c08e00ef944a749f5387c00c03, type: 3}
+      propertyPath: m_UpdateMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8183587367993915309, guid: 9d1989c08e00ef944a749f5387c00c03, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d1989c08e00ef944a749f5387c00c03, type: 3}
