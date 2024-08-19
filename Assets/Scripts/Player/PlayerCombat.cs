@@ -39,9 +39,10 @@ public partial class Player
     public TextMeshProUGUI scaledStatsTB;
 
     [Header("Ultimates")]
-    public PlayableDirector director;
+    public PlayableDirector ultimateDirector;
     public TimelineAsset lightUltimateTimeline;
     public TimelineAsset heavyUltimateTimeline;
+    public GameObject mainVcam;
 
     public float ultimateChargeThreshold;
     public float ultimateRange;
@@ -154,8 +155,10 @@ public partial class Player
 
         lightUltimateCharge = 0;
         UIAnimator.Play("LightUlt0", 1);
-        //director.Play(lightUltimateTimeline);
-        UltimateKillEnemies(); // temp - kill 5 enemies
+        mainVcam.SetActive(false);
+        ultimateDirector.Play(lightUltimateTimeline);
+        Time.timeScale = 0;
+        //UltimateKillEnemies(); // temp - kill 5 enemies
     }
 
     public void UseHeavyUltimate()
@@ -163,13 +166,18 @@ public partial class Player
         if (heavyUltimateCharge < 1) return;
 
         heavyUltimateCharge = -0.5f;
-        UIAnimator.Play("HeavyUlt0", 1);
-        //director.Play(heavyUltimateTimeline);
-        UltimateKillEnemies(); // temp - kill 5 enemies
+        UIAnimator.Play("HeavyUlt0", 0);
+        Time.timeScale = 0;
+        mainVcam.SetActive(false);
+        ultimateDirector.Play(heavyUltimateTimeline);
+        //UltimateKillEnemies(); // temp - kill 5 enemies
     }
 
-    void UltimateKillEnemies()
+    public void UltimateKillEnemies()
     {
+        mainVcam.SetActive(true);
+
+        Time.timeScale = 1;
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, ultimateRange, hitLayers);
 
         var closestEnemies = hitColliders
@@ -190,14 +198,11 @@ public partial class Player
             case < 0.1f:
                 UIAnimator.Play("LightUlt0", 1);
                 break;
-            case >= 0.1f and < 0.4f:
+            case >= 0.1f and < 0.5f:
                 UIAnimator.Play("LightUlt1", 1);
                 break;
-            case >= 0.4f and < 0.7f:
+            case >= 0.5f and < 1:
                 UIAnimator.Play("LightUlt2", 1);
-                break;
-            case >= 0.7f and < 1:
-                UIAnimator.Play("LightUlt3", 1);
                 break;
             case >= 1:
                 lightUltimateCharge = 1;
@@ -219,11 +224,8 @@ public partial class Player
             case >= 0.1f and < 0.5f:
                 UIAnimator.Play("HeavyUlt1", 0);
                 break;
-            case >= 0.4f and < 0.7f:
+            case >= 0.5f and < 1:
                 UIAnimator.Play("HeavyUlt2", 0);
-                break;
-            case >= 0.7f and < 1:
-                UIAnimator.Play("HeavyUlt3", 0);
                 break;
             case >= 1:
                 heavyUltimateCharge = 1;
