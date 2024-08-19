@@ -5,6 +5,7 @@ using static Player;
 using static HelperMethods;
 using UnityEngine.AI;
 using System.IO;
+using TMPro;
 
 public partial class Enemy : MonoBehaviour
 {
@@ -34,6 +35,7 @@ public partial class Enemy : MonoBehaviour
 
     public EnemyState currentEnemyState;
     public AttackState currentAttackState;
+    public AttackState lastAttackTaken;
 
     public enum EnemyState
     {
@@ -41,7 +43,8 @@ public partial class Enemy : MonoBehaviour
         MovingToPlayer,
         Attacking,
         Stunned,
-        Recovering
+        Recovering,
+        Dead
     }
 
     public float fallThreshold;
@@ -71,6 +74,9 @@ public partial class Enemy : MonoBehaviour
     public Slider HPBar;
     [Tooltip("Transform of the player's HP bar (used to lock rotation)")]
     public Transform HPBarTransform;
+
+    public GameObject soulObject;
+    public bool isSoulMoving;
 
     public bool waitingForRecoveryMinimum;
     public float minimumRecoveryThreshold;
@@ -103,6 +109,16 @@ public partial class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (currentEnemyState == EnemyState.Dead)
+        {
+            if (isSoulMoving)
+            {
+                MoveSoulToTarget();
+            }
+
+            return;
+        }
+
         HPBarTransform.eulerAngles = player.cameraFaceDir;
 
         if (waitingForRecoveryMinimum)
@@ -115,6 +131,8 @@ public partial class Enemy : MonoBehaviour
     {
         switch (currentEnemyState)
         {
+            case EnemyState.Dead:
+                return;
             case EnemyState.Idle:
                 SearchForPlayer();
                 break;
@@ -156,6 +174,8 @@ public partial class Enemy : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (currentEnemyState == EnemyState.Dead) { return; }
+
         if (damagingColliders.ContainsLayer(collision.gameObject.layer))
         {
             // Get the magnitude of the collision
@@ -285,10 +305,12 @@ public partial class Enemy : MonoBehaviour
         currentAttackState = AttackState.None;
     }
 
-    public void IncomingAttack(float damage)
+    public void IncomingAttack(float damage, AttackState attackState)
     {
         //Debug.Log($"Enemy was hit from {playerAttackDir}");
         TakeDamage(damage);
+
+        lastAttackTaken = attackState;
     }
 
     public void StartHitStun()
@@ -332,7 +354,55 @@ public partial class Enemy : MonoBehaviour
 
     public void EnemyDies()
     {
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
+        rb3D.constraints = RigidbodyConstraints.FreezeAll;
+        currentEnemyState = EnemyState.Dead;
+        soulObject.SetActive(true);
+        animator.Play("Death");
+    }
+
+    public void StartSoulMoving()
+    {
+        isSoulMoving = true;
+    }
+
+    public void MoveSoulToTarget()
+    {
+        // Get the bottom-right corner of the screen in world space
+        Vector3 targetPosition = Camera.main.ScreenToWorldPoint(player.lightSlider.transform.position);
+        //targetPosition.z = transform.position.z;
+
+        soulObject.transform.position = Vector3.MoveTowards(soulObject.transform.position, targetPosition, 200 * Time.deltaTime);
+
+        // Check if the sprite has reached the target position
+        if (Vector3.Distance(soulObject.transform.position, targetPosition) < 0.1f)
+        {
+            isSoulMoving = false;
+            // Destroy or deactivate the sprite
+            soulObject.SetActive(false);
+            if (lastAttackTaken == AttackState.SmallAttack)
+            {
+                ChargePlayerLight();
+            }
+            else
+            {
+                ChargePlayerHeavy();
+            }
+
+            //gameObject.SetActive(false);
+        }
+    }
+
+    public void ChargePlayerLight()
+    {
+        player.AddLightUltimateCharge();
+        player.AddScalesValue(-0.1f);
+    }
+
+    public void ChargePlayerHeavy()
+    {
+        player.AddHeavyUltimateCharge();
+        player.AddScalesValue(0.1f);
     }
 
     private void OnDrawGizmosSelected()

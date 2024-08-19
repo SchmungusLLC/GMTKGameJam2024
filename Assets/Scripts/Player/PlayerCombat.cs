@@ -28,8 +28,13 @@ public partial class Player
     public float scaledSmallAttackForce;
 
     // scales
-    public float currentScalesValue = 1;
+    public float currentScalesValue = 0.5f;
+    public float lightUltimateCharge;
+    public float heavyUltimateCharge;
+    public float ultimateChargeThreshold;
     public Slider scalesSlider;
+    public Slider lightSlider;
+    public Slider heavySlider;
     public TextMeshProUGUI scaledStatsTB;
 
     [Header("Attack")]
@@ -99,17 +104,15 @@ public partial class Player
                 // Apply force to the Rigidbody
                 if (currentAttackState == AttackState.BigAttack)
                 {
-                    enemy.IncomingAttack(bigAttackDamage);
+                    enemy.IncomingAttack(bigAttackDamage, currentAttackState);
                     enemy.rb3D.AddForce(direction * scaledBigAttackForce, ForceMode.Impulse);
                     enemy.rb3D.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
-                    AddScalesValue(0.1f);
                 }
                 else
                 {
-                    enemy.IncomingAttack(smallAttackDamage);
+                    enemy.IncomingAttack(smallAttackDamage, currentAttackState);
                     enemy.rb3D.AddForce(direction * scaledSmallAttackForce, ForceMode.Impulse);
                     enemy.rb3D.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
-                    AddScalesValue(-0.1f);
                 }
             }
             else if (target.gameObject.TryGetComponent(out Destructible destructible))
@@ -124,16 +127,26 @@ public partial class Player
                 {
                     destructible.Struck(bigAttackDamage);
                     destructible.rb3D.AddForce(direction * scaledBigAttackForce, ForceMode.Impulse);
-                    AddScalesValue(0.1f);
                 }
                 else
                 {
                     destructible.Struck(smallAttackDamage);
                     destructible.rb3D.AddForce(direction * scaledSmallAttackForce, ForceMode.Impulse);
-                    AddScalesValue(-0.1f);
                 }
             }
         }
+    }
+
+    public void AddLightUltimateCharge()
+    {
+        lightUltimateCharge += 0.1f;
+        lightSlider.value = lightUltimateCharge;
+    }
+
+    public void AddHeavyUltimateCharge()
+    {
+        heavyUltimateCharge += 0.1f;
+        heavySlider.value = heavyUltimateCharge;
     }
 
     public void AddScalesValue(float value)
