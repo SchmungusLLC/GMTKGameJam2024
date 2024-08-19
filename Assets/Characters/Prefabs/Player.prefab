@@ -318,7 +318,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 257
   playerWorldCanvas: {fileID: 7427934773766629401}
-  ScalesUI: {fileID: 0}
+  scalesSprites: []
+  scalesImage: {fileID: 0}
+  flamePositions: []
+  lightFlameUI: {fileID: 0}
+  heavyFlameUI: {fileID: 0}
   UIAnimator: {fileID: 0}
   lightMoveSpeed: 16
   heavyMoveSpeed: 8
@@ -335,14 +339,15 @@ MonoBehaviour:
   scaledSmallAttackDuration: 0
   scaledBigAttackForce: 0
   scaledSmallAttackForce: 0
-  currentScalesValue: 0.5
+  currentScalesValue: 0
   scalesSlider: {fileID: 0}
   lightSlider: {fileID: 0}
   heavySlider: {fileID: 0}
   scaledStatsTB: {fileID: 0}
-  director: {fileID: 0}
+  ultimateDirector: {fileID: 0}
   lightUltimateTimeline: {fileID: 0}
   heavyUltimateTimeline: {fileID: 0}
+  mainVcam: {fileID: 0}
   ultimateChargeThreshold: 10
   ultimateRange: 20
   lightUltimateCharge: 1
@@ -360,6 +365,7 @@ MonoBehaviour:
   waitingForRecoveryMinimum: 0
   minimumRecoveryThreshold: 0.1
   minimumRecoveryTimer: 0
+  debugUseTestAnimations: 1
   maxHP: 100
   HPBar: {fileID: 0}
   turnSpeed: 720
@@ -911,6 +917,38 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &8976780220273943981
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d8d039725f7e4b84794e4a4cc38316ab, type: 3}
+  m_PrefabInstance: {fileID: 8093680864738892028}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8635721143382064919}
+  - component: {fileID: 4347128889056256338}
+  m_Layer: 0
+  m_Name: 'JusticeSaved (Missing Prefab with guid: d8d039725f7e4b84794e4a4cc38316ab)'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8635721143382064919
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d8d039725f7e4b84794e4a4cc38316ab, type: 3}
+  m_PrefabInstance: {fileID: 8093680864738892028}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8976780220273943981}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3714134188260971121}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2673289673529596094
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1058,16 +1096,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8d039725f7e4b84794e4a4cc38316ab, type: 3}
---- !u!4 &8635721143382064919 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d8d039725f7e4b84794e4a4cc38316ab, type: 3}
-  m_PrefabInstance: {fileID: 8093680864738892028}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &8976780220273943981 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d8d039725f7e4b84794e4a4cc38316ab, type: 3}
-  m_PrefabInstance: {fileID: 8093680864738892028}
-  m_PrefabAsset: {fileID: 0}
 --- !u!95 &4347128889056256338
 Animator:
   serializedVersion: 5

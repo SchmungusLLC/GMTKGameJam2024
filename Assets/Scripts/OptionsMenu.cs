@@ -8,8 +8,6 @@ public class OptionsMenu : MonoBehaviour
 {
 
     public AudioMixer MasterMixer;
-    public AudioMixer MusicMixer;
-    public AudioMixer FXMixer;
     public Slider MasterSlider;
     public Slider MusicSlider;
     public Slider FXSlider;
@@ -21,11 +19,11 @@ public class OptionsMenu : MonoBehaviour
     }
     public void SetMusicVol(float MusicVol)
     {
-        MusicMixer.SetFloat("MusicVol", MusicVol);
+        MasterMixer.SetFloat("MusicVol", MusicVol);
     }
     public void SetFXVol(float FXVol)
     {
-        FXMixer.SetFloat("FXVol", FXVol);
+        MasterMixer.SetFloat("FXVol", FXVol);
     }
 
     void OnEnable()
@@ -35,12 +33,12 @@ public class OptionsMenu : MonoBehaviour
             MasterSlider.value = mastervol;
         }
 
-        if (MusicMixer.GetFloat("MusicVol", out float musicvol))
+        if (MasterMixer.GetFloat("MusicVol", out float musicvol))
         {
             MusicSlider.value = musicvol;
         }
 
-        if (FXMixer.GetFloat("FXVol", out float fxvol))
+        if (MasterMixer.GetFloat("FXVol", out float fxvol))
         {
             FXSlider.value = fxvol;
         }
