@@ -233,6 +233,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1800253243}
     - target: {fileID: 290882176360117748, guid: ec22d5155f541364e9b5616e32ca5421, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 410456997}
+    - target: {fileID: 290882176360117748, guid: ec22d5155f541364e9b5616e32ca5421, type: 3}
       propertyPath: mainVcam
       value: 
       objectReference: {fileID: 2057166087}
@@ -257,6 +261,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 984024262}
     - target: {fileID: 290882176360117748, guid: ec22d5155f541364e9b5616e32ca5421, type: 3}
+      propertyPath: hitLayers.m_Bits
+      value: 320
+      objectReference: {fileID: 0}
+    - target: {fileID: 290882176360117748, guid: ec22d5155f541364e9b5616e32ca5421, type: 3}
       propertyPath: ultimateDirector
       value: 
       objectReference: {fileID: 1225209710}
@@ -268,6 +276,10 @@ PrefabInstance:
       propertyPath: lightUltimateTimeline
       value: 
       objectReference: {fileID: 11400000, guid: d1dec0f714f9afe41833546e230ae9d2, type: 2}
+    - target: {fileID: 290882176360117748, guid: ec22d5155f541364e9b5616e32ca5421, type: 3}
+      propertyPath: debugUseTestAnimations
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3714134188260971087, guid: ec22d5155f541364e9b5616e32ca5421, type: 3}
       propertyPath: m_Name
       value: Player
@@ -320,6 +332,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1672033860}
+    - target: {fileID: 3714134189673279609, guid: ec22d5155f541364e9b5616e32ca5421, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec22d5155f541364e9b5616e32ca5421, type: 3}
 --- !u!1 &312523617 stripped
@@ -488,6 +504,11 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!95 &410456997 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3101476565834854732, guid: ec22d5155f541364e9b5616e32ca5421, type: 3}
+  m_PrefabInstance: {fileID: 312523616}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &453940225
 GameObject:
   m_ObjectHideFlags: 0

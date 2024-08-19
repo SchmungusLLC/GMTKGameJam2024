@@ -82,11 +82,19 @@ public partial class Player
     public float minimumRecoveryThreshold;
     public float minimumRecoveryTimer;
 
+    public bool debugUseTestAnimations;
     void StartAttack(AttackState state)
     {
         if (currentAttackState != AttackState.None) { return; }
 
         currentAttackState = state;
+
+        if (debugUseTestAnimations)
+        {
+            animator.Play(state.ToString());
+            return;
+        }
+
         animator.Play(state.ToString(), 1);
         animator.Play(state.ToString(), 2);
     }
@@ -284,7 +292,7 @@ public partial class Player
     {
         minimumRecoveryTimer = 0;
         waitingForRecoveryMinimum = true;
-        Debug.Log("Recovery waiting...");
+        //Debug.Log("Recovery waiting...");
 
         isStunned = true;
         currentAttackState = AttackState.None;
@@ -296,7 +304,7 @@ public partial class Player
 
     public void EndHitStun()
     {
-        Debug.Log("End hit stun");
+        //Debug.Log("End hit stun");
         isStunned = false;
         //rb3D.constraints = RigidbodyConstraints.FreezeRotation;
     }
