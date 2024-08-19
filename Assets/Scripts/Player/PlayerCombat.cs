@@ -86,7 +86,8 @@ public partial class Player
         if (currentAttackState != AttackState.None) { return; }
 
         currentAttackState = state;
-        animator.Play(state.ToString());
+        animator.Play(state.ToString(), 1);
+        animator.Play(state.ToString(), 2);
     }
 
     public void AttackHitBox()
