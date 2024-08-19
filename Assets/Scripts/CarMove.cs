@@ -5,17 +5,18 @@ using UnityEngine;
 public class CarMove : MonoBehaviour
 {
 
-    public float speed = 40.0f;
+    public float thrust = 40.0f;
+    public Rigidbody CarRb;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        CarRb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.forward * Time.deltaTime * speed);
+       CarRb.AddForce(transform.forward * thrust * Time.deltaTime, ForceMode.Impulse);
     }
 }
