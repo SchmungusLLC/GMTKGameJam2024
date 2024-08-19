@@ -44,10 +44,19 @@ public partial class Player : MonoBehaviour
         {
             player = this;
         }
-
-        rb3D = GetComponent<Rigidbody>();
-        animator = GetComponent<Animator>();
-        mainCamera = Camera.main.gameObject;
+        
+        if (rb3D == null)
+        {
+            rb3D = GetComponent<Rigidbody>();
+        }
+        if (animator == null)
+        {
+            animator = GetComponent<Animator>();
+        }
+        if (mainCamera == null)
+        {
+            mainCamera = Camera.main.gameObject;
+        }
     }
 
     void Start()
@@ -98,6 +107,13 @@ public partial class Player : MonoBehaviour
         float speedX = deltaPosition.x / Time.deltaTime;
         float speedZ = deltaPosition.z / Time.deltaTime;
         float speedTotal = Mathf.Sqrt(speedX * speedX + speedZ * speedZ);
+
+        if (speedTotal < 0.01f)
+        {
+            speedX = 0f;
+            speedZ = 0f;
+            speedTotal = 0f;
+        }
 
         animator.SetFloat("XVelocity", speedX);
         animator.SetFloat("ZVelocity", speedZ);
