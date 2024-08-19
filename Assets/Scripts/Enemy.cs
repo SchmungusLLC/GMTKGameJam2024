@@ -355,10 +355,19 @@ public partial class Enemy : MonoBehaviour
     public void EnemyDies()
     {
         //gameObject.SetActive(false);
-        rb3D.constraints = RigidbodyConstraints.FreezeAll;
         currentEnemyState = EnemyState.Dead;
+
         soulObject.SetActive(true);
-        animator.Play("Death");
+        soulObject.transform.SetParent(null);
+        soulObject.transform.eulerAngles = player.cameraFaceDir;
+        if (lastAttackTaken == AttackState.SmallAttack)
+        {
+            animator.Play("LightDeath");
+        }
+        else
+        {
+            animator.Play("HeavyDeath");
+        }
     }
 
     public void StartSoulMoving()
@@ -380,6 +389,7 @@ public partial class Enemy : MonoBehaviour
             isSoulMoving = false;
             // Destroy or deactivate the sprite
             soulObject.SetActive(false);
+            animator.StopPlayback();
             if (lastAttackTaken == AttackState.SmallAttack)
             {
                 ChargePlayerLight();
