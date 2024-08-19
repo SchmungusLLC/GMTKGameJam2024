@@ -8,6 +8,8 @@ using System.IO;
 
 public partial class Enemy : MonoBehaviour
 {
+    public bool debugDisableEnemyAttacks;
+
     [Header("Components")]
     // components
     public Rigidbody rb3D;
@@ -20,7 +22,6 @@ public partial class Enemy : MonoBehaviour
     // current HP value
     private float currentHP;
 
-    public float moveSpeed;
     public float bigAttackDuration;
     public float smallAttackDuration;
     public float bigAttackForce;
@@ -71,6 +72,10 @@ public partial class Enemy : MonoBehaviour
     [Tooltip("Transform of the player's HP bar (used to lock rotation)")]
     public Transform HPBarTransform;
 
+    public bool waitingForRecoveryMinimum;
+    public float minimumRecoveryThreshold;
+    public float minimumRecoveryTimer;
+
     private void Awake()
     {
         rb3D = GetComponent<Rigidbody>();
@@ -99,6 +104,11 @@ public partial class Enemy : MonoBehaviour
     void Update()
     {
         HPBarTransform.eulerAngles = player.cameraFaceDir;
+
+        if (waitingForRecoveryMinimum)
+        {
+            RecoveryMinimumTimer();
+        }
     }
 
     private void FixedUpdate()
@@ -135,7 +145,7 @@ public partial class Enemy : MonoBehaviour
 
     public void WaitToRecover()
     {
-        if (rb3D.velocity.magnitude < 0.1f)
+        if (!waitingForRecoveryMinimum && rb3D.velocity.magnitude < 0.1f)
         {
             // Trigger recovery animation
             //Debug.Log("Recovering");
@@ -194,6 +204,9 @@ public partial class Enemy : MonoBehaviour
         {
             // enemy is in-range but not attacking - start an attack
             //Debug.Log("Enemy Attacking");
+
+            // stop now if debug enabled
+            if (debugDisableEnemyAttacks) { return; }
 
             if (Random.Range(0, 2) == 0)
             {
@@ -280,18 +293,28 @@ public partial class Enemy : MonoBehaviour
 
     public void StartHitStun()
     {
+        minimumRecoveryTimer = 0;
+        waitingForRecoveryMinimum = true;
+        //Debug.Log("Recovery waiting...");
+
         currentEnemyState = EnemyState.Stunned;
         currentAttackState = AttackState.None;
         //rb3D.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
-
-        //agent.updatePosition = false;
-        //agent.updateRotation = true;
     }
 
     public void EndHitStun()
     {
         currentEnemyState = EnemyState.MovingToPlayer;
         rb3D.constraints = RigidbodyConstraints.FreezeRotation;
+    }
+
+    public void RecoveryMinimumTimer()
+    {
+        minimumRecoveryTimer += Time.deltaTime;
+        if (minimumRecoveryTimer >= minimumRecoveryThreshold)
+        {
+            waitingForRecoveryMinimum = false;
+        }
     }
 
     public void TakeDamage(float damage)

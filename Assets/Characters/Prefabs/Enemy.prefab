@@ -477,15 +477,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3623b5b86e38424499588412a8a2e5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugDisableEnemyAttacks: 0
   rb3D: {fileID: 0}
   animator: {fileID: 0}
   agent: {fileID: 0}
   maxHP: 1000
-  moveSpeed: 5
   bigAttackDuration: 1
   smallAttackDuration: 0.3
-  bigAttackForce: 150
-  smallAttackForce: 75
+  bigAttackForce: 80
+  smallAttackForce: 50
   bigAttackDamage: 20
   smallAttackDamage: 10
   aggroDistance: 10
@@ -506,6 +506,9 @@ MonoBehaviour:
   playerWorldCanvas: {fileID: 3045901141293979128}
   HPBar: {fileID: 9063072167011606092}
   HPBarTransform: {fileID: 0}
+  waitingForRecoveryMinimum: 0
+  minimumRecoveryThreshold: 0.5
+  minimumRecoveryTimer: 0
 --- !u!136 &7974397074279976232
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -530,7 +533,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 1
-  m_Speed: 12
+  m_Speed: 3
   m_Acceleration: 12
   avoidancePriority: 50
   m_AngularSpeed: 120

@@ -36,6 +36,8 @@ public partial class Player
     public float smallAttackDamage;
     public float bigAttackDamage;
 
+    public bool isStunned;
+
     // Current attack being executed
     public AttackState currentAttackState;
 
@@ -58,6 +60,10 @@ public partial class Player
 
     // list of targets struck by attack hitbox
     private Collider[] targetsStruck;
+
+    public bool waitingForRecoveryMinimum;
+    public float minimumRecoveryThreshold;
+    public float minimumRecoveryTimer;
 
     void StartAttack(AttackState state)
     {
@@ -161,7 +167,9 @@ public partial class Player
 
     void TakeDamage(float damage)
     {
-        Debug.Log("Player took Damage: " + damage);
+        animator.Play("Hit");
+
+        //Debug.Log("Player took Damage: " + damage);
         currentHP -= damage;
     }
 
@@ -169,6 +177,36 @@ public partial class Player
     {
         //Debug.Log("Player was hit by " + attackState);
         TakeDamage(damage);
+    }
+
+    public void StartHitStun()
+    {
+        minimumRecoveryTimer = 0;
+        waitingForRecoveryMinimum = true;
+        Debug.Log("Recovery waiting...");
+
+        isStunned = true;
+        currentAttackState = AttackState.None;
+        //rb3D.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+
+        //agent.updatePosition = false;
+        //agent.updateRotation = true;
+    }
+
+    public void EndHitStun()
+    {
+        Debug.Log("End hit stun");
+        isStunned = false;
+        //rb3D.constraints = RigidbodyConstraints.FreezeRotation;
+    }
+
+    public void RecoveryMinimumTimer()
+    {
+        minimumRecoveryTimer += Time.deltaTime;
+        if (minimumRecoveryTimer >= minimumRecoveryThreshold)
+        {
+            waitingForRecoveryMinimum = false;
+        }
     }
 
     private void OnDrawGizmosSelected()

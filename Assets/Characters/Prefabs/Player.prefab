@@ -312,7 +312,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   mainCamera: {fileID: 0}
   cameraFaceDir: {x: 0, y: 0, z: 0}
-  collisionDamageMultiplier: 0.5
+  collisionDamageMultiplier: 0.1
   collisionDamageThreshold: 3
   damagingColliders:
     serializedVersion: 2
@@ -340,6 +340,7 @@ MonoBehaviour:
   scaledStatsTB: {fileID: 0}
   smallAttackDamage: 10
   bigAttackDamage: 20
+  isStunned: 0
   currentAttackState: 0
   hitLayers:
     serializedVersion: 2
@@ -347,6 +348,9 @@ MonoBehaviour:
   hbSizeH: {x: 2.35, y: 1, z: 2}
   hbSizeV: {x: 1, y: 1, z: 1.5}
   hbOffset: 1.5
+  waitingForRecoveryMinimum: 0
+  minimumRecoveryThreshold: 0.1
+  minimumRecoveryTimer: 0
   currentHP: 100
   turnSpeed: 720
   dashSpeed: 40
