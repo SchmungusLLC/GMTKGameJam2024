@@ -38,7 +38,7 @@ public partial class Player
     {
         if (transform.rotation == targetLookDirection) { return; }
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetLookDirection, turnSpeed * Time.deltaTime);
-        SPBarTransform.eulerAngles = cameraFaceDir;
+        //SPBarTransform.eulerAngles = cameraFaceDir;
     }
 
     void Move()
