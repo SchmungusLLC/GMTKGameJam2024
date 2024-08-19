@@ -20,7 +20,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 16f9c764dbd0020439dfa7ae70791d7d, type: 2}
+  m_Motion: {fileID: 7400000, guid: 850b239ccf21aac42a8503086f38a560, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -48,7 +48,7 @@ AnimatorState:
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: 16f9c764dbd0020439dfa7ae70791d7d, type: 2}
   m_Tag: 
-  m_SpeedParameter: 
+  m_SpeedParameter: FlameSpeed
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
@@ -68,13 +68,13 @@ AnimatorState:
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
   m_Mirror: 0
-  m_SpeedParameterActive: 0
+  m_SpeedParameterActive: 1
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 16f9c764dbd0020439dfa7ae70791d7d, type: 2}
+  m_Motion: {fileID: 7400000, guid: 7f3ecc9f446823843bff516c3eb5538b, type: 2}
   m_Tag: 
-  m_SpeedParameter: 
+  m_SpeedParameter: FlameSpeed
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
@@ -94,13 +94,13 @@ AnimatorState:
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
   m_Mirror: 0
-  m_SpeedParameterActive: 0
+  m_SpeedParameterActive: 1
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 16f9c764dbd0020439dfa7ae70791d7d, type: 2}
+  m_Motion: {fileID: 7400000, guid: 64304bc093c9ac247866f8e7b47db8a3, type: 2}
   m_Tag: 
-  m_SpeedParameter: 
+  m_SpeedParameter: FlameSpeed
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
@@ -151,13 +151,13 @@ AnimatorState:
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
   m_Mirror: 0
-  m_SpeedParameterActive: 0
+  m_SpeedParameterActive: 1
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 16f9c764dbd0020439dfa7ae70791d7d, type: 2}
+  m_Motion: {fileID: 7400000, guid: ccd193b612d7dec40b793b562ee9c416, type: 2}
   m_Tag: 
-  m_SpeedParameter: 
+  m_SpeedParameter: FlameSpeed
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
@@ -169,7 +169,13 @@ AnimatorController:
   m_PrefabAsset: {fileID: 0}
   m_Name: HUD
   serializedVersion: 5
-  m_AnimatorParameters: []
+  m_AnimatorParameters:
+  - m_Name: FlameSpeed
+    m_Type: 1
+    m_DefaultFloat: 0.25
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: HeavyUlt
@@ -189,7 +195,7 @@ AnimatorController:
     m_Mask: {fileID: 0}
     m_Motions: []
     m_Behaviours: []
-    m_BlendingMode: 1
+    m_BlendingMode: 0
     m_SyncedLayerIndex: -1
     m_DefaultWeight: 1
     m_IKPass: 0
@@ -211,13 +217,13 @@ AnimatorState:
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
   m_Mirror: 0
-  m_SpeedParameterActive: 0
+  m_SpeedParameterActive: 1
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 16f9c764dbd0020439dfa7ae70791d7d, type: 2}
+  m_Motion: {fileID: 7400000, guid: 37bc77649530680498131544fe73c5bc, type: 2}
   m_Tag: 
-  m_SpeedParameter: 
+  m_SpeedParameter: FlameSpeed
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
@@ -237,13 +243,13 @@ AnimatorState:
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
   m_Mirror: 0
-  m_SpeedParameterActive: 0
+  m_SpeedParameterActive: 1
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 16f9c764dbd0020439dfa7ae70791d7d, type: 2}
+  m_Motion: {fileID: 7400000, guid: e7928fa7c715a3d42be2a406f92f8d9a, type: 2}
   m_Tag: 
-  m_SpeedParameter: 
+  m_SpeedParameter: FlameSpeed
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
@@ -263,13 +269,13 @@ AnimatorState:
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
   m_Mirror: 0
-  m_SpeedParameterActive: 0
+  m_SpeedParameterActive: 1
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 16f9c764dbd0020439dfa7ae70791d7d, type: 2}
+  m_Motion: {fileID: 7400000, guid: 8e79a819a5b67d9439cbaff385037144, type: 2}
   m_Tag: 
-  m_SpeedParameter: 
+  m_SpeedParameter: FlameSpeed
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 

@@ -203,6 +203,7 @@ GameObject:
   - component: {fileID: 3714134188260971123}
   - component: {fileID: 290882176360117748}
   - component: {fileID: 410456989}
+  - component: {fileID: 3564556208311371258}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -309,7 +310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb3D: {fileID: 0}
-  animator: {fileID: 4347128889056256338}
+  animator: {fileID: 3101476565834854732}
   mainCamera: {fileID: 0}
   cameraFaceDir: {x: 0, y: 0, z: 0}
   collisionDamageMultiplier: 0.1
@@ -318,11 +319,87 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 257
   playerWorldCanvas: {fileID: 7427934773766629401}
-  scalesSprites: []
+  scalesSprites:
+  - {fileID: 21300000, guid: f111b249cfb9220469c9a32c9eb2ed9c, type: 3}
+  - {fileID: 21300000, guid: 0803bc8e63cf4f9429d063a687fd7c73, type: 3}
+  - {fileID: 21300000, guid: 672da21051d52dc48bda72bbb7919812, type: 3}
+  - {fileID: 21300000, guid: 3a7ed20cd7acd26459af6f6a4f0efd33, type: 3}
+  - {fileID: 21300000, guid: c4d1dd4f3bd073546a95de11362a40a2, type: 3}
+  - {fileID: 21300000, guid: 2e951c67a87e62146ae5c763c1e90978, type: 3}
+  - {fileID: 21300000, guid: f3dce0ddc907937499603d6c37c8b13b, type: 3}
+  - {fileID: 21300000, guid: 25344d935a09e2640b21f9a9ad68e60e, type: 3}
+  - {fileID: 21300000, guid: 1a50afc947388b540a2dd386fb875895, type: 3}
+  - {fileID: 21300000, guid: 87efe2e979eda554186ff4d6460ef48a, type: 3}
+  - {fileID: 21300000, guid: 4ef6c697e89938449a5281aea49259a6, type: 3}
+  - {fileID: 21300000, guid: 2ff7a147df0e1634f8ba2b0ef55d02d4, type: 3}
+  - {fileID: 21300000, guid: cfbaa61f5cff9dc45ba3fed74355b2af, type: 3}
+  - {fileID: 21300000, guid: e11d19c20908f3f43bb14253883fa790, type: 3}
+  - {fileID: 21300000, guid: c29ba7cb1fcabcb429a79d364f0041e4, type: 3}
+  - {fileID: 21300000, guid: ed29f14fe74d51e4099b8d9673747669, type: 3}
+  - {fileID: 21300000, guid: 5d470c53328062b4780ce6137edc2e69, type: 3}
+  - {fileID: 21300000, guid: 2472e2d41e856eb4ea0d965bce1aba45, type: 3}
+  - {fileID: 21300000, guid: 60d480234263aa64e854b67f8a2d852f, type: 3}
+  - {fileID: 21300000, guid: 9a37a3b158939e64098a803ad49a0dc6, type: 3}
+  - {fileID: 21300000, guid: fb881786ca0de51449cf226c4ddf75c3, type: 3}
+  - {fileID: 21300000, guid: 9b2c13c1cc7c6ba4a9e48de4be6bc731, type: 3}
+  - {fileID: 21300000, guid: 9421b34ef54b5fb44929da2aed039731, type: 3}
+  - {fileID: 21300000, guid: 800336f50cb584f46b6c4903ce44e693, type: 3}
+  - {fileID: 21300000, guid: 5fbd9b3ed4637cb42b417d8d9162d4da, type: 3}
   scalesImage: {fileID: 0}
-  flamePositions: []
-  lightFlameUI: {fileID: 0}
-  heavyFlameUI: {fileID: 0}
+  flamePositions:
+  - {x: 11, y: -147}
+  - {x: 9, y: -145}
+  - {x: 7, y: -143}
+  - {x: 2, y: -141}
+  - {x: -3, y: -139}
+  - {x: -11, y: -130}
+  - {x: -18, y: -121}
+  - {x: -25, y: -114}
+  - {x: -32, y: -108}
+  - {x: -36, y: -102}
+  - {x: -40, y: -97}
+  - {x: -44, y: -95}
+  - {x: -47, y: -96}
+  - {x: -47, y: -92}
+  - {x: -47, y: -87}
+  - {x: -50, y: -81}
+  - {x: -53, y: -75}
+  - {x: -55, y: -65}
+  - {x: -58, y: -55}
+  - {x: -61, y: -46}
+  - {x: -63, y: -36}
+  - {x: -65, y: -32}
+  - {x: -67, y: -28}
+  - {x: -68, y: -26}
+  - {x: -68, y: -24}
+  heavyFlamePositions:
+  - {x: 211, y: -24}
+  - {x: 211, y: -26}
+  - {x: 210, y: -28}
+  - {x: 208, y: -32}
+  - {x: 206, y: -36}
+  - {x: 204, y: -46}
+  - {x: 201, y: -55}
+  - {x: 198, y: -65}
+  - {x: 196, y: -75}
+  - {x: 193, y: -81}
+  - {x: 190, y: -87}
+  - {x: 190, y: -92}
+  - {x: 190, y: -96}
+  - {x: 187, y: -95}
+  - {x: 183, y: -97}
+  - {x: 179, y: -102}
+  - {x: 175, y: -108}
+  - {x: 168, y: -114}
+  - {x: 161, y: -121}
+  - {x: 154, y: -130}
+  - {x: 146, y: -139}
+  - {x: 141, y: -141}
+  - {x: 136, y: -143}
+  - {x: 134, y: -145}
+  - {x: 132, y: -147}
+  lightFlameTransform: {fileID: 0}
+  heavyFlameTransform: {fileID: 0}
   UIAnimator: {fileID: 0}
   lightMoveSpeed: 16
   heavyMoveSpeed: 8
@@ -339,26 +416,26 @@ MonoBehaviour:
   scaledSmallAttackDuration: 0
   scaledBigAttackForce: 0
   scaledSmallAttackForce: 0
-  currentScalesValue: 0
+  currentScalesValue: 3
   scalesSlider: {fileID: 0}
   lightSlider: {fileID: 0}
   heavySlider: {fileID: 0}
   scaledStatsTB: {fileID: 0}
   ultimateDirector: {fileID: 0}
-  lightUltimateTimeline: {fileID: 0}
-  heavyUltimateTimeline: {fileID: 0}
+  lightUltimateTimeline: {fileID: 11400000, guid: d1dec0f714f9afe41833546e230ae9d2, type: 2}
+  heavyUltimateTimeline: {fileID: 11400000, guid: d1dec0f714f9afe41833546e230ae9d2, type: 2}
   mainVcam: {fileID: 0}
   ultimateChargeThreshold: 10
   ultimateRange: 20
-  lightUltimateCharge: 1
-  heavyUltimateCharge: 1
+  lightUltimateCharge: 0.9
+  heavyUltimateCharge: 0.9
   smallAttackDamage: 10
   bigAttackDamage: 20
   isStunned: 0
   currentAttackState: 0
   hitLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 320
   hbSizeH: {x: 2.35, y: 1, z: 2}
   hbSizeV: {x: 1, y: 1, z: 1.5}
   hbOffset: 1.5
@@ -376,7 +453,7 @@ MonoBehaviour:
   isDashing: 0
   obstructionLayers:
     serializedVersion: 2
-    m_Bits: 449
+    m_Bits: 2497
 --- !u!136 &410456989
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -391,6 +468,36 @@ CapsuleCollider:
   m_Height: 2.5
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3564556208311371258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3714134188260971087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: e593a0728e4d33048aa8f87c895aed7b, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 290882176360117748}
+          m_TargetAssemblyTypeName: Player, Assembly-CSharp
+          m_MethodName: UltimateKillEnemies
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &3714134188399522169
 GameObject:
   m_ObjectHideFlags: 0
@@ -917,38 +1024,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!1 &8976780220273943981
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d8d039725f7e4b84794e4a4cc38316ab, type: 3}
-  m_PrefabInstance: {fileID: 8093680864738892028}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8635721143382064919}
-  - component: {fileID: 4347128889056256338}
-  m_Layer: 0
-  m_Name: 'JusticeSaved (Missing Prefab with guid: d8d039725f7e4b84794e4a4cc38316ab)'
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8635721143382064919
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d8d039725f7e4b84794e4a4cc38316ab, type: 3}
-  m_PrefabInstance: {fileID: 8093680864738892028}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8976780220273943981}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3714134188260971121}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2673289673529596094
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1096,6 +1171,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8d039725f7e4b84794e4a4cc38316ab, type: 3}
+--- !u!4 &8635721143382064919 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d8d039725f7e4b84794e4a4cc38316ab, type: 3}
+  m_PrefabInstance: {fileID: 8093680864738892028}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8976780220273943981 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d8d039725f7e4b84794e4a4cc38316ab, type: 3}
+  m_PrefabInstance: {fileID: 8093680864738892028}
+  m_PrefabAsset: {fileID: 0}
 --- !u!95 &4347128889056256338
 Animator:
   serializedVersion: 5
