@@ -8,6 +8,8 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager _AudioManger;
 
+    private bool MainMenuActive = true;
+
     public Sound[] sounds;
 
     void Awake()
@@ -31,6 +33,7 @@ public class AudioManager : MonoBehaviour
             s.source.volume = s.Volume;
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
+            s.source.outputAudioMixerGroup = s.outputAudioMixerGroup;
         }
     }
 
@@ -38,21 +41,39 @@ public class AudioManager : MonoBehaviour
     {
         Play("Rain");
         Play("MainMenuMusic");
+        Play("CourtAmbience");
         StartCoroutine(PlayGavelRandomly());
+        SceneManager.activeSceneChanged += OnSceneChanged;
     }
 
     private System.Random random = new System.Random();
 
+    void OnDestroy()
+    {
+        SceneManager.activeSceneChanged -= OnSceneChanged;
+    }
+
+    private void OnSceneChanged(Scene MainMenu, Scene Level1)
+    {
+        MainMenuActive = false; // Set the flag to false to stop the loop
+        Stop("MainMenuMusic");
+        Stop("CourtAmbience");
+        Play("InGameMusic");
+    }
+
     private IEnumerator PlayGavelRandomly()
     {
-        while (true) // Infinite loop to keep repeating the action
+        while (MainMenuActive) // Infinite loop to keep repeating the action
         {
             // Wait for a random amount of time between 3 and 5 seconds
             float waitTime = random.Next(4, 8); // Random delay between 4s and 8s
             yield return new WaitForSeconds(waitTime);
 
             // Call the method to perform the action
-            Play("Gavel");
+            if (MainMenuActive)
+            {
+                Play("Gavel");
+            }
         }
     }
 
@@ -66,6 +87,17 @@ public class AudioManager : MonoBehaviour
             }
             s.source.Play();
         }
+
+    public void Stop(string name)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound" + name + "no found!");
+            return;
+        }
+        s.source.Stop();
+    }
 }
 
 /*
