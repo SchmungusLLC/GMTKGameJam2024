@@ -34,7 +34,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -318,8 +318,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 257
   playerWorldCanvas: {fileID: 7427934773766629401}
-  SPBar: {fileID: 3331171102975629139}
-  SPBarTransform: {fileID: 4903959762533114202}
+  ScalesUI: {fileID: 0}
+  UIAnimator: {fileID: 0}
   lightMoveSpeed: 16
   heavyMoveSpeed: 8
   lightBigAttackDuration: 0.3
@@ -337,21 +337,31 @@ MonoBehaviour:
   scaledSmallAttackForce: 0
   currentScalesValue: 0.5
   scalesSlider: {fileID: 0}
+  lightSlider: {fileID: 0}
+  heavySlider: {fileID: 0}
   scaledStatsTB: {fileID: 0}
+  director: {fileID: 0}
+  lightUltimateTimeline: {fileID: 0}
+  heavyUltimateTimeline: {fileID: 0}
+  ultimateChargeThreshold: 10
+  ultimateRange: 20
+  lightUltimateCharge: 1
+  heavyUltimateCharge: 1
   smallAttackDamage: 10
   bigAttackDamage: 20
   isStunned: 0
   currentAttackState: 0
   hitLayers:
     serializedVersion: 2
-    m_Bits: 320
+    m_Bits: 64
   hbSizeH: {x: 2.35, y: 1, z: 2}
   hbSizeV: {x: 1, y: 1, z: 1.5}
   hbOffset: 1.5
   waitingForRecoveryMinimum: 0
   minimumRecoveryThreshold: 0.1
   minimumRecoveryTimer: 0
-  currentHP: 100
+  maxHP: 100
+  HPBar: {fileID: 0}
   turnSpeed: 720
   dashSpeed: 40
   dashDuration: 0.15
@@ -826,7 +836,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4903959762533114202
 RectTransform:
   m_ObjectHideFlags: 0
