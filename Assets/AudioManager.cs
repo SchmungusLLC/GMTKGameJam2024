@@ -1,6 +1,8 @@
 using UnityEngine.Audio;
 using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -34,7 +36,24 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
-        Play("Music");
+        Play("Rain");
+        Play("MainMenuMusic");
+        StartCoroutine(PlayGavelRandomly());
+    }
+
+    private System.Random random = new System.Random();
+
+    private IEnumerator PlayGavelRandomly()
+    {
+        while (true) // Infinite loop to keep repeating the action
+        {
+            // Wait for a random amount of time between 3 and 5 seconds
+            float waitTime = random.Next(4, 8); // Random delay between 4s and 8s
+            yield return new WaitForSeconds(waitTime);
+
+            // Call the method to perform the action
+            Play("Gavel");
+        }
     }
 
     public void Play (string name)
