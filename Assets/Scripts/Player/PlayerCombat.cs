@@ -32,7 +32,7 @@ public partial class Player
     public float scaledSmallAttackForce;
 
     [Header("Scales")]
-    public float currentScalesValue = 0.5f;
+    public int currentScalesValue = 12;
     public Slider scalesSlider;
     public Slider lightSlider;
     public Slider heavySlider;
@@ -245,19 +245,22 @@ public partial class Player
         heavySlider.value = heavyUltimateCharge;
     }
 
-    public void AddScalesValue(float value)
+    public void AddScalesValue(int value)
     {
         // edit scales value
         currentScalesValue += value;
-        currentScalesValue = Mathf.Clamp01(currentScalesValue);
+        currentScalesValue = Mathf.Clamp(currentScalesValue, 0, 24);
         scalesSlider.value = currentScalesValue;
 
+        // Normalize t to the range [0, 1]
+        float normalizedT = currentScalesValue / 24f;
+
         // update scaled stats
-        scaledMoveSpeed = Mathf.Lerp(lightMoveSpeed, heavyMoveSpeed, currentScalesValue);
-        scaledBigAttackDuration = Mathf.Lerp(lightBigAttackDuration, heavyBigAttackDuration, currentScalesValue);
-        scaledSmallAttackDuration = Mathf.Lerp(lightSmallAttackDuration, heavySmallAttackDuration, currentScalesValue);
-        scaledBigAttackForce = Mathf.Lerp(lightBigAttackForce, heavyBigAttackForce, currentScalesValue);
-        scaledSmallAttackForce = Mathf.Lerp(lightSmallAttackForce, heavySmallAttackForce, currentScalesValue);
+        scaledMoveSpeed = Mathf.Lerp(lightMoveSpeed, heavyMoveSpeed, normalizedT);
+        scaledBigAttackDuration = Mathf.Lerp(lightBigAttackDuration, heavyBigAttackDuration, normalizedT);
+        scaledSmallAttackDuration = Mathf.Lerp(lightSmallAttackDuration, heavySmallAttackDuration, normalizedT);
+        scaledBigAttackForce = Mathf.Lerp(lightBigAttackForce, heavyBigAttackForce, normalizedT);
+        scaledSmallAttackForce = Mathf.Lerp(lightSmallAttackForce, heavySmallAttackForce, normalizedT);
 
         animator.SetFloat("SmallAttackSpeed", 1 / scaledSmallAttackDuration);
         animator.SetFloat("BigAttackSpeed", 1 / scaledBigAttackDuration);
@@ -267,6 +270,23 @@ public partial class Player
             $"SmallDuration: {scaledSmallAttackDuration}\n" +
             $"BigForce: {scaledBigAttackForce}\n" +
             $"SmallForce: {scaledSmallAttackForce}\n";
+
+        UpdateScalesUI();
+    }
+
+    public void UpdateScalesUI()
+    {
+        scalesImage.sprite = scalesSprites[currentScalesValue];
+
+        if (lightUltimateCharge > 0)
+        {
+            //lightFlameUI.transform.position = flamePositions[currentScalesValue];
+        }
+
+        if (heavyUltimateCharge > 0)
+        {
+            //heavyFlameUI.transform.position = flamePositions[currentScalesValue];
+        }
     }
 
     void EndAttack()

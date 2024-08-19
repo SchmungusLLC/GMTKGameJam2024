@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -27,7 +28,12 @@ public partial class Player : MonoBehaviour
     [Header("UI")]
     [Tooltip("Canvas GameObject holding player's in-world UI elements")]
     public GameObject playerWorldCanvas;
-    public GameObject ScalesUI;
+    public List<Sprite> scalesSprites;
+    public Image scalesImage;
+
+    public List<Vector2> flamePositions;
+    public GameObject lightFlameUI;
+    public GameObject heavyFlameUI;
 
     public Animator UIAnimator;
 

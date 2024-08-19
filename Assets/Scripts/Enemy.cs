@@ -406,13 +406,13 @@ public partial class Enemy : MonoBehaviour
     public void ChargePlayerLight()
     {
         player.AddLightUltimateCharge();
-        player.AddScalesValue(-0.1f);
+        player.AddScalesValue(-1);
     }
 
     public void ChargePlayerHeavy()
     {
         player.AddHeavyUltimateCharge();
-        player.AddScalesValue(0.1f);
+        player.AddScalesValue(1);
     }
 
     private void OnDrawGizmosSelected()
