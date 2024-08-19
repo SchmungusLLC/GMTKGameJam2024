@@ -32,8 +32,9 @@ public partial class Player : MonoBehaviour
     public Image scalesImage;
 
     public List<Vector2> flamePositions;
-    public GameObject lightFlameUI;
-    public GameObject heavyFlameUI;
+    public List<Vector2> heavyFlamePositions;
+    public RectTransform lightFlameTransform;
+    public RectTransform heavyFlameTransform;
 
     public Animator UIAnimator;
 

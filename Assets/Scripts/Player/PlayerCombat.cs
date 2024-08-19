@@ -280,12 +280,12 @@ public partial class Player
 
         if (lightUltimateCharge > 0)
         {
-            //lightFlameUI.transform.position = flamePositions[currentScalesValue];
+            lightFlameTransform.anchoredPosition = flamePositions[currentScalesValue];
         }
 
         if (heavyUltimateCharge > 0)
         {
-            //heavyFlameUI.transform.position = flamePositions[currentScalesValue];
+            heavyFlameTransform.anchoredPosition = heavyFlamePositions[currentScalesValue];
         }
     }
 
