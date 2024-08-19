@@ -24,7 +24,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "UpAttackInput",
+                    "name": "SmallAttackInput",
                     "type": "Button",
                     "id": "716072f0-fd9b-4b27-baf1-7eb2a872c740",
                     "expectedControlType": "Button",
@@ -33,16 +33,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "DownAttackInput",
-                    "type": "Button",
-                    "id": "f34f8929-5ac6-4c89-b35c-9bcb49466996",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "LeftAttackInput",
+                    "name": "BigAttackInput",
                     "type": "Button",
                     "id": "fecc634b-7946-48ec-85e4-9c6f6e0ed931",
                     "expectedControlType": "Button",
@@ -51,9 +42,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "RightAttackInput",
+                    "name": "UseLightUltimateInput",
                     "type": "Button",
-                    "id": "7f7a1aa4-55e3-4450-a8f2-3d4fe2e89ec5",
+                    "id": "273402ac-3406-4dcd-b0e4-3c096dbe4afa",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "UseHeavyUltimateInput",
+                    "type": "Button",
+                    "id": "3b408940-db64-4db6-96fd-b06d8b369918",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -64,10 +64,21 @@
                 {
                     "name": "",
                     "id": "9f942b36-eb6d-4f7f-bf06-3912530cc0ee",
-                    "path": "<Keyboard>/f",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
+                    "action": "DashInput",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "79419d85-af78-4672-9c23-bae38009bf10",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
                     "action": "DashInput",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -129,45 +140,144 @@
                 },
                 {
                     "name": "",
-                    "id": "3fe407f5-303c-43d6-a9d5-a5f91780462e",
-                    "path": "<Keyboard>/upArrow",
+                    "id": "e6672fc9-f27a-48ba-bf9f-6059170ef265",
+                    "path": "<Gamepad>/leftStick",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard",
-                    "action": "UpAttackInput",
+                    "groups": "Gamepad",
+                    "action": "MoveInput",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "53ccb3ac-5f08-4573-a370-eab3bcd10884",
-                    "path": "<Keyboard>/downArrow",
+                    "id": "3fe407f5-303c-43d6-a9d5-a5f91780462e",
+                    "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "DownAttackInput",
+                    "action": "SmallAttackInput",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "32b429af-bd4e-4286-b2da-2c189343e9fa",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "SmallAttackInput",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7a95c451-e438-43c8-b8f2-b701b5d23113",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "SmallAttackInput",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9c9d0d81-45a3-4db8-9e8f-590a4db79cd2",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "SmallAttackInput",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "e9e25e70-f064-4a16-b4ff-411108104460",
-                    "path": "<Keyboard>/leftArrow",
+                    "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "LeftAttackInput",
+                    "action": "BigAttackInput",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "175e8542-8e05-4cd7-a068-bf778b6064b1",
-                    "path": "<Keyboard>/rightArrow",
+                    "id": "f83f059b-24a9-4e2c-9d30-4b54973c4802",
+                    "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "RightAttackInput",
+                    "action": "BigAttackInput",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e7364797-c28d-40dd-b9a6-9e188baa7c45",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "BigAttackInput",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a4891003-2d09-4110-bb49-fc6ceb665355",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "BigAttackInput",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6f4a2473-8063-4227-8691-8baa9c5f2093",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "UseLightUltimateInput",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9779d58e-b91c-4e2e-b8c9-b0b64854121b",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "UseLightUltimateInput",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1f27f8a4-aca0-432f-8823-a75883c25627",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "UseHeavyUltimateInput",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6bc4154f-aeb3-43cf-ba67-29aea729b370",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "UseHeavyUltimateInput",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -461,11 +571,11 @@
     ],
     "controlSchemes": [
         {
-            "name": "Xbox",
-            "bindingGroup": "Xbox",
+            "name": "Gamepad",
+            "bindingGroup": "Gamepad",
             "devices": [
                 {
-                    "devicePath": "<XInputController>",
+                    "devicePath": "<Gamepad>",
                     "isOptional": false,
                     "isOR": false
                 }

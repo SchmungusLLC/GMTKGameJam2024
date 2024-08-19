@@ -1,7 +1,11 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using Unity.Collections;
 using UnityEngine;
+using UnityEngine.Playables;
+using UnityEngine.Timeline;
 using UnityEngine.UI;
 
 public partial class Player
@@ -27,15 +31,22 @@ public partial class Player
     public float scaledBigAttackForce;
     public float scaledSmallAttackForce;
 
-    // scales
+    [Header("Scales")]
     public float currentScalesValue = 0.5f;
-    public float lightUltimateCharge;
-    public float heavyUltimateCharge;
-    public float ultimateChargeThreshold;
     public Slider scalesSlider;
     public Slider lightSlider;
     public Slider heavySlider;
     public TextMeshProUGUI scaledStatsTB;
+
+    [Header("Ultimates")]
+    public PlayableDirector director;
+    public TimelineAsset lightUltimateTimeline;
+    public TimelineAsset heavyUltimateTimeline;
+
+    public float ultimateChargeThreshold;
+    public float ultimateRange;
+    public float lightUltimateCharge;
+    public float heavyUltimateCharge;
 
     [Header("Attack")]
     public float smallAttackDamage;
@@ -137,15 +148,89 @@ public partial class Player
         }
     }
 
+    public void UseLightUltimate()
+    {
+        if (lightUltimateCharge < 1) return;
+
+        lightUltimateCharge = 0;
+        UIAnimator.Play("LightUlt0", 1);
+        //director.Play(lightUltimateTimeline);
+        UltimateKillEnemies(); // temp - kill 5 enemies
+    }
+
+    public void UseHeavyUltimate()
+    {
+        if (heavyUltimateCharge < 1) return;
+
+        heavyUltimateCharge = -0.5f;
+        UIAnimator.Play("HeavyUlt0", 1);
+        //director.Play(heavyUltimateTimeline);
+        UltimateKillEnemies(); // temp - kill 5 enemies
+    }
+
+    void UltimateKillEnemies()
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, ultimateRange, hitLayers);
+
+        var closestEnemies = hitColliders
+            .OrderBy(c => Vector3.Distance(transform.position, c.transform.position))
+            .Take(5); // Take the 5 closest enemies
+
+        foreach (var enemyCollider in closestEnemies)
+        {
+            enemyCollider.GetComponent<Enemy>().TakeDamage(999);
+        }
+    }
+
     public void AddLightUltimateCharge()
     {
         lightUltimateCharge += 0.1f;
+        switch (lightUltimateCharge)
+        {
+            case < 0.1f:
+                UIAnimator.Play("LightUlt0", 1);
+                break;
+            case >= 0.1f and < 0.4f:
+                UIAnimator.Play("LightUlt1", 1);
+                break;
+            case >= 0.4f and < 0.7f:
+                UIAnimator.Play("LightUlt2", 1);
+                break;
+            case >= 0.7f and < 1:
+                UIAnimator.Play("LightUlt3", 1);
+                break;
+            case >= 1:
+                lightUltimateCharge = 1;
+                UIAnimator.Play("LightUltReady", 1);
+                break;
+        }
+
         lightSlider.value = lightUltimateCharge;
     }
 
     public void AddHeavyUltimateCharge()
     {
         heavyUltimateCharge += 0.1f;
+        switch (heavyUltimateCharge)
+        {
+            case < 0.1f:
+                UIAnimator.Play("HeavyUlt0", 0);
+                break;
+            case >= 0.1f and < 0.5f:
+                UIAnimator.Play("HeavyUlt1", 0);
+                break;
+            case >= 0.4f and < 0.7f:
+                UIAnimator.Play("HeavyUlt2", 0);
+                break;
+            case >= 0.7f and < 1:
+                UIAnimator.Play("HeavyUlt3", 0);
+                break;
+            case >= 1:
+                heavyUltimateCharge = 1;
+                UIAnimator.Play("HeavyUltReady", 0);
+                break;
+        }
+
         heavySlider.value = heavyUltimateCharge;
     }
 

@@ -29,6 +29,8 @@ public partial class Player : MonoBehaviour
     public GameObject playerWorldCanvas;
     public GameObject ScalesUI;
 
+    public Animator UIAnimator;
+
     //public Slider SPBar;
     //public Transform SPBarTransform;
 
@@ -153,31 +155,31 @@ public partial class Player : MonoBehaviour
         animator.SetTrigger("Sheathe");
     }
 
-    void OnUpAttackInput()
+    void OnSmallAttackInput()
     {
         if (isStunned) { return; }
 
         StartAttack(AttackState.SmallAttack);
     }
 
-    void OnDownAttackInput()
-    {
-        if (isStunned) { return; }
-
-        StartAttack(AttackState.SmallAttack);
-    }
-
-    void OnLeftAttackInput()
+    void OnBigAttackInput()
     {
         if (isStunned) { return; }
 
         StartAttack(AttackState.BigAttack);
     }
 
-    void OnRightAttackInput()
+    void OnUseLightUltimateInput()
     {
         if (isStunned) { return; }
 
-        StartAttack(AttackState.BigAttack);
+        UseLightUltimate();
+    }
+
+    void OnUseHeavyUltimateInput()
+    {
+        if (isStunned) { return; }
+
+        UseHeavyUltimate();
     }
 }

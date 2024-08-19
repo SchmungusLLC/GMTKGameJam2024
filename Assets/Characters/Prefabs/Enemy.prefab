@@ -288,7 +288,6 @@ GameObject:
   - component: {fileID: 912957048891817261}
   - component: {fileID: 912957048891817234}
   - component: {fileID: 912957048891817235}
-  - component: {fileID: 912957048891817260}
   m_Layer: 6
   m_Name: LeftEye
   m_TagString: Untagged
@@ -361,20 +360,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &912957048891817260
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 912957048891817262}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &912957048964101081
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,7 +371,6 @@ GameObject:
   - component: {fileID: 912957048964101080}
   - component: {fileID: 912957048964101085}
   - component: {fileID: 912957048964101086}
-  - component: {fileID: 912957048964101087}
   m_Layer: 6
   m_Name: RightEye
   m_TagString: Untagged
@@ -459,20 +443,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &912957048964101087
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 912957048964101081}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &2344272772318980003
 GameObject:
   m_ObjectHideFlags: 0
@@ -562,11 +532,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3623b5b86e38424499588412a8a2e5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugDisableEnemyAttacks: 0
+  debugDisableEnemyAttacks: 1
   rb3D: {fileID: 0}
   animator: {fileID: 0}
   agent: {fileID: 0}
-  maxHP: 1
+  maxHP: 100
   bigAttackDuration: 1
   smallAttackDuration: 0.3
   bigAttackForce: 80
