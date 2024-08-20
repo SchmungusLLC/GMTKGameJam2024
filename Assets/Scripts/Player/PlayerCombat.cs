@@ -219,12 +219,12 @@ public partial class Player
     {
         if (lightUltimateCharge < 1) return;
 
-        lightUltimateCharge = 0;
+        lightUltimateCharge = -0.5f;
         UIAnimator.Play("LightUlt0", 1);
-        mainVcam.SetActive(false);
-        ultimateDirector.Play(lightUltimateTimeline);
-        Time.timeScale = 0;
-        //UltimateKillEnemies(); // temp - kill 5 enemies
+        //mainVcam.SetActive(false);
+        //ultimateDirector.Play(lightUltimateTimeline);
+        //Time.timeScale = 0;
+        UltimateKillEnemies(); // temp - kill 5 enemies
     }
 
     public void UseHeavyUltimate()
@@ -233,26 +233,33 @@ public partial class Player
 
         heavyUltimateCharge = -0.5f;
         UIAnimator.Play("HeavyUlt0", 0);
-        Time.timeScale = 0;
-        mainVcam.SetActive(false);
-        ultimateDirector.Play(heavyUltimateTimeline);
-        //UltimateKillEnemies(); // temp - kill 5 enemies
+        //Time.timeScale = 0;
+        //mainVcam.SetActive(false);
+        //ultimateDirector.Play(heavyUltimateTimeline);
+        UltimateKillEnemies(); // temp - kill 5 enemies
     }
 
     public void UltimateKillEnemies()
     {
-        mainVcam.SetActive(true);
+        // Find all objects with the tag "Enemy"
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
-        Time.timeScale = 1;
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, ultimateRange, hitLayers);
+        // Sort enemies by distance to the player
+        var sortedEnemies = enemies
+            .Select(enemy => new { EnemyObject = enemy, Distance = Vector3.Distance(transform.position, enemy.transform.position) })
+            .OrderBy(e => e.Distance)
+            .Take(5) // Take the 5 closest enemies
+            .ToList();
 
-        var closestEnemies = hitColliders
-            .OrderBy(c => Vector3.Distance(transform.position, c.transform.position))
-            .Take(5); // Take the 5 closest enemies
-
-        foreach (var enemyCollider in closestEnemies)
+        // Deal damage to each of the closest enemies
+        foreach (var enemy in sortedEnemies)
         {
-            enemyCollider.GetComponent<Enemy>().TakeDamage(999);
+            // Assuming your enemies have a script with a TakeDamage method
+            Enemy enemyScript = enemy.EnemyObject.GetComponent<Enemy>();
+            if (enemyScript != null)
+            {
+                enemyScript.TakeDamage(999);
+            }
         }
     }
 
