@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using static AudioManager;
@@ -37,6 +38,8 @@ public partial class Player
     public void PlayerDies()
     {
         //Debug.Log("Player died");
+        PlayerInput input = GetComponent<PlayerInput>();
+        input.enabled = false;
         animator.Play("Death", 3);
         foreach (var enemy in FindObjectsOfType<Enemy>())
         {

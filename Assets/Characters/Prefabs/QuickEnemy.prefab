@@ -447,7 +447,7 @@ MonoBehaviour:
   smallAttackForce: 50
   bigAttackDamage: 15
   smallAttackDamage: 7
-  aggroDistance: 10
+  aggroDistance: 20
   currentEnemyState: 0
   currentAttackState: 0
   lastAttackTaken: 0
