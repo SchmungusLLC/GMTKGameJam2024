@@ -19726,9 +19726,9 @@ MonoBehaviour:
   lightPlayerMass: 5
   heavyPlayerMass: 15
   lightBigAttackDuration: 0.3
-  heavyBigAttackDuration: 0.5
+  heavyBigAttackDuration: 1
   lightSmallAttackDuration: 0.1
-  heavySmallAttackDuration: 0.3
+  heavySmallAttackDuration: 0.5
   lightComboEndAttackDuration: 0.6
   heavyComboEndAttackDuration: 1
   lightBigAttackForce: 100
@@ -19753,8 +19753,8 @@ MonoBehaviour:
   ultimateRange: 50
   lightUltimateCharge: 0
   heavyUltimateCharge: 0
-  smallAttackDamage: 10
-  bigAttackDamage: 20
+  smallAttackDamage: 15
+  bigAttackDamage: 30
   isStunned: 0
   currentAttackState: 0
   comboCounter: 0
@@ -19770,7 +19770,7 @@ MonoBehaviour:
   minimumRecoveryThreshold: 0.1
   minimumRecoveryTimer: 0
   debugUseTestAnimations: 0
-  maxHP: 100
+  maxHP: 200
   HPBar: {fileID: 0}
   turnSpeed: 720
   dashSpeed: 40

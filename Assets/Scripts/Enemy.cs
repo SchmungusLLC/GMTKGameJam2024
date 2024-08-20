@@ -430,9 +430,14 @@ public partial class Enemy : MonoBehaviour
         //Debug.Log("Setting to dead");
         currentEnemyState = EnemyState.Dead;
         animator.Play("Death");
-        if (Random.Range(0,3) == 0)
+        int val = Random.Range(0, 4);
+        if (val == 0)
         {
             _AudioManger.PlayRandomSoundFromArray(_AudioManger.GoonsDying);
+        }
+        else if (val == 1)
+        {
+            _AudioManger.PlayRandomSoundFromArray(_AudioManger.LJKill);
         }
         rb3D.constraints = RigidbodyConstraints.FreezeAll;
         rb3D.useGravity = false;

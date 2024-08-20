@@ -440,14 +440,14 @@ MonoBehaviour:
   animator: {fileID: 5424653157079057175}
   agent: {fileID: 0}
   capsuleCollider: {fileID: 0}
-  maxHP: 100
+  maxHP: 80
   bigAttackDuration: 0.6
   smallAttackDuration: 0.1
   bigAttackForce: 60
   smallAttackForce: 50
   bigAttackDamage: 15
   smallAttackDamage: 7
-  aggroDistance: 20
+  aggroDistance: 15
   currentEnemyState: 0
   currentAttackState: 0
   lastAttackTaken: 0

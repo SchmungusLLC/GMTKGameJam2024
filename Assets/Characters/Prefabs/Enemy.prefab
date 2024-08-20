@@ -10239,14 +10239,14 @@ MonoBehaviour:
   animator: {fileID: 3783982290747349442}
   agent: {fileID: 0}
   capsuleCollider: {fileID: 0}
-  maxHP: 100
+  maxHP: 80
   bigAttackDuration: 0.8
   smallAttackDuration: 0.2
   bigAttackForce: 80
   smallAttackForce: 50
   bigAttackDamage: 20
   smallAttackDamage: 10
-  aggroDistance: 20
+  aggroDistance: 15
   currentEnemyState: 0
   currentAttackState: 0
   lastAttackTaken: 0
