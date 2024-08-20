@@ -94,7 +94,7 @@ public partial class Enemy : MonoBehaviour
     private void Awake()
     {
         rb3D = GetComponent<Rigidbody>();
-        animator = GetComponent<Animator>();
+        //animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
 
         agent.updatePosition = false;
@@ -137,6 +137,7 @@ public partial class Enemy : MonoBehaviour
         }
     }
 
+    Vector3 lastPosition;
     private void FixedUpdate()
     {
         switch (currentEnemyState)
@@ -156,6 +157,24 @@ public partial class Enemy : MonoBehaviour
                 WaitToRecover();
                 break;
         }
+
+        Vector3 deltaPosition = transform.position - lastPosition;
+        float speedX = deltaPosition.x / Time.deltaTime;
+        float speedZ = deltaPosition.z / Time.deltaTime;
+        float speedTotal = Mathf.Sqrt(speedX * speedX + speedZ * speedZ);
+
+        if (speedTotal < 0.01f)
+        {
+            speedX = 0f;
+            speedZ = 0f;
+            speedTotal = 0f;
+        }
+
+        animator.SetFloat("XVelocity", speedX);
+        animator.SetFloat("ZVelocity", speedZ);
+        animator.SetFloat("TotalVelocity", speedTotal);
+
+        lastPosition = transform.position;
     }
 
     public void SearchForPlayer()
@@ -177,7 +196,6 @@ public partial class Enemy : MonoBehaviour
         {
             // Trigger recovery animation
             //Debug.Log("Recovering");
-            animator.SetTrigger("Recover");
             currentEnemyState = EnemyState.Recovering;
         }
     }
@@ -332,7 +350,7 @@ public partial class Enemy : MonoBehaviour
         }
     }
 
-    void EndAttack()
+    public void EndAttack()
     {
         currentAttackState = AttackState.None;
     }
@@ -382,7 +400,7 @@ public partial class Enemy : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        Debug.Log("Enemy taking damage: " + damage);
+        //Debug.Log("Enemy taking damage: " + damage);
         currentHP -= damage;
         HPBar.value = currentHP;
         if (currentHP < 0)
@@ -407,8 +425,11 @@ public partial class Enemy : MonoBehaviour
     {
         //Debug.Log("Setting to dead");
         currentEnemyState = EnemyState.Dead;
-        //animator.Play("Death");
-        _AudioManger.PlayRandomSoundFromArray(_AudioManger.GoonsDying);
+        animator.Play("Death");
+        if (Random.Range(0,3) == 0)
+        {
+            _AudioManger.PlayRandomSoundFromArray(_AudioManger.GoonsDying);
+        }
         StartSoulAnimation();
         //gameObject.SetActive(false);
     }

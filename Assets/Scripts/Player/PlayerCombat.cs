@@ -361,7 +361,7 @@ public partial class Player
         SwordParticleVFX.enabled = false;
         SwordTrailVFX.enabled = false;
 
-        Debug.Log("Player took Damage: " + damage);
+        //Debug.Log("Player took Damage: " + damage);
         currentHP -= damage;
     }
 

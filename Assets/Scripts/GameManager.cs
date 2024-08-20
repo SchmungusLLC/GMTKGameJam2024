@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
 
     public void SetStatsOnPlayer()
     {
-        Debug.Log("Adding values " + scalesValue + ", " + lightUltCharge + ", " + heavyUltCharge);
+        //Debug.Log("Adding values " + scalesValue + ", " + lightUltCharge + ", " + heavyUltCharge);
         player.heavyUltimateCharge = heavyUltCharge;
         player.lightUltimateCharge = lightUltCharge;
         player.currentScalesValue = scalesValue;

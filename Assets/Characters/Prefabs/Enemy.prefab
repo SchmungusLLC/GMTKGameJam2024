@@ -10206,7 +10206,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2344272772318980003}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: cabfa5d387386fa499af77e4b7af3312, type: 2}
   m_CullingMode: 0
@@ -10232,6 +10232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugDisableEnemyAttacks: 0
+  isBoss: 0
   TrailVFXSystem: {fileID: 2007772769}
   ParticleVFXSystem: {fileID: 1346475642}
   rb3D: {fileID: 0}
@@ -10250,7 +10251,7 @@ MonoBehaviour:
   lastAttackTaken: 0
   fallThreshold: 0
   collisionDamageMultiplier: 2
-  collisionDamageThreshold: 0.1
+  collisionDamageThreshold: 1
   damagingColliders:
     serializedVersion: 2
     m_Bits: 321
@@ -12267,7 +12268,7 @@ PrefabInstance:
     - target: {fileID: 5866666021909216657, guid: 65ef9c50f87a9fd4ea708beb4a3b5840, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: ffe580f5a874ba04a91a54dc6d2418a0, type: 2}
+      objectReference: {fileID: 9100000, guid: f22e37ae4ef540d468a64cbd23e3890d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65ef9c50f87a9fd4ea708beb4a3b5840, type: 3}
 --- !u!95 &3783982290747349442 stripped
@@ -12280,6 +12281,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 65ef9c50f87a9fd4ea708beb4a3b5840, type: 3}
   m_PrefabInstance: {fileID: 7343667237495891027}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7577477485815716098 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 65ef9c50f87a9fd4ea708beb4a3b5840, type: 3}
+  m_PrefabInstance: {fileID: 7343667237495891027}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2043251967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7577477485815716098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c76b0c65c87b814f98a177811a020fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 5282155416436127132}
 --- !u!1001 &7974397075229261288
 PrefabInstance:
   m_ObjectHideFlags: 0
