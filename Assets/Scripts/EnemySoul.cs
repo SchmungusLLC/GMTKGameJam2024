@@ -40,7 +40,7 @@ public class EnemySoul : MonoBehaviour
         gameObject.SetActive(true);
         gameObject.transform.SetParent(null);
         gameObject.transform.eulerAngles = player.cameraFaceDir;
-        Debug.Log("Enemy attack state = " + attackState);
+        //Debug.Log("Enemy attack state = " + attackState);
         if (attackState == AttackState.SmallAttack)
         {
             animator.Play("LightSoulAppear", 0);

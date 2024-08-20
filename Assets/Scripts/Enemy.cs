@@ -160,7 +160,7 @@ public partial class Enemy : MonoBehaviour
         if (!waitingForRecoveryMinimum && rb3D.velocity.magnitude < 0.1f)
         {
             // Trigger recovery animation
-            Debug.Log("Recovering");
+            //Debug.Log("Recovering");
             animator.SetTrigger("Recover");
             currentEnemyState = EnemyState.Recovering;
         }
@@ -335,8 +335,6 @@ public partial class Enemy : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        animator.Play("Hit");
-
         //Debug.Log("Taking damage: " + damage);
         currentHP -= damage;
         HPBar.value = currentHP;
@@ -344,15 +342,19 @@ public partial class Enemy : MonoBehaviour
         {
             EnemyDies();
         }
+        else
+        {
+            animator.Play("Hit");
+        }
     }
 
     public void EnemyDies()
     {
-        Debug.Log("Setting to dead");
+        //Debug.Log("Setting to dead");
         currentEnemyState = EnemyState.Dead;
         //animator.Play("Death");
         StartSoulAnimation();
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
     }
 
     public void StartSoulAnimation()
