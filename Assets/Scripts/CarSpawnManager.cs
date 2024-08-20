@@ -5,26 +5,47 @@ using UnityEngine;
 public class CarSpawnManager : MonoBehaviour
 {
     public GameObject[] CarsPrefabs;
+
+    public float spawnTime;
+    public float spawnLowThreshold;
+    public float spawnHighThreshold;
+
+    public float nextSpawnTime;
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("SpawnCars", 2, 5.5f);
+        spawnTime = 0;
+        SpawnCars();
     }
 
     // Update is called once per frame
     void Update()
     {
-       /* if (Input.GetKeyDown(KeyCode.S))
+       spawnTime += Time.deltaTime;
+
+        if (spawnTime > nextSpawnTime )
         {
-            Instantiate(CarsPrefabs[0], new Vector3(-36,3,66), CarsPrefabs[0].transform.rotation);
-            Instantiate(CarsPrefabs[1], new Vector3(30,3,85), CarsPrefabs[1].transform.rotation);
+            SpawnCars();
         }
-        */
     }
 
     void SpawnCars()
     {
-         Instantiate(CarsPrefabs[0], new Vector3(-36,1,66), CarsPrefabs[0].transform.rotation);
-            Instantiate(CarsPrefabs[1], new Vector3(50,1,85), CarsPrefabs[1].transform.rotation);
+        switch (Random.Range(0,3))
+        {
+            case 0:
+                Instantiate(CarsPrefabs[0], new Vector3(-36, 0, 66), CarsPrefabs[0].transform.rotation);
+                break;
+            case 1:
+                Instantiate(CarsPrefabs[1], new Vector3(50, 0, 85), CarsPrefabs[1].transform.rotation);
+                break;
+            case 2:
+                Instantiate(CarsPrefabs[1], new Vector3(50, 0, 85), CarsPrefabs[1].transform.rotation);
+                Instantiate(CarsPrefabs[0], new Vector3(-36, 0, 66), CarsPrefabs[0].transform.rotation);
+                break;
+        }
+
+        spawnTime = 0;
+        nextSpawnTime = Random.Range(spawnLowThreshold, spawnHighThreshold);
     }
 }

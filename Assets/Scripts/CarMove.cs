@@ -7,10 +7,11 @@ public class CarMove : MonoBehaviour
 
     public float moveSpeed; // Speed of the car
     public float pauseDuration; // Time to wait after collision
-    private bool isPaused;
+    public bool isPaused;
 
     public float ImpactForce;
     public Rigidbody CarRb;
+    public BoxCollider boxCollider;
 
     public LayerMask crashColliders;
 
@@ -18,6 +19,7 @@ public class CarMove : MonoBehaviour
     void Start()
     {
         CarRb = GetComponent<Rigidbody>();
+        boxCollider = GetComponent<BoxCollider>();
     }
 
     // Update is called once per frame
@@ -45,6 +47,7 @@ public class CarMove : MonoBehaviour
     IEnumerator PauseMovement()
     {
         isPaused = true;
+        boxCollider.enabled = false;
         CarRb.velocity = Vector3.zero; // Stop the car immediately
         yield return new WaitForSeconds(pauseDuration); // Wait for the specified duration
         isPaused = false;
