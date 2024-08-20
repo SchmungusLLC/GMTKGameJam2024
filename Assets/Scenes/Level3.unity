@@ -498,7 +498,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CarsPrefabs:
   - {fileID: 5186178224815351515, guid: af5ddb482fcd4e14a965f4c3f31623f3, type: 3}
-  - {fileID: 4271541255061965324, guid: 501e4410916d5544b9256e20c3a7b106, type: 3}
+  - {fileID: 5186178224815351515, guid: 7648846271bbad5479c08aaf13daa3f3, type: 3}
+  spawnTime: 0
+  spawnLowThreshold: 2.5
+  spawnHighThreshold: 5.5
+  nextSpawnTime: 0
 --- !u!4 &142229007
 Transform:
   m_ObjectHideFlags: 0
