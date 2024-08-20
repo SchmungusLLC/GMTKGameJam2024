@@ -7,6 +7,8 @@ using static AudioManager;
 using UnityEngine.AI;
 using System.IO;
 using TMPro;
+using System.Collections;
+using UnityEngine.SceneManagement;
 
 public partial class Enemy : MonoBehaviour
 {
@@ -220,7 +222,7 @@ public partial class Enemy : MonoBehaviour
             if (collisionMagnitude >= collisionDamageThreshold)
             {
                 //Debug.Log("Taking collision damage.  Velocity: " + collisionMagnitude);
-                rb3D.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+                //rb3D.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
                 TakeDamage(collisionMagnitude * collisionDamageMultiplier);
             }
         }
@@ -379,7 +381,7 @@ public partial class Enemy : MonoBehaviour
     public void EndHitStun()
     {
         currentEnemyState = EnemyState.MovingToPlayer;
-        rb3D.constraints = RigidbodyConstraints.FreezeRotation;
+        //rb3D.constraints = RigidbodyConstraints.FreezeRotation;
 
         TrailVFX.enabled = false;
         ParticleVFX.enabled = false;
@@ -436,7 +438,27 @@ public partial class Enemy : MonoBehaviour
         rb3D.useGravity = false;
         capsuleCollider.enabled = false;
         StartSoulAnimation();
-        //gameObject.SetActive(false);
+        
+        if (isBoss)
+        {
+            StartCoroutine(EndGame());
+        }
+        else
+        {
+            StartCoroutine(DeleteEnemy());
+        }
+    }
+
+    public IEnumerator EndGame()
+    {
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene("EndCutscene");
+    }
+
+    public IEnumerator DeleteEnemy()
+    {
+        yield return new WaitForSeconds(3);
+        gameObject.SetActive(false);
     }
 
     public void StartSoulAnimation()

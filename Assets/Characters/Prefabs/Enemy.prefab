@@ -10238,6 +10238,7 @@ MonoBehaviour:
   rb3D: {fileID: 0}
   animator: {fileID: 3783982290747349442}
   agent: {fileID: 0}
+  capsuleCollider: {fileID: 0}
   maxHP: 100
   bigAttackDuration: 0.8
   smallAttackDuration: 0.2

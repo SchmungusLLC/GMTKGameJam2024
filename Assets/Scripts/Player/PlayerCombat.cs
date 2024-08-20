@@ -173,17 +173,17 @@ public partial class Player
                     enemy.IncomingAttack(bigAttackDamage, currentAttackState);
                     enemy.EnemyVFXEnable();
                     enemy.rb3D.AddForce(direction * scaledBigAttackForce, ForceMode.Impulse);
-                    enemy.rb3D.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+                    //enemy.rb3D.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
                 }
                 else if (currentAttackState == AttackState.SmallAttack)
                 {
                     enemy.IncomingAttack(smallAttackDamage, currentAttackState);
-                    enemy.rb3D.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+                    //enemy.rb3D.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
                 }
                 else if (currentAttackState == AttackState.ComboEndAttack)
                 {
                     enemy.IncomingAttack(smallAttackDamage, currentAttackState);
-                    enemy.rb3D.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+                    //enemy.rb3D.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
                     enemy.rb3D.AddForce(direction * scaledComboEndAttackForce, ForceMode.Impulse);
                 }
             }
