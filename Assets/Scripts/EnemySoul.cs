@@ -35,13 +35,20 @@ public class EnemySoul : MonoBehaviour
 
     public void Appear(AttackState lastAttackState)
     {
-        attackState = lastAttackState;
+        if (lastAttackState == AttackState.None)
+        {
+            attackState = player.currentAttackState;
+        }
+        else
+        {
+            attackState = lastAttackState;
+        }
 
         gameObject.SetActive(true);
         gameObject.transform.SetParent(null);
         gameObject.transform.eulerAngles = player.cameraFaceDir;
         //Debug.Log("Enemy attack state = " + attackState);
-        if (attackState == AttackState.SmallAttack)
+        if (attackState == AttackState.SmallAttack || attackState == AttackState.ComboEndAttack)
         {
             animator.Play("LightSoulAppear", 0);
             animator.Play("LightSoulFlicker", 1);

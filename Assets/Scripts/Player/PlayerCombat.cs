@@ -94,8 +94,9 @@ public partial class Player
     public bool debugUseTestAnimations;
     void StartAttack(AttackState state)
     {
-        //if (currentAttackState != AttackState.None) { return; }
+        if (currentAttackState != AttackState.None) { return; }
 
+        Debug.Log("Setting state to " + state.ToString());
         currentAttackState = state;
         comboCounter++;
         comboResetTime = 0;
@@ -107,14 +108,19 @@ public partial class Player
         }
 
         animator.Play(state.ToString(), 1);
-        animator.Play(state.ToString(), 2);
+        //animator.Play(state.ToString(), 2);
     }
 
     public void AttackHitBox()
     {
         //Debug.Log("Player attack hitbox");
-        if (currentAttackState == AttackState.SmallAttack)
+        if (currentAttackState == AttackState.SmallAttack || currentAttackState == AttackState.ComboEndAttack)
         {
+            if (comboCounter >= 3)
+            {
+                comboCounter = 0;
+                comboResetTime = 0;
+            }
             targetsStruck = Physics.OverlapBox(transform.position + transform.forward * hbOffset, hbSizeV, transform.rotation, hitLayers);
         }
         else
@@ -310,8 +316,9 @@ public partial class Player
         }
     }
 
-    void EndAttack()
+    public void EndAttack()
     {
+        Debug.Log("Ending");
         currentAttackState = AttackState.None;
     }
 
@@ -333,7 +340,7 @@ public partial class Player
     {
         minimumRecoveryTimer = 0;
         waitingForRecoveryMinimum = true;
-        //Debug.Log("Recovery waiting...");
+        Debug.Log("Recovery waiting...");
 
         isStunned = true;
         currentAttackState = AttackState.None;
@@ -345,7 +352,7 @@ public partial class Player
 
     public void EndHitStun()
     {
-        //Debug.Log("End hit stun");
+        Debug.Log("End hit stun");
         isStunned = false;
         //rb3D.constraints = RigidbodyConstraints.FreezeRotation;
     }

@@ -181,7 +181,7 @@ public partial class Player : MonoBehaviour
         moveInput = value.Get<Vector2>();
         targetMoveDirection = new Vector3(moveInput.x, 0, moveInput.y).IsoRotation();
 
-        if (targetMoveDirection == Vector3.zero) { return; }
+        if (isStunned || targetMoveDirection == Vector3.zero) { return; }
         targetLookDirection = Quaternion.LookRotation(targetMoveDirection, Vector3.up);
     }
 
@@ -199,10 +199,11 @@ public partial class Player : MonoBehaviour
     {
         if (isStunned) { return; }
 
-        if (comboCounter >= 2)
+        if (comboCounter == 2)
         {
             StartAttack(AttackState.ComboEndAttack);
         }
+        else
         {
             StartAttack(AttackState.SmallAttack);
         }

@@ -254,7 +254,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3714134188260971087}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: ed6eab3d2b2770e4ea495dd0cce6d10f, type: 2}
   m_CullingMode: 0
@@ -310,10 +310,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb3D: {fileID: 0}
-  animator: {fileID: 3101476565834854732}
+  animator: {fileID: 4347128889056256338}
   mainCamera: {fileID: 0}
   cameraFaceDir: {x: 0, y: 0, z: 0}
-  collisionDamageMultiplier: 0.1
+  collisionDamageMultiplier: 0.5
   collisionDamageThreshold: 3
   damagingColliders:
     serializedVersion: 2
@@ -409,8 +409,8 @@ MonoBehaviour:
   heavyBigAttackDuration: 0.5
   lightSmallAttackDuration: 0.1
   heavySmallAttackDuration: 0.3
-  lightComboEndAttackDuration: 0.3
-  heavyComboEndAttackDuration: 0.5
+  lightComboEndAttackDuration: 0.6
+  heavyComboEndAttackDuration: 1
   lightBigAttackForce: 100
   heavyBigAttackForce: 250
   lightComboEndAttackForce: 75
@@ -423,10 +423,8 @@ MonoBehaviour:
   scaledBigAttackForce: 0
   scaledComboEndAttackForce: 0
   currentScalesValue: 12
-  scalesSlider: {fileID: 0}
   lightSlider: {fileID: 0}
   heavySlider: {fileID: 0}
-  scaledStatsTB: {fileID: 0}
   ultimateDirector: {fileID: 0}
   lightUltimateTimeline: {fileID: 11400000, guid: d1dec0f714f9afe41833546e230ae9d2, type: 2}
   heavyUltimateTimeline: {fileID: 11400000, guid: d1dec0f714f9afe41833546e230ae9d2, type: 2}
@@ -441,7 +439,7 @@ MonoBehaviour:
   currentAttackState: 0
   comboCounter: 0
   comboResetTime: 0
-  comboResetThreshold: 0
+  comboResetThreshold: 1
   hitLayers:
     serializedVersion: 2
     m_Bits: 320
@@ -451,7 +449,7 @@ MonoBehaviour:
   waitingForRecoveryMinimum: 0
   minimumRecoveryThreshold: 0.1
   minimumRecoveryTimer: 0
-  debugUseTestAnimations: 1
+  debugUseTestAnimations: 0
   maxHP: 100
   HPBar: {fileID: 0}
   turnSpeed: 720
@@ -2631,3 +2629,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1714559144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8976780220273943981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 247f8c0127356c24d97fc62812fa7a5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

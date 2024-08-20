@@ -36,7 +36,7 @@ public partial class Player
 
     void Turn()
     {
-        if (transform.rotation == targetLookDirection) { return; }
+        if (isStunned || transform.rotation == targetLookDirection) { return; }
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetLookDirection, turnSpeed * Time.deltaTime);
         //SPBarTransform.eulerAngles = cameraFaceDir;
     }

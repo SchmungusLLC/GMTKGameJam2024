@@ -36,7 +36,7 @@ ModelImporter:
       name: Hit Right 2
       takeName: clip
       internalID: -4671056281497532287
-      firstFrame: 0
+      firstFrame: 40
       lastFrame: 95
       wrapMode: 0
       orientationOffsetY: 0
@@ -56,7 +56,14 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.42408377
+        functionName: StartHitStun
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 66a22a7a1e13424488985292f48b0244, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}

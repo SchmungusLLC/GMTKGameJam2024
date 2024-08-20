@@ -589,7 +589,7 @@ MonoBehaviour:
   currentAttackState: 0
   lastAttackTaken: 0
   fallThreshold: 0
-  collisionDamageMultiplier: 1
+  collisionDamageMultiplier: 2
   collisionDamageThreshold: 0.1
   damagingColliders:
     serializedVersion: 2
