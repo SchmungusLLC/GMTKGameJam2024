@@ -57,6 +57,7 @@ public partial class Enemy : MonoBehaviour
     [Header("Hitbox Settings")]
     [Tooltip("Layers which this attack's hitbox should check against")]
     public LayerMask hitLayers;
+    public LayerMask destructibleLayers;
     [Tooltip("Half-extents for horizontal hitbox")]
     public Vector3 hbSizeH;
     [Tooltip("Half-extents for vertical hitbox")]
@@ -169,6 +170,12 @@ public partial class Enemy : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (currentEnemyState == EnemyState.Dead) { return; }
+
+        if (destructibleLayers.ContainsLayer(collision.gameObject.layer))
+        {
+            animator.Play("BigAttack");
+            currentAttackState = AttackState.BigAttack;
+        }
 
         if (damagingColliders.ContainsLayer(collision.gameObject.layer))
         {
