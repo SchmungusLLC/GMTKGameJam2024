@@ -2322,6 +2322,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1599446776156343012, guid: 37c7ffcb188da4f4e8551d8f37d4a362, type: 3}
+      propertyPath: BackToMenuButton
+      value: 
+      objectReference: {fileID: 2480478468817892957}
+    - target: {fileID: 1599446776156343012, guid: 37c7ffcb188da4f4e8551d8f37d4a362, type: 3}
+      propertyPath: BacktoMenuButton
+      value: 
+      objectReference: {fileID: 2480478468817892957}
     - target: {fileID: 1599446776156343013, guid: 37c7ffcb188da4f4e8551d8f37d4a362, type: 3}
       propertyPath: m_Name
       value: Audiomanager
@@ -2469,6 +2477,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87e7f82d47209e34ab05fe9fb6130286, type: 3}
+--- !u!114 &2480478468817892957 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2480478467547785780, guid: 87e7f82d47209e34ab05fe9fb6130286, type: 3}
+  m_PrefabInstance: {fileID: 2480478468817892955}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3735012358580892106
 PrefabInstance:
   m_ObjectHideFlags: 0

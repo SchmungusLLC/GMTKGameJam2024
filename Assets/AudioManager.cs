@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
@@ -109,6 +110,19 @@ public class AudioManager : MonoBehaviour
             s.source.loop = s.loop;
             s.source.outputAudioMixerGroup = s.outputAudioMixerGroup;
         }
+        GameObject playbutton = GameObject.Find("PlayButton");
+        if (playbutton && playbutton.TryGetComponent(out Button button))
+            {
+            button.onClick.AddListener(PlayButtonPressed);
+        }
+        else
+        {
+            GameObject btmenubutton = GameObject.Find("BackToMenuButton");
+        if (btmenubutton && btmenubutton.TryGetComponent(out Button button2))
+            {
+                button2.onClick.AddListener(PlayButtonPressed);
+        }
+        }
     }
 
     void Start()
@@ -117,24 +131,28 @@ public class AudioManager : MonoBehaviour
         Play("MainMenuMusic");
         Play("CourtAmbience");
         StartCoroutine(PlayGavelRandomly());
-        SceneManager.activeSceneChanged += OnSceneChanged;
     }
 
+    public Button PlayButton;
+    public Button BackToMenuButton;
 
-    private System.Random randomGavelTime = new System.Random();
-
-    void OnDestroy()
-    {
-        SceneManager.activeSceneChanged -= OnSceneChanged;
-    }
-
-    private void OnSceneChanged(Scene MainMenu, Scene Level1) // When you ext the main menu the music changes and the court sounds stop
+    public void PlayButtonPressed()// When you ext the main menu the music changes and the court sounds stop
     {
         MainMenuActive = false; // Set the flag to false to stop the loop
         Stop("MainMenuMusic");
         Stop("CourtAmbience");
         Play("InGameMusic");
     }
+
+    public void BackToMenuButtonPressed()// When you ext the main menu the music changes and the court sounds stop
+    {
+        MainMenuActive = true; // Set the flag to false to stop the loop
+        Play("MainMenuMusic");
+        Play("CourtAmbience");
+        Stop("InGameMusic");
+    }
+
+    private System.Random randomGavelTime = new System.Random();
 
     private IEnumerator PlayGavelRandomly() // play gavel sounds at random intervals durnig main menu
     {
