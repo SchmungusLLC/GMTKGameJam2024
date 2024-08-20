@@ -273,6 +273,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac023610f3f2ade4b9f7362d64914d40, type: 3}
+--- !u!114 &14767783 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1375411324, guid: ac023610f3f2ade4b9f7362d64914d40, type: 3}
+  m_PrefabInstance: {fileID: 14767782}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &67601793 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5563037085228066242, guid: f7e9be220481b4549aa70b0150a60a86, type: 3}
@@ -925,6 +936,10 @@ PrefabInstance:
       propertyPath: scalesImage
       value: 
       objectReference: {fileID: 1900937957}
+    - target: {fileID: 290882176360117748, guid: ec22d5155f541364e9b5616e32ca5421, type: 3}
+      propertyPath: weightLabel
+      value: 
+      objectReference: {fileID: 14767783}
     - target: {fileID: 290882176360117748, guid: ec22d5155f541364e9b5616e32ca5421, type: 3}
       propertyPath: scalesSlider
       value: 

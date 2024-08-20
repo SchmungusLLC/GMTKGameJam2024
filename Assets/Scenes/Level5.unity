@@ -5678,6 +5678,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 708442221}
     - target: {fileID: 290882176360117748, guid: ec22d5155f541364e9b5616e32ca5421, type: 3}
+      propertyPath: weightLabel
+      value: 
+      objectReference: {fileID: 555390572}
+    - target: {fileID: 290882176360117748, guid: ec22d5155f541364e9b5616e32ca5421, type: 3}
       propertyPath: scalesSlider
       value: 
       objectReference: {fileID: 0}
@@ -6462,6 +6466,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 551959134}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &555390572 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1375411324, guid: ac023610f3f2ade4b9f7362d64914d40, type: 3}
+  m_PrefabInstance: {fileID: 708442217}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &590040708
 PrefabInstance:
   m_ObjectHideFlags: 0

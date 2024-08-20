@@ -19750,9 +19750,9 @@ MonoBehaviour:
   heavyUltimateTimeline: {fileID: 11400000, guid: d1dec0f714f9afe41833546e230ae9d2, type: 2}
   mainVcam: {fileID: 0}
   ultimateChargeThreshold: 10
-  ultimateRange: 50
-  lightUltimateCharge: 0
-  heavyUltimateCharge: 0
+  ultimateRange: 900
+  lightUltimateCharge: 1
+  heavyUltimateCharge: 1
   smallAttackDamage: 15
   bigAttackDamage: 30
   isStunned: 0
@@ -19770,7 +19770,8 @@ MonoBehaviour:
   minimumRecoveryThreshold: 0.1
   minimumRecoveryTimer: 0
   debugUseTestAnimations: 0
-  maxHP: 200
+  weightLabel: {fileID: 0}
+  maxHP: 250
   HPBar: {fileID: 0}
   turnSpeed: 720
   dashSpeed: 40

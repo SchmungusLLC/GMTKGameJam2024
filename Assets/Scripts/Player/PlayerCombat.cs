@@ -308,6 +308,7 @@ public partial class Player
 
         heavySlider.value = heavyUltimateCharge;
     }
+    public TextMeshProUGUI weightLabel;
 
     public void AddScalesValue(int value)
     {
@@ -333,6 +334,9 @@ public partial class Player
         animator.SetFloat("SmallAttackSpeed", 1 / scaledSmallAttackDuration);
         animator.SetFloat("ComboEndAttackSpeed", 1 / scaledComboEndAttackDuration);
         animator.SetFloat("BigAttackSpeed", 1 / scaledBigAttackDuration);
+
+        int weight = 300 + (currentScalesValue * 100);
+        weightLabel.text = weight + " lbs.";
 
         UpdateScalesUI();
     }
