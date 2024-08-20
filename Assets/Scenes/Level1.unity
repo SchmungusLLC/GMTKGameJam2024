@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18104394, g: 0.22661541, b: 0.3072849, a: 1}
+  m_IndirectSpecularColor: {r: 0.18104427, g: 0.2266158, b: 0.3072858, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4900,7 +4900,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: b02241fcb1984eb4a8a2cc0cca3cd3c5, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 9583dcf362eafb4429cac3d45780a64f, type: 2}
+      objectReference: {fileID: 2100000, guid: 392661bc908dc1c428ae5036902fd149, type: 2}
     - target: {fileID: 919132149155446097, guid: b02241fcb1984eb4a8a2cc0cca3cd3c5, type: 3}
       propertyPath: m_Name
       value: SquareLeftWalls (2)
