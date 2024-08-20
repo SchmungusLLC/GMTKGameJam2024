@@ -5,9 +5,14 @@ using UnityEngine;
 public class CarMove : MonoBehaviour
 {
 
-    public float thrust = 40.0f;
-    public float ImpactForce = 300f;
+    public float moveSpeed; // Speed of the car
+    public float pauseDuration; // Time to wait after collision
+    private bool isPaused;
+
+    public float ImpactForce;
     public Rigidbody CarRb;
+
+    public LayerMask crashColliders;
 
     // Start is called before the first frame update
     void Start()
@@ -18,24 +23,30 @@ public class CarMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       CarRb.AddForce(transform.forward * thrust * Time.deltaTime, ForceMode.Impulse);
+        if (!isPaused)
+        {
+            MoveForward();
+        }
     }
 
-     private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
-        float randomAngle = Random.Range(-45, 45);
+        if (crashColliders.ContainsLayer(collision.gameObject.layer))
+        {
+            StartCoroutine(PauseMovement());
+        }
+    }
 
-       if (collision.gameObject.TryGetComponent(out Player player))
-       {
-            player.rb3D.AddForce(transform.forward * ImpactForce, ForceMode.Impulse);
-       }
-       else if (collision.gameObject.TryGetComponent(out Enemy enemy))
-       {
-            enemy.rb3D.AddForce(transform.forward * ImpactForce, ForceMode.Impulse);
-       }
-       else if (collision.gameObject.TryGetComponent(out Destructible destructible))
-       {
-            destructible.rb3D.AddForce(transform.forward * ImpactForce, ForceMode.Impulse);
-       }
+    void MoveForward()
+    {
+        CarRb.AddForce(transform.forward * moveSpeed);
+    }
+
+    IEnumerator PauseMovement()
+    {
+        isPaused = true;
+        CarRb.velocity = Vector3.zero; // Stop the car immediately
+        yield return new WaitForSeconds(pauseDuration); // Wait for the specified duration
+        isPaused = false;
     }
 }
