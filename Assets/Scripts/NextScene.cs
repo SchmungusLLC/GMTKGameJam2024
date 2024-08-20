@@ -19,4 +19,9 @@ public class NextScene : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
  } 
+
+ public void LoadScene(string sceneName)
+ {
+     SceneManager.LoadScene(sceneName);
+ }
 }
