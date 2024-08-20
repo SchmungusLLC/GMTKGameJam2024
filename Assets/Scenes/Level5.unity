@@ -552,6 +552,21 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 460436, guid: 665cb07b5ec163d4abbf8fbf4e231f45, type: 3}
   m_PrefabInstance: {fileID: 1650295960}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &281041751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 281041745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b146a5c7451e4ed4ba0e5c9f9f5cacae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  rb3D: {fileID: 0}
+  HP: 1000
 --- !u!1001 &312523616
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -738,6 +753,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Barrel (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 142724, guid: 665cb07b5ec163d4abbf8fbf4e231f45, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 460436, guid: 665cb07b5ec163d4abbf8fbf4e231f45, type: 3}
       propertyPath: m_RootOrder
       value: 40
@@ -824,7 +843,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 419679429}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -832,6 +851,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &419679432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 419679429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b146a5c7451e4ed4ba0e5c9f9f5cacae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  rb3D: {fileID: 0}
+  HP: 1000
 --- !u!1 &426027036
 GameObject:
   m_ObjectHideFlags: 0
@@ -1131,6 +1165,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Barrel (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 142724, guid: 665cb07b5ec163d4abbf8fbf4e231f45, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 460436, guid: 665cb07b5ec163d4abbf8fbf4e231f45, type: 3}
       propertyPath: m_RootOrder
       value: 43
@@ -1217,7 +1255,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 590040710}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -1225,6 +1263,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &590040713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590040710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b146a5c7451e4ed4ba0e5c9f9f5cacae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  rb3D: {fileID: 0}
+  HP: 1000
 --- !u!1 &676385815
 GameObject:
   m_ObjectHideFlags: 0
@@ -1527,6 +1580,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Barrel
       objectReference: {fileID: 0}
+    - target: {fileID: 142724, guid: 665cb07b5ec163d4abbf8fbf4e231f45, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 460436, guid: 665cb07b5ec163d4abbf8fbf4e231f45, type: 3}
       propertyPath: m_RootOrder
       value: 36
@@ -1685,6 +1742,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 385671354, guid: ac023610f3f2ade4b9f7362d64914d40, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 804434720, guid: ac023610f3f2ade4b9f7362d64914d40, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1454365015, guid: ac023610f3f2ade4b9f7362d64914d40, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1631046579, guid: ac023610f3f2ade4b9f7362d64914d40, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997661042, guid: ac023610f3f2ade4b9f7362d64914d40, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997661042, guid: ac023610f3f2ade4b9f7362d64914d40, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5666083707597643020, guid: ac023610f3f2ade4b9f7362d64914d40, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -2194,6 +2275,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Barrel (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 142724, guid: 665cb07b5ec163d4abbf8fbf4e231f45, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 460436, guid: 665cb07b5ec163d4abbf8fbf4e231f45, type: 3}
       propertyPath: m_RootOrder
       value: 20
@@ -2271,6 +2356,37 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.02208538, y: 0.018409811, z: 0.020034881}
   m_Center: {x: -0.0000050985254, y: 0.00041730842, z: 0.0000053923577}
+--- !u!54 &961883943
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961883938}
+  serializedVersion: 2
+  m_Mass: 20
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &961883944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961883938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b146a5c7451e4ed4ba0e5c9f9f5cacae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  rb3D: {fileID: 961883943}
+  HP: 1000
 --- !u!1 &967207363 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 142724, guid: 665cb07b5ec163d4abbf8fbf4e231f45, type: 3}
@@ -2311,6 +2427,21 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 460436, guid: 665cb07b5ec163d4abbf8fbf4e231f45, type: 3}
   m_PrefabInstance: {fileID: 2101416331}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &967207369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 967207363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b146a5c7451e4ed4ba0e5c9f9f5cacae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  rb3D: {fileID: 0}
+  HP: 1000
 --- !u!1 &1010120267
 GameObject:
   m_ObjectHideFlags: 0
@@ -2418,6 +2549,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 79bcf68dbff060c43af449d1bd66637b, type: 3}
       propertyPath: m_Name
       value: Crate
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 79bcf68dbff060c43af449d1bd66637b, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 79bcf68dbff060c43af449d1bd66637b, type: 3}
       propertyPath: m_RootOrder
@@ -2674,6 +2809,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Barrel (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 142724, guid: 665cb07b5ec163d4abbf8fbf4e231f45, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 460436, guid: 665cb07b5ec163d4abbf8fbf4e231f45, type: 3}
       propertyPath: m_RootOrder
       value: 41
@@ -2760,7 +2899,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1142376473}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -2768,6 +2907,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1142376476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1142376473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b146a5c7451e4ed4ba0e5c9f9f5cacae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  rb3D: {fileID: 0}
+  HP: 1000
 --- !u!1 &1144290047
 GameObject:
   m_ObjectHideFlags: 0
@@ -3070,6 +3224,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Barrel (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 142724, guid: 665cb07b5ec163d4abbf8fbf4e231f45, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 460436, guid: 665cb07b5ec163d4abbf8fbf4e231f45, type: 3}
       propertyPath: m_RootOrder
       value: 42
@@ -3156,7 +3314,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1212909791}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -3164,6 +3322,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1212909794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212909791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b146a5c7451e4ed4ba0e5c9f9f5cacae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  rb3D: {fileID: 0}
+  HP: 1000
 --- !u!1 &1247272875
 GameObject:
   m_ObjectHideFlags: 0
@@ -3478,6 +3651,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.02208538, y: 0.018409811, z: 0.020034881}
   m_Center: {x: -0.0000050985254, y: 0.00041730842, z: 0.0000053923577}
+--- !u!114 &1351306521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1351306516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b146a5c7451e4ed4ba0e5c9f9f5cacae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  rb3D: {fileID: 0}
+  HP: 1000
 --- !u!1 &1494113688
 GameObject:
   m_ObjectHideFlags: 0
@@ -3684,6 +3872,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crate (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 79bcf68dbff060c43af449d1bd66637b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 79bcf68dbff060c43af449d1bd66637b, type: 3}
       propertyPath: m_RootOrder
       value: 21
@@ -3748,6 +3940,10 @@ PrefabInstance:
     - target: {fileID: 142724, guid: 665cb07b5ec163d4abbf8fbf4e231f45, type: 3}
       propertyPath: m_Name
       value: Barrel (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 142724, guid: 665cb07b5ec163d4abbf8fbf4e231f45, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 460436, guid: 665cb07b5ec163d4abbf8fbf4e231f45, type: 3}
       propertyPath: m_RootOrder
@@ -3835,7 +4031,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1621491211}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -3843,6 +4039,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1621491214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1621491211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b146a5c7451e4ed4ba0e5c9f9f5cacae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  rb3D: {fileID: 0}
+  HP: 1000
 --- !u!1001 &1650295960
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3853,6 +4064,10 @@ PrefabInstance:
     - target: {fileID: 142724, guid: 665cb07b5ec163d4abbf8fbf4e231f45, type: 3}
       propertyPath: m_Name
       value: Barrel (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 142724, guid: 665cb07b5ec163d4abbf8fbf4e231f45, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 460436, guid: 665cb07b5ec163d4abbf8fbf4e231f45, type: 3}
       propertyPath: m_RootOrder
@@ -4120,7 +4335,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1765856153}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -4142,6 +4357,21 @@ CapsuleCollider:
   m_Height: 0.06856068
   m_Direction: 1
   m_Center: {x: 0.00072853063, y: 0.000009898095, z: 0.00039973287}
+--- !u!114 &1765856159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1765856153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b146a5c7451e4ed4ba0e5c9f9f5cacae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  rb3D: {fileID: 0}
+  HP: 1000
 --- !u!1 &1872198587
 GameObject:
   m_ObjectHideFlags: 0
@@ -4250,6 +4480,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crate (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 79bcf68dbff060c43af449d1bd66637b, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 79bcf68dbff060c43af449d1bd66637b, type: 3}
       propertyPath: m_RootOrder
       value: 18
@@ -4318,6 +4552,10 @@ PrefabInstance:
     - target: {fileID: 142724, guid: 665cb07b5ec163d4abbf8fbf4e231f45, type: 3}
       propertyPath: m_Name
       value: Barrel (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 142724, guid: 665cb07b5ec163d4abbf8fbf4e231f45, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 460436, guid: 665cb07b5ec163d4abbf8fbf4e231f45, type: 3}
       propertyPath: m_RootOrder
@@ -4405,7 +4643,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1958514594}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -4413,6 +4651,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1958514597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958514594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b146a5c7451e4ed4ba0e5c9f9f5cacae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  rb3D: {fileID: 0}
+  HP: 1000
 --- !u!1 &1998634214
 GameObject:
   m_ObjectHideFlags: 0
@@ -4631,6 +4884,21 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 79bcf68dbff060c43af449d1bd66637b, type: 3}
   m_PrefabInstance: {fileID: 1604975796}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2029134721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2029134716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b146a5c7451e4ed4ba0e5c9f9f5cacae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  rb3D: {fileID: 0}
+  HP: 1000
 --- !u!1 &2073230502 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 142724, guid: 665cb07b5ec163d4abbf8fbf4e231f45, type: 3}
@@ -4671,6 +4939,21 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 460436, guid: 665cb07b5ec163d4abbf8fbf4e231f45, type: 3}
   m_PrefabInstance: {fileID: 940594499}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2073230508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2073230502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b146a5c7451e4ed4ba0e5c9f9f5cacae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  rb3D: {fileID: 0}
+  HP: 1000
 --- !u!1 &2088048916
 GameObject:
   m_ObjectHideFlags: 0
@@ -4875,6 +5158,10 @@ PrefabInstance:
     - target: {fileID: 142724, guid: 665cb07b5ec163d4abbf8fbf4e231f45, type: 3}
       propertyPath: m_Name
       value: Barrel (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 142724, guid: 665cb07b5ec163d4abbf8fbf4e231f45, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 460436, guid: 665cb07b5ec163d4abbf8fbf4e231f45, type: 3}
       propertyPath: m_RootOrder
