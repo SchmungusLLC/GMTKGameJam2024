@@ -39,10 +39,8 @@ public partial class Player
 
     [Header("Scales")]
     public int currentScalesValue = 12;
-    public Slider scalesSlider;
     public Slider lightSlider;
     public Slider heavySlider;
-    public TextMeshProUGUI scaledStatsTB;
 
     [Header("Ultimates")]
     public PlayableDirector ultimateDirector;
@@ -274,7 +272,6 @@ public partial class Player
         // edit scales value
         currentScalesValue += value;
         currentScalesValue = Mathf.Clamp(currentScalesValue, 0, 24);
-        scalesSlider.value = currentScalesValue;
 
         // Normalize t to the range [0, 1]
         float normalizedT = currentScalesValue / 24f;
@@ -293,12 +290,6 @@ public partial class Player
         animator.SetFloat("SmallAttackSpeed", 1 / scaledSmallAttackDuration);
         animator.SetFloat("ComboEndAttackSpeed", 1 / scaledComboEndAttackDuration);
         animator.SetFloat("BigAttackSpeed", 1 / scaledBigAttackDuration);
-
-        scaledStatsTB.text = $"Move: {scaledMoveSpeed}\n" +
-            $"BigDuration: {scaledBigAttackDuration}\n" +
-            $"SmallDuration: {scaledSmallAttackDuration}\n" +
-            $"BigForce: {scaledBigAttackForce}\n" +
-            $"SmallForce: {scaledComboEndAttackDuration}\n";
 
         UpdateScalesUI();
     }
