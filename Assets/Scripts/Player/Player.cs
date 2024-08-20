@@ -74,13 +74,16 @@ public partial class Player : MonoBehaviour
         isDashing = false;
         canDash = true;
 
-        HPBar.maxValue = currentHP = maxHP;
+        currentHP = maxHP;
+        HPBar.maxValue = maxHP;
         HPBar.value = currentHP;
         cameraFaceDir = mainCamera.transform.eulerAngles;
     }
 
     void Update()
     {
+        //Debug.Log("CurrentHP = " + currentHP);
+
         if (!canDash) { DashTimer(); }
         if (!isStunned)
         {
@@ -90,6 +93,16 @@ public partial class Player : MonoBehaviour
         if (waitingForRecoveryMinimum)
         {
             RecoveryMinimumTimer();
+        }
+
+        if (comboCounter > 0)
+        {
+            comboResetTime += Time.deltaTime;
+            if (comboResetTime > comboResetThreshold)
+            {
+                comboCounter = 0;
+                comboResetTime = 0;
+            }
         }
     }
 
@@ -182,7 +195,13 @@ public partial class Player : MonoBehaviour
     {
         if (isStunned) { return; }
 
-        StartAttack(AttackState.SmallAttack);
+        if (comboCounter >= 2)
+        {
+            StartAttack(AttackState.ComboEndAttack);
+        }
+        {
+            StartAttack(AttackState.SmallAttack);
+        }
     }
 
     void OnBigAttackInput()

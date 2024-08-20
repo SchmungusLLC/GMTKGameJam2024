@@ -16,20 +16,26 @@ public partial class Player
     [Header("Scaled Stats")]
     public float lightMoveSpeed;
     public float heavyMoveSpeed;
+    public float lightPlayerMass;
+    public float heavyPlayerMass;
     public float lightBigAttackDuration;
-    public float heavyBigAttackDuration = 3f;
-    public float lightSmallAttackDuration = 0.5f;
-    public float heavySmallAttackDuration = 1.5f;
-    public float lightBigAttackForce = 5f;
-    public float heavyBigAttackForce = 20f;
-    public float lightSmallAttackForce = 2f;
-    public float heavySmallAttackForce = 10f;
+    public float heavyBigAttackDuration;
+    public float lightSmallAttackDuration;
+    public float heavySmallAttackDuration;
+    public float lightComboEndAttackDuration;
+    public float heavyComboEndAttackDuration;
+    public float lightBigAttackForce;
+    public float heavyBigAttackForce;
+    public float lightComboEndAttackForce;
+    public float heavyComboEndAttackForce;
 
     public float scaledMoveSpeed;
+    public float scaledPlayerMass;
+    public float scaledComboEndAttackDuration;
     public float scaledBigAttackDuration;
     public float scaledSmallAttackDuration;
     public float scaledBigAttackForce;
-    public float scaledSmallAttackForce;
+    public float scaledComboEndAttackForce;
 
     [Header("Scales")]
     public int currentScalesValue = 12;
@@ -63,7 +69,12 @@ public partial class Player
         None,
         BigAttack,
         SmallAttack,
+        ComboEndAttack
     }
+
+    public int comboCounter;
+    public float comboResetTime;
+    public float comboResetThreshold;
 
     [Header("Hitbox Settings")]
     [Tooltip("Layers which this attack's hitbox should check against")]
@@ -88,6 +99,8 @@ public partial class Player
         if (currentAttackState != AttackState.None) { return; }
 
         currentAttackState = state;
+        comboCounter++;
+        comboResetTime = 0;
 
         if (debugUseTestAnimations)
         {
@@ -129,11 +142,16 @@ public partial class Player
                     enemy.rb3D.AddForce(direction * scaledBigAttackForce, ForceMode.Impulse);
                     enemy.rb3D.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
                 }
-                else
+                else if (currentAttackState == AttackState.SmallAttack)
                 {
                     enemy.IncomingAttack(smallAttackDamage, currentAttackState);
-                    enemy.rb3D.AddForce(direction * scaledSmallAttackForce, ForceMode.Impulse);
                     enemy.rb3D.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+                }
+                else if (currentAttackState == AttackState.ComboEndAttack)
+                {
+                    enemy.IncomingAttack(smallAttackDamage, currentAttackState);
+                    enemy.rb3D.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+                    enemy.rb3D.AddForce(direction * scaledComboEndAttackForce, ForceMode.Impulse);
                 }
             }
             else if (target.gameObject.TryGetComponent(out Destructible destructible))
@@ -149,10 +167,16 @@ public partial class Player
                     destructible.Struck(bigAttackDamage);
                     destructible.rb3D.AddForce(direction * scaledBigAttackForce, ForceMode.Impulse);
                 }
-                else
+                else if (currentAttackState == AttackState.SmallAttack)
                 {
                     destructible.Struck(smallAttackDamage);
-                    destructible.rb3D.AddForce(direction * scaledSmallAttackForce, ForceMode.Impulse);
+                    destructible.rb3D.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+                }
+                else if (currentAttackState == AttackState.ComboEndAttack)
+                {
+                    destructible.Struck(smallAttackDamage);
+                    destructible.rb3D.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+                    destructible.rb3D.AddForce(direction * scaledComboEndAttackForce, ForceMode.Impulse);
                 }
             }
         }
@@ -257,19 +281,24 @@ public partial class Player
 
         // update scaled stats
         scaledMoveSpeed = Mathf.Lerp(lightMoveSpeed, heavyMoveSpeed, normalizedT);
+        scaledPlayerMass = Mathf.Lerp(lightPlayerMass, heavyPlayerMass, normalizedT);
         scaledBigAttackDuration = Mathf.Lerp(lightBigAttackDuration, heavyBigAttackDuration, normalizedT);
         scaledSmallAttackDuration = Mathf.Lerp(lightSmallAttackDuration, heavySmallAttackDuration, normalizedT);
+        scaledComboEndAttackDuration = Mathf.Lerp(lightSmallAttackDuration, heavySmallAttackDuration, normalizedT);
         scaledBigAttackForce = Mathf.Lerp(lightBigAttackForce, heavyBigAttackForce, normalizedT);
-        scaledSmallAttackForce = Mathf.Lerp(lightSmallAttackForce, heavySmallAttackForce, normalizedT);
+        scaledComboEndAttackForce = Mathf.Lerp(lightComboEndAttackForce, heavyComboEndAttackForce, normalizedT);
+
+        rb3D.mass = scaledPlayerMass;
 
         animator.SetFloat("SmallAttackSpeed", 1 / scaledSmallAttackDuration);
+        animator.SetFloat("ComboEndAttackSpeed", 1 / scaledComboEndAttackDuration);
         animator.SetFloat("BigAttackSpeed", 1 / scaledBigAttackDuration);
 
         scaledStatsTB.text = $"Move: {scaledMoveSpeed}\n" +
             $"BigDuration: {scaledBigAttackDuration}\n" +
             $"SmallDuration: {scaledSmallAttackDuration}\n" +
             $"BigForce: {scaledBigAttackForce}\n" +
-            $"SmallForce: {scaledSmallAttackForce}\n";
+            $"SmallForce: {scaledComboEndAttackDuration}\n";
 
         UpdateScalesUI();
     }
@@ -298,7 +327,7 @@ public partial class Player
     {
         animator.Play("Hit");
 
-        //Debug.Log("Player took Damage: " + damage);
+        Debug.Log("Player took Damage: " + damage);
         currentHP -= damage;
     }
 
