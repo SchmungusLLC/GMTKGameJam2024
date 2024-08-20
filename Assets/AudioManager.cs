@@ -120,7 +120,7 @@ public class AudioManager : MonoBehaviour
             GameObject btmenubutton = GameObject.Find("BackToMenuButton");
         if (btmenubutton && btmenubutton.TryGetComponent(out Button button2))
             {
-                button2.onClick.AddListener(PlayButtonPressed);
+                button2.onClick.AddListener(BackToMenuButtonPressed);
         }
         }
     }
@@ -147,6 +147,7 @@ public class AudioManager : MonoBehaviour
     public void BackToMenuButtonPressed()// When you ext the main menu the music changes and the court sounds stop
     {
         MainMenuActive = true; // Set the flag to false to stop the loop
+        Debug.Log("got here");
         Play("MainMenuMusic");
         Play("CourtAmbience");
         Stop("InGameMusic");
