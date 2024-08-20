@@ -183,7 +183,8 @@ public class AudioManager : MonoBehaviour
         Play("Rain");
         Play("MainMenuMusic");
         Play("CourtAmbience");
-        StartCoroutine(PlayGavelRandomly());
+        Play("Gavel");
+        //StartCoroutine(PlayGavelRandomly());
     }
 
     public Button PlayButton;
