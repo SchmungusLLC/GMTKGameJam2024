@@ -86,13 +86,13 @@ public class EnemySoul : MonoBehaviour
 
     public void ChargePlayerLight()
     {
-        player.AddLightUltimateCharge();
+        player.AddLightUltimateCharge(0.1f);
         player.AddScalesValue(-1);
     }
 
     public void ChargePlayerHeavy()
     {
-        player.AddHeavyUltimateCharge();
+        player.AddHeavyUltimateCharge(0.1f);
         player.AddScalesValue(1);
     }
 }

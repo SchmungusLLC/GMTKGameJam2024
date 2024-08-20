@@ -221,9 +221,9 @@ public partial class Player
         }
     }
 
-    public void AddLightUltimateCharge()
+    public void AddLightUltimateCharge(float value)
     {
-        lightUltimateCharge += 0.1f;
+        lightUltimateCharge += value;
         switch (lightUltimateCharge)
         {
             case < 0.1f:
@@ -244,9 +244,9 @@ public partial class Player
         lightSlider.value = lightUltimateCharge;
     }
 
-    public void AddHeavyUltimateCharge()
+    public void AddHeavyUltimateCharge(float value)
     {
-        heavyUltimateCharge += 0.1f;
+        heavyUltimateCharge += value;
         switch (heavyUltimateCharge)
         {
             case < 0.1f:
@@ -270,6 +270,7 @@ public partial class Player
     public void AddScalesValue(int value)
     {
         // edit scales value
+        //Debug.Log("Setting scales value to " + value);
         currentScalesValue += value;
         currentScalesValue = Mathf.Clamp(currentScalesValue, 0, 24);
 

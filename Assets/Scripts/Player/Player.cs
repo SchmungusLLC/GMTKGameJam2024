@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
-using static Enemy;
+using static GameManager;
 
 public partial class Player : MonoBehaviour
 {
@@ -68,8 +68,12 @@ public partial class Player : MonoBehaviour
 
     void Start()
     {
+        _gameManager.SetStatsOnPlayer();
+        player.AddHeavyUltimateCharge(0);
+        player.AddLightUltimateCharge(0);
+        player.AddScalesValue(0);
+
         currentAttackState = AttackState.None;
-        AddScalesValue(0);
 
         isDashing = false;
         canDash = true;
