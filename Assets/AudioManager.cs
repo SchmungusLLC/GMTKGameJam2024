@@ -11,6 +11,8 @@ public class AudioManager : MonoBehaviour
     private bool MainMenuActive = true;
 
     public Sound[] sounds;
+    public Sound[] Level1Goons;
+    public Sound[] Level2Goons;
 
     void Awake()
     {
@@ -35,6 +37,28 @@ public class AudioManager : MonoBehaviour
             s.source.loop = s.loop;
             s.source.outputAudioMixerGroup = s.outputAudioMixerGroup;
         }
+
+        //here you go josh see I just made another one. now make another method to play random goon sounds from that array
+        foreach (Sound s in Level1Goons)
+        {
+            s.source = gameObject.AddComponent<AudioSource>();
+            s.source.name = s.clip.name;
+            s.source.clip = s.clip;
+            s.source.volume = s.Volume;
+            s.source.pitch = s.pitch;
+            s.source.loop = s.loop;
+            s.source.outputAudioMixerGroup = s.outputAudioMixerGroup;
+        }
+
+        foreach (Sound s in Level2Goons)
+        {
+            s.source = gameObject.AddComponent<AudioSource>();
+            s.source.clip = s.clip;
+            s.source.volume = s.Volume;
+            s.source.pitch = s.pitch;
+            s.source.loop = s.loop;
+            s.source.outputAudioMixerGroup = s.outputAudioMixerGroup;
+        }
     }
 
     void Start()
@@ -46,14 +70,15 @@ public class AudioManager : MonoBehaviour
         SceneManager.activeSceneChanged += OnSceneChanged;
     }
 
-    private System.Random random = new System.Random();
+
+    private System.Random randomGavelTime = new System.Random();
 
     void OnDestroy()
     {
         SceneManager.activeSceneChanged -= OnSceneChanged;
     }
 
-    private void OnSceneChanged(Scene MainMenu, Scene Level1)
+    private void OnSceneChanged(Scene MainMenu, Scene Level1) // When you ext the main menu the music changes and the court sounds stop
     {
         MainMenuActive = false; // Set the flag to false to stop the loop
         Stop("MainMenuMusic");
@@ -61,32 +86,53 @@ public class AudioManager : MonoBehaviour
         Play("InGameMusic");
     }
 
-    private IEnumerator PlayGavelRandomly()
+    private IEnumerator PlayGavelRandomly() // play gavel sounds at random intervals durnig main menu
     {
-        while (MainMenuActive) // Infinite loop to keep repeating the action
+        while (MainMenuActive) 
         {
             // Wait for a random amount of time between 3 and 5 seconds
-            float waitTime = random.Next(4, 8); // Random delay between 4s and 8s
+            float waitTime = randomGavelTime.Next(4, 8); // Random delay between 4s and 8s
             yield return new WaitForSeconds(waitTime);
 
             // Call the method to perform the action
-            if (MainMenuActive)
+            if (MainMenuActive) // Only play if player did not leave main menu during delay
             {
                 Play("Gavel");
             }
         }
     }
 
+    public void PlayLevel1GoonSound()
+    {
+        int randomIndex = UnityEngine.Random.Range(0, Level1Goons.Length);
+        Level1Goons[randomIndex].source.Play();
+    }
+
+
     public void Play (string name)
         {
-            Sound s = Array.Find(sounds, sound => sound.name == name);
-            if (s == null)
-            {
-                Debug.LogWarning("Sound" + name + "no found!");
-                return;
-            }
-            s.source.Play();
+        Sound s = null;
+
+        s = Array.Find(sounds, sound => sound.name == name);
+
+        if (s == null)
+        {
+            s = Array.Find(Level1Goons, sound => sound.name == name);
         }
+
+        if (s == null)
+        {
+            s = Array.Find(Level2Goons, sound => sound.name == name);
+        }
+
+        if (s == null)
+        {
+            Debug.LogWarning("Sound " + name + " not found!");
+            return;
+        }
+
+        s.source.Play();
+    }
 
     public void Stop(string name)
     {

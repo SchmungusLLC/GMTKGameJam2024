@@ -3156,6 +3156,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1599446776156343012, guid: 37c7ffcb188da4f4e8551d8f37d4a362, type: 3}
+      propertyPath: Level1Goons.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599446776156343012, guid: 37c7ffcb188da4f4e8551d8f37d4a362, type: 3}
       propertyPath: sounds.Array.data[0].clip
       value: 
       objectReference: {fileID: 8300000, guid: 72a5d2ee84de05c4a9ef641e05114ece, type: 3}
@@ -3233,23 +3237,71 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1599446776156343012, guid: 37c7ffcb188da4f4e8551d8f37d4a362, type: 3}
       propertyPath: sounds.Array.data[0].Volume
-      value: 0.75
+      value: 0.742
       objectReference: {fileID: 0}
     - target: {fileID: 1599446776156343012, guid: 37c7ffcb188da4f4e8551d8f37d4a362, type: 3}
       propertyPath: sounds.Array.data[1].Volume
-      value: 0.1
+      value: 0.21
       objectReference: {fileID: 0}
     - target: {fileID: 1599446776156343012, guid: 37c7ffcb188da4f4e8551d8f37d4a362, type: 3}
       propertyPath: sounds.Array.data[2].Volume
-      value: 0.75
+      value: 0.555
       objectReference: {fileID: 0}
     - target: {fileID: 1599446776156343012, guid: 37c7ffcb188da4f4e8551d8f37d4a362, type: 3}
       propertyPath: sounds.Array.data[3].Volume
-      value: 0.4
+      value: 0.499
       objectReference: {fileID: 0}
     - target: {fileID: 1599446776156343012, guid: 37c7ffcb188da4f4e8551d8f37d4a362, type: 3}
       propertyPath: sounds.Array.data[4].Volume
-      value: 0.4
+      value: 0.499
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599446776156343012, guid: 37c7ffcb188da4f4e8551d8f37d4a362, type: 3}
+      propertyPath: Level1Goons.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7531ffa5d44e82f408ad50396e66c6c4, type: 3}
+    - target: {fileID: 1599446776156343012, guid: 37c7ffcb188da4f4e8551d8f37d4a362, type: 3}
+      propertyPath: Level1Goons.Array.data[0].name
+      value: GavelHi
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599446776156343012, guid: 37c7ffcb188da4f4e8551d8f37d4a362, type: 3}
+      propertyPath: Level1Goons.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 338456230277a8f40903e571ff0cefd0, type: 3}
+    - target: {fileID: 1599446776156343012, guid: 37c7ffcb188da4f4e8551d8f37d4a362, type: 3}
+      propertyPath: Level1Goons.Array.data[1].name
+      value: SwordSound1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599446776156343012, guid: 37c7ffcb188da4f4e8551d8f37d4a362, type: 3}
+      propertyPath: Level1Goons.Array.data[2].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 5798f4d55c401ff4593b185cbf1e8662, type: 3}
+    - target: {fileID: 1599446776156343012, guid: 37c7ffcb188da4f4e8551d8f37d4a362, type: 3}
+      propertyPath: Level1Goons.Array.data[2].name
+      value: SwordSound2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599446776156343012, guid: 37c7ffcb188da4f4e8551d8f37d4a362, type: 3}
+      propertyPath: Level1Goons.Array.data[0].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599446776156343012, guid: 37c7ffcb188da4f4e8551d8f37d4a362, type: 3}
+      propertyPath: Level1Goons.Array.data[1].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599446776156343012, guid: 37c7ffcb188da4f4e8551d8f37d4a362, type: 3}
+      propertyPath: Level1Goons.Array.data[2].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599446776156343012, guid: 37c7ffcb188da4f4e8551d8f37d4a362, type: 3}
+      propertyPath: Level1Goons.Array.data[0].Volume
+      value: 0.686
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599446776156343012, guid: 37c7ffcb188da4f4e8551d8f37d4a362, type: 3}
+      propertyPath: Level1Goons.Array.data[1].Volume
+      value: 0.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599446776156343012, guid: 37c7ffcb188da4f4e8551d8f37d4a362, type: 3}
+      propertyPath: Level1Goons.Array.data[2].Volume
+      value: 0.55
       objectReference: {fileID: 0}
     - target: {fileID: 1599446776156343012, guid: 37c7ffcb188da4f4e8551d8f37d4a362, type: 3}
       propertyPath: sounds.Array.data[0].outputAudioMixerGroup
