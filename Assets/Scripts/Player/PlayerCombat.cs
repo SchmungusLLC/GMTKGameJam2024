@@ -96,7 +96,7 @@ public partial class Player
     public bool debugUseTestAnimations;
     void StartAttack(AttackState state)
     {
-        if (currentAttackState != AttackState.None) { return; }
+        //if (currentAttackState != AttackState.None) { return; }
 
         currentAttackState = state;
         comboCounter++;
