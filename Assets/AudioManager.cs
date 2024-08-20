@@ -17,6 +17,11 @@ public class AudioManager : MonoBehaviour
     public Sound[] GoonsIntro;
     public Sound[] BossHit;
     public Sound[] BossHitting;
+    public Sound[] GoonCelebrate;
+    public Sound[] LJHit;
+    public Sound[] LJKill;
+    public Sound[] LJLightAttack;
+    public Sound[] LJHeavyAttack;
 
 
 
@@ -156,19 +161,8 @@ public class AudioManager : MonoBehaviour
 
     public void Play (string name)
         {
-        Sound s = null;
 
-        s = Array.Find(sounds, sound => sound.name == name);
-
-        if (s == null)
-        {
-            s = Array.Find(Level1Goons, sound => sound.name == name);
-        }
-
-        if (s == null)
-        {
-            s = Array.Find(Level2Goons, sound => sound.name == name);
-        }
+        Sound s = Array.Find(sounds, sound => sound.name == name);
 
         if (s == null)
         {
