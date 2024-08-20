@@ -340,7 +340,6 @@ public partial class Player
         currentAttackState = AttackState.None;
         SwordTrailVFX.enabled = false;
         SwordParticleVFX.enabled = false;
-
     }
 
     void TakeDamage(float damage)
@@ -355,6 +354,10 @@ public partial class Player
     {
         //Debug.Log("Player was hit by " + attackState);
         TakeDamage(damage);
+        SwordParticleVFX.enabled = false;
+        SwordTrailVFX.enabled = false;
+        DashParticleVFX.enabled = false;
+        DashTrailVFX.enabled = false;
     }
 
     public void StartHitStun()
