@@ -84,6 +84,7 @@ public class AudioManager : MonoBehaviour
         Stop("MainMenuMusic");
         Stop("CourtAmbience");
         Play("InGameMusic");
+        Play("Gavel");
     }
 
     private IEnumerator PlayGavelRandomly() // play gavel sounds at random intervals durnig main menu
