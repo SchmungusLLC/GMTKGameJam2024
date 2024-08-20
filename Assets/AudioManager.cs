@@ -11,8 +11,15 @@ public class AudioManager : MonoBehaviour
     private bool MainMenuActive = true;
 
     public Sound[] sounds;
-    public Sound[] Level1Goons;
-    public Sound[] Level2Goons;
+    public Sound[] GoonsHit; //getting hit, hitting, dying
+    public Sound[] GoonsHitting;
+    public Sound[] GoonsDying;
+    public Sound[] GoonsIntro;
+    public Sound[] BossHit;
+    public Sound[] BossHitting;
+
+
+
 
     void Awake()
     {
@@ -38,11 +45,9 @@ public class AudioManager : MonoBehaviour
             s.source.outputAudioMixerGroup = s.outputAudioMixerGroup;
         }
 
-        //here you go josh see I just made another one. now make another method to play random goon sounds from that array
-        foreach (Sound s in Level1Goons)
+        foreach (Sound s in GoonsHit)
         {
             s.source = gameObject.AddComponent<AudioSource>();
-            s.source.name = s.clip.name;
             s.source.clip = s.clip;
             s.source.volume = s.Volume;
             s.source.pitch = s.pitch;
@@ -50,7 +55,47 @@ public class AudioManager : MonoBehaviour
             s.source.outputAudioMixerGroup = s.outputAudioMixerGroup;
         }
 
-        foreach (Sound s in Level2Goons)
+        foreach (Sound s in GoonsHitting)
+        {
+            s.source = gameObject.AddComponent<AudioSource>();
+            s.source.clip = s.clip;
+            s.source.volume = s.Volume;
+            s.source.pitch = s.pitch;
+            s.source.loop = s.loop;
+            s.source.outputAudioMixerGroup = s.outputAudioMixerGroup;
+        }
+
+        foreach (Sound s in GoonsDying)
+        {
+            s.source = gameObject.AddComponent<AudioSource>();
+            s.source.clip = s.clip;
+            s.source.volume = s.Volume;
+            s.source.pitch = s.pitch;
+            s.source.loop = s.loop;
+            s.source.outputAudioMixerGroup = s.outputAudioMixerGroup;
+        }
+
+        foreach (Sound s in GoonsIntro)
+        {
+            s.source = gameObject.AddComponent<AudioSource>();
+            s.source.clip = s.clip;
+            s.source.volume = s.Volume;
+            s.source.pitch = s.pitch;
+            s.source.loop = s.loop;
+            s.source.outputAudioMixerGroup = s.outputAudioMixerGroup;
+        }
+
+        foreach (Sound s in BossHit)
+        {
+            s.source = gameObject.AddComponent<AudioSource>();
+            s.source.clip = s.clip;
+            s.source.volume = s.Volume;
+            s.source.pitch = s.pitch;
+            s.source.loop = s.loop;
+            s.source.outputAudioMixerGroup = s.outputAudioMixerGroup;
+        }
+
+        foreach (Sound s in BossHitting)
         {
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
@@ -84,7 +129,6 @@ public class AudioManager : MonoBehaviour
         Stop("MainMenuMusic");
         Stop("CourtAmbience");
         Play("InGameMusic");
-        Play("Gavel");
     }
 
     private IEnumerator PlayGavelRandomly() // play gavel sounds at random intervals durnig main menu
@@ -103,10 +147,10 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void PlayLevel1GoonSound()
+    public void PlayRandomSoundFromArray(Sound[] sounds)
     {
-        int randomIndex = UnityEngine.Random.Range(0, Level1Goons.Length);
-        Level1Goons[randomIndex].source.Play();
+        int randomIndex = UnityEngine.Random.Range(0, sounds.Length);
+        sounds[randomIndex].source.Play();
     }
 
 

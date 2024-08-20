@@ -4,6 +4,18 @@ using UnityEngine;
 [System.Serializable]
 public class Sound
 {
+
+    public enum GoonSoundType
+    {
+        None,
+        GettingHit,
+        Hitting,
+        Dying
+    }
+
+    // Correctly declare and initialize a variable of type GoonSoundType
+    public GoonSoundType currentSound = GoonSoundType.None;
+
     public string name;
 
     public AudioClip clip;
