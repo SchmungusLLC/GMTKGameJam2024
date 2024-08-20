@@ -24,16 +24,12 @@ public class Destructible : MonoBehaviour
     public void TakeDamage(float damage)
     {
         //animator.Play("Hit");
-        HP -= damage;
+        //HP -= damage;
         //HPBar.value = currentHP;
-        if (HP < 0)
-        {
-            Destroyed();
-        }
     }
 
     public void Destroyed()
     {
-        gameObject.SetActive(false);
+        // nothing
     }
 }

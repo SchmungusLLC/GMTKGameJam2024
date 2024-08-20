@@ -25,6 +25,7 @@ public partial class Enemy : MonoBehaviour
     public Rigidbody rb3D;
     public Animator animator;
     public NavMeshAgent agent;
+    public CapsuleCollider capsuleCollider;
 
     [Header("Combat Stats")]
     [Tooltip("Total Number of Health Points (HP)")]
@@ -96,6 +97,7 @@ public partial class Enemy : MonoBehaviour
         rb3D = GetComponent<Rigidbody>();
         //animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
+        capsuleCollider = GetComponent<CapsuleCollider>();
 
         agent.updatePosition = false;
         agent.updateRotation = true;
@@ -430,6 +432,9 @@ public partial class Enemy : MonoBehaviour
         {
             _AudioManger.PlayRandomSoundFromArray(_AudioManger.GoonsDying);
         }
+        rb3D.constraints = RigidbodyConstraints.FreezeAll;
+        rb3D.useGravity = false;
+        capsuleCollider.enabled = false;
         StartSoulAnimation();
         //gameObject.SetActive(false);
     }

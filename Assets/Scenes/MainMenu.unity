@@ -4247,6 +4247,78 @@ PrefabInstance:
       propertyPath: PlayButton
       value: 
       objectReference: {fileID: 478964565}
+    - target: {fileID: 1599446776156343012, guid: 37c7ffcb188da4f4e8551d8f37d4a362, type: 3}
+      propertyPath: GoonsDying.Array.data[0].Volume
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599446776156343012, guid: 37c7ffcb188da4f4e8551d8f37d4a362, type: 3}
+      propertyPath: GoonsDying.Array.data[1].Volume
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599446776156343012, guid: 37c7ffcb188da4f4e8551d8f37d4a362, type: 3}
+      propertyPath: GoonsDying.Array.data[2].Volume
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599446776156343012, guid: 37c7ffcb188da4f4e8551d8f37d4a362, type: 3}
+      propertyPath: GoonsDying.Array.data[3].Volume
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599446776156343012, guid: 37c7ffcb188da4f4e8551d8f37d4a362, type: 3}
+      propertyPath: GoonsDying.Array.data[4].Volume
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599446776156343012, guid: 37c7ffcb188da4f4e8551d8f37d4a362, type: 3}
+      propertyPath: GoonsDying.Array.data[5].Volume
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599446776156343012, guid: 37c7ffcb188da4f4e8551d8f37d4a362, type: 3}
+      propertyPath: GoonsDying.Array.data[6].Volume
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599446776156343012, guid: 37c7ffcb188da4f4e8551d8f37d4a362, type: 3}
+      propertyPath: GoonsDying.Array.data[7].Volume
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599446776156343012, guid: 37c7ffcb188da4f4e8551d8f37d4a362, type: 3}
+      propertyPath: GoonsDying.Array.data[8].Volume
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599446776156343012, guid: 37c7ffcb188da4f4e8551d8f37d4a362, type: 3}
+      propertyPath: GoonsDying.Array.data[9].Volume
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599446776156343012, guid: 37c7ffcb188da4f4e8551d8f37d4a362, type: 3}
+      propertyPath: GoonsDying.Array.data[10].Volume
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599446776156343012, guid: 37c7ffcb188da4f4e8551d8f37d4a362, type: 3}
+      propertyPath: GoonsDying.Array.data[11].Volume
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599446776156343012, guid: 37c7ffcb188da4f4e8551d8f37d4a362, type: 3}
+      propertyPath: GoonsDying.Array.data[12].Volume
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599446776156343012, guid: 37c7ffcb188da4f4e8551d8f37d4a362, type: 3}
+      propertyPath: GoonsDying.Array.data[13].Volume
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599446776156343012, guid: 37c7ffcb188da4f4e8551d8f37d4a362, type: 3}
+      propertyPath: GoonsDying.Array.data[14].Volume
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599446776156343012, guid: 37c7ffcb188da4f4e8551d8f37d4a362, type: 3}
+      propertyPath: GoonsDying.Array.data[15].Volume
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599446776156343012, guid: 37c7ffcb188da4f4e8551d8f37d4a362, type: 3}
+      propertyPath: GoonsDying.Array.data[16].Volume
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599446776156343012, guid: 37c7ffcb188da4f4e8551d8f37d4a362, type: 3}
+      propertyPath: GoonsDying.Array.data[17].Volume
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 1599446776156343013, guid: 37c7ffcb188da4f4e8551d8f37d4a362, type: 3}
       propertyPath: m_Name
       value: Audiomanager

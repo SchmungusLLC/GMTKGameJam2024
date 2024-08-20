@@ -179,6 +179,7 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
+        Debug.Log("Start");
         Play("Rain");
         Play("MainMenuMusic");
         Play("CourtAmbience");
@@ -190,6 +191,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlayButtonPressed()// When you ext the main menu the music changes and the court sounds stop
     {
+        Debug.Log("Play");
         MainMenuActive = false; // Set the flag to false to stop the loop
         Stop("MainMenuMusic");
         Stop("CourtAmbience");
@@ -198,6 +200,7 @@ public class AudioManager : MonoBehaviour
 
     public void BackToMenuButtonPressed()// When you ext the main menu the music changes and the court sounds stop
     {
+        Debug.Log("Back");
         MainMenuActive = true; // Set the flag to false to stop the loop
         Debug.Log("got here");
         Play("MainMenuMusic");
