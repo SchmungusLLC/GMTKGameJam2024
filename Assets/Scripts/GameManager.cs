@@ -44,4 +44,11 @@ public class GameManager : MonoBehaviour
         lightUltCharge = light;
         heavyUltCharge = heavy;
     }
+
+    public void Reset()
+    {
+        scalesValue=12;
+        lightUltCharge=0;
+        heavyUltCharge=0;
+    }
 }

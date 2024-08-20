@@ -356,6 +356,10 @@ public partial class Player
     {
         animator.Play("Hit");
         _AudioManger.PlayRandomSoundFromArray(_AudioManger.LJHit);
+        DashParticleVFX.enabled = false;
+        DashTrailVFX.enabled = false;
+        SwordParticleVFX.enabled = false;
+        SwordTrailVFX.enabled = false;
 
         Debug.Log("Player took Damage: " + damage);
         currentHP -= damage;
@@ -375,7 +379,7 @@ public partial class Player
     {
         minimumRecoveryTimer = 0;
         waitingForRecoveryMinimum = true;
-        Debug.Log("Recovery waiting...");
+        //Debug.Log("Recovery waiting...");
 
         isStunned = true;
         currentAttackState = AttackState.None;
@@ -387,7 +391,7 @@ public partial class Player
 
     public void EndHitStun()
     {
-        Debug.Log("End hit stun");
+        //Debug.Log("End hit stun");
         isStunned = false;
         //rb3D.constraints = RigidbodyConstraints.FreezeRotation;
     }
