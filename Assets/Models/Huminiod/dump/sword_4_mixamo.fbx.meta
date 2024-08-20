@@ -36,8 +36,8 @@ ModelImporter:
       name: Sword 4
       takeName: clip
       internalID: -4671056281497532287
-      firstFrame: 0
-      lastFrame: 115
+      firstFrame: 21
+      lastFrame: 78
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
