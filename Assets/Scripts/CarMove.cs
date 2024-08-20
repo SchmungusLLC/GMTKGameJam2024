@@ -40,11 +40,8 @@ public class CarMove : MonoBehaviour
         if (crashColliders.ContainsLayer(collision.gameObject.layer))
         {
             StartCoroutine(PauseMovement());
-            if(collision.gameObject.CompareTag("Obstacle"))
-            {
-                carAnimator.SetTrigger("Honk");
-                carAudioSource.Play();
-            }
+            carAnimator.SetTrigger("Honk");
+            carAudioSource.Play();
         }
     }
 
