@@ -64,6 +64,14 @@ public partial class Player : MonoBehaviour
         {
             mainCamera = Camera.main.gameObject;
         }
+
+        SwordTrailVFX = SwordTrailVFXSystem.emission;
+        SwordParticleVFX = SwordParticleVFXSystem.emission;
+        DashTrailVFX = DashTrailVFXSystem.emission;
+        DashParticleVFX = DashParticleVFXSystem.emission;
+
+        DashTrailVFX.enabled = false;
+        DashParticleVFX.enabled = false;
     }
 
     void Start()
@@ -73,7 +81,8 @@ public partial class Player : MonoBehaviour
         player.AddLightUltimateCharge(0);
         player.AddScalesValue(0);
 
-        currentAttackState = AttackState.None;
+        EndAttack();
+        //currentAttackState = AttackState.None;
 
         isDashing = false;
         canDash = true;
@@ -190,6 +199,9 @@ public partial class Player : MonoBehaviour
         if (!canDash || isStunned) { return; }
 
         isDashing = true;
+        DashTrailVFX.enabled = true;
+        DashParticleVFX.enabled = true;
+
         canDash = false;
         dashTime = 0f;
         animator.SetTrigger("Sheathe");

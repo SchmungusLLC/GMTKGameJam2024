@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -13,6 +14,17 @@ public partial class Player
 //                      PLAYER COMBAT
 // ============================================================
 {
+    [Header("VFX")]
+    public ParticleSystem SwordTrailVFXSystem;
+    public ParticleSystem SwordParticleVFXSystem;
+    public ParticleSystem DashTrailVFXSystem;
+    public ParticleSystem DashParticleVFXSystem;
+
+    public ParticleSystem.EmissionModule SwordTrailVFX;
+    public ParticleSystem.EmissionModule SwordParticleVFX;
+    public ParticleSystem.EmissionModule DashTrailVFX;
+    public ParticleSystem.EmissionModule DashParticleVFX;
+
     [Header("Scaled Stats")]
     public float lightMoveSpeed;
     public float heavyMoveSpeed;
@@ -96,7 +108,7 @@ public partial class Player
     {
         if (currentAttackState != AttackState.None) { return; }
 
-        Debug.Log("Setting state to " + state.ToString());
+        //Debug.Log("Setting state to " + state.ToString());
         currentAttackState = state;
         comboCounter++;
         comboResetTime = 0;
@@ -109,6 +121,12 @@ public partial class Player
 
         animator.Play(state.ToString(), 1);
         //animator.Play(state.ToString(), 2);
+    }
+
+    public void EnableSwordVFX()
+    {
+        SwordTrailVFX.enabled = true;
+        SwordParticleVFX.enabled = true;
     }
 
     public void AttackHitBox()
@@ -143,6 +161,7 @@ public partial class Player
                 if (currentAttackState == AttackState.BigAttack)
                 {
                     enemy.IncomingAttack(bigAttackDamage, currentAttackState);
+                    enemy.EnemyVFXEnable();
                     enemy.rb3D.AddForce(direction * scaledBigAttackForce, ForceMode.Impulse);
                     enemy.rb3D.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
                 }
@@ -318,8 +337,10 @@ public partial class Player
 
     public void EndAttack()
     {
-        Debug.Log("Ending");
         currentAttackState = AttackState.None;
+        SwordTrailVFX.enabled = false;
+        SwordParticleVFX.enabled = false;
+
     }
 
     void TakeDamage(float damage)

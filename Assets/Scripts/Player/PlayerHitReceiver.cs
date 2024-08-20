@@ -19,4 +19,14 @@ public class PlayerHitReceiver : MonoBehaviour
     {
         player.StartHitStun();
     }
+
+    public void EnableSwordVFX()
+    {
+        player.EnableSwordVFX();
+    }
+
+    public void EnableScalesVFX()
+    {
+        //player.EnableScalesVFX();
+    }
 }

@@ -72,6 +72,8 @@ public partial class Player
         if (dashTime > dashDuration)
         {
             isDashing = false;
+            DashTrailVFX.enabled = false;
+            DashParticleVFX.enabled = false;
         }
         if (dashTime > dashCooldown)
         {

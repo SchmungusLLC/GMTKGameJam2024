@@ -57,6 +57,13 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
+      - time: 0
+        functionName: EnableSwordVFX
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 66a22a7a1e13424488985292f48b0244, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       - time: 0.4169742
         functionName: AttackHitBox
         data: 

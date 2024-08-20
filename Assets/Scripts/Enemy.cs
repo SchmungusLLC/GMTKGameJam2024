@@ -11,6 +11,13 @@ public partial class Enemy : MonoBehaviour
 {
     public bool debugDisableEnemyAttacks;
 
+    [Header("VFX")]
+    public ParticleSystem TrailVFXSystem;
+    public ParticleSystem ParticleVFXSystem;
+
+    public ParticleSystem.EmissionModule TrailVFX;
+    public ParticleSystem.EmissionModule ParticleVFX;
+
     [Header("Components")]
     // components
     public Rigidbody rb3D;
@@ -104,6 +111,12 @@ public partial class Enemy : MonoBehaviour
 
         animator.SetFloat("SmallAttackSpeed", 1 / smallAttackDuration);
         animator.SetFloat("BigAttackSpeed", 1 / bigAttackDuration);
+
+        TrailVFX = TrailVFXSystem.emission;
+        ParticleVFX = ParticleVFXSystem.emission;
+
+        TrailVFX.enabled = false;
+        ParticleVFX.enabled = false;
     }
 
     // Update is called once per frame
@@ -329,6 +342,15 @@ public partial class Enemy : MonoBehaviour
     {
         currentEnemyState = EnemyState.MovingToPlayer;
         rb3D.constraints = RigidbodyConstraints.FreezeRotation;
+
+        TrailVFX.enabled = false;
+        ParticleVFX.enabled = false;
+    }
+
+    public void EnemyVFXEnable()
+    {
+        TrailVFX.enabled = true;
+        ParticleVFX.enabled = true;
     }
 
     public void RecoveryMinimumTimer()
