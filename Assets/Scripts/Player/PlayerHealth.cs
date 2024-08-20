@@ -1,6 +1,9 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using static AudioManager;
+using static GameManager;
 
 public partial class Player
 // ============================================================
@@ -33,8 +36,19 @@ public partial class Player
 
     public void PlayerDies()
     {
-        Debug.Log("Player died");
-        animator.Play("Death");
-        _AudioManger.PlayRandomSoundFromArray(_AudioManger.GoonCelebrate);
+        //Debug.Log("Player died");
+        animator.Play("Death", 3);
+        foreach (var enemy in FindObjectsOfType<Enemy>())
+        {
+            enemy.enabled = false;
+        }
+        _AudioManger.PlayRandomSoundFromArray(_AudioManger.GoonCelebrate);        
+    }
+
+    public IEnumerator GameOver()
+    {
+        yield return new WaitForSecondsRealtime(2);
+        _gameManager.Reset();
+        SceneManager.LoadScene("MainMenu");
     }
 }

@@ -25,8 +25,8 @@ public class PlayerHitReceiver : MonoBehaviour
         player.EnableSwordVFX();
     }
 
-    public void EnableScalesVFX()
+    public void GameOver()
     {
-        //player.EnableScalesVFX();
+        StartCoroutine(player.GameOver());
     }
 }
