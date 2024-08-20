@@ -8,6 +8,7 @@ using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
 using UnityEngine.UI;
+using static AudioManager;
 
 public partial class Player
 // ============================================================
@@ -117,6 +118,15 @@ public partial class Player
         {
             animator.Play(state.ToString());
             return;
+        }
+
+        if (state == AttackState.BigAttack)
+        {
+            _AudioManger.PlayRandomSoundFromArray(_AudioManger.LJHeavyAttack);
+        }
+        else
+        {
+            _AudioManger.PlayRandomSoundFromArray(_AudioManger.LJLightAttack);
         }
 
         animator.Play(state.ToString(), 1);
@@ -345,6 +355,7 @@ public partial class Player
     void TakeDamage(float damage)
     {
         animator.Play("Hit");
+        _AudioManger.PlayRandomSoundFromArray(_AudioManger.LJHit);
 
         Debug.Log("Player took Damage: " + damage);
         currentHP -= damage;

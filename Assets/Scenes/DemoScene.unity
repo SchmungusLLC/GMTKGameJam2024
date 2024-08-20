@@ -1985,6 +1985,63 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1001 &1240005216
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1599446776156343013, guid: 37c7ffcb188da4f4e8551d8f37d4a362, type: 3}
+      propertyPath: m_Name
+      value: Audiomanager
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599446776156343015, guid: 37c7ffcb188da4f4e8551d8f37d4a362, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599446776156343015, guid: 37c7ffcb188da4f4e8551d8f37d4a362, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599446776156343015, guid: 37c7ffcb188da4f4e8551d8f37d4a362, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599446776156343015, guid: 37c7ffcb188da4f4e8551d8f37d4a362, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599446776156343015, guid: 37c7ffcb188da4f4e8551d8f37d4a362, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599446776156343015, guid: 37c7ffcb188da4f4e8551d8f37d4a362, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599446776156343015, guid: 37c7ffcb188da4f4e8551d8f37d4a362, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599446776156343015, guid: 37c7ffcb188da4f4e8551d8f37d4a362, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599446776156343015, guid: 37c7ffcb188da4f4e8551d8f37d4a362, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599446776156343015, guid: 37c7ffcb188da4f4e8551d8f37d4a362, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599446776156343015, guid: 37c7ffcb188da4f4e8551d8f37d4a362, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 37c7ffcb188da4f4e8551d8f37d4a362, type: 3}
 --- !u!1001 &1245898227
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3995,6 +4052,10 @@ PrefabInstance:
     - target: {fileID: 3822748171260380054, guid: a16405a69fcdcc54db8c9d519ee73b86, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5282155416436127132, guid: a16405a69fcdcc54db8c9d519ee73b86, type: 3}
+      propertyPath: collisionDamageThreshold
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6450825759997957306, guid: a16405a69fcdcc54db8c9d519ee73b86, type: 3}
       propertyPath: m_RootOrder

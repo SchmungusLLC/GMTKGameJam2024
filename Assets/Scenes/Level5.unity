@@ -5287,6 +5287,10 @@ PrefabInstance:
       value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 5282155416436127132, guid: a16405a69fcdcc54db8c9d519ee73b86, type: 3}
+      propertyPath: isBoss
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5282155416436127132, guid: a16405a69fcdcc54db8c9d519ee73b86, type: 3}
       propertyPath: bigAttackForce
       value: 160
       objectReference: {fileID: 0}

@@ -110,6 +110,58 @@ public class AudioManager : MonoBehaviour
             s.source.loop = s.loop;
             s.source.outputAudioMixerGroup = s.outputAudioMixerGroup;
         }
+
+        foreach (Sound s in GoonCelebrate)
+        {
+            s.source = gameObject.AddComponent<AudioSource>();
+            s.source.clip = s.clip;
+            s.source.volume = s.Volume;
+            s.source.pitch = s.pitch;
+            s.source.loop = s.loop;
+            s.source.outputAudioMixerGroup = s.outputAudioMixerGroup;
+        }
+
+        foreach (Sound s in LJHit)
+        {
+            s.source = gameObject.AddComponent<AudioSource>();
+            s.source.clip = s.clip;
+            s.source.volume = s.Volume;
+            s.source.pitch = s.pitch;
+            s.source.loop = s.loop;
+            s.source.outputAudioMixerGroup = s.outputAudioMixerGroup;
+        }
+
+        foreach (Sound s in LJKill)
+        {
+            s.source = gameObject.AddComponent<AudioSource>();
+            s.source.clip = s.clip;
+            s.source.volume = s.Volume;
+            s.source.pitch = s.pitch;
+            s.source.loop = s.loop;
+            s.source.outputAudioMixerGroup = s.outputAudioMixerGroup;
+        }
+
+        foreach (Sound s in LJLightAttack)
+        {
+            s.source = gameObject.AddComponent<AudioSource>();
+            s.source.clip = s.clip;
+            s.source.volume = s.Volume;
+            s.source.pitch = s.pitch;
+            s.source.loop = s.loop;
+            s.source.outputAudioMixerGroup = s.outputAudioMixerGroup;
+        }
+
+        foreach (Sound s in LJHeavyAttack)
+        {
+            s.source = gameObject.AddComponent<AudioSource>();
+            s.source.clip = s.clip;
+            s.source.volume = s.Volume;
+            s.source.pitch = s.pitch;
+            s.source.loop = s.loop;
+            s.source.outputAudioMixerGroup = s.outputAudioMixerGroup;
+        }
+
+
         GameObject playbutton = GameObject.Find("PlayButton");
         if (playbutton && playbutton.TryGetComponent(out Button button))
             {

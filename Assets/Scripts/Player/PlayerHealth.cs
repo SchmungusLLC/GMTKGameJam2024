@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using static AudioManager;
 
 public partial class Player
 // ============================================================
@@ -33,5 +34,7 @@ public partial class Player
     public void PlayerDies()
     {
         Debug.Log("Player died");
+        animator.Play("Death");
+        _AudioManger.PlayRandomSoundFromArray(_AudioManger.GoonCelebrate);
     }
 }

@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using static Player;
 using static HelperMethods;
+using static AudioManager;
 using UnityEngine.AI;
 using System.IO;
 using TMPro;
@@ -10,6 +11,7 @@ using TMPro;
 public partial class Enemy : MonoBehaviour
 {
     public bool debugDisableEnemyAttacks;
+    public bool isBoss;
 
     [Header("VFX")]
     public ParticleSystem TrailVFXSystem;
@@ -260,10 +262,26 @@ public partial class Enemy : MonoBehaviour
         //Debug.Log("Enemy AttackHitBox");
         if (currentAttackState == AttackState.SmallAttack)
         {
+            if (isBoss)
+            {
+                _AudioManger.PlayRandomSoundFromArray(_AudioManger.BossHitting);
+            }
+            else
+            {
+                _AudioManger.PlayRandomSoundFromArray(_AudioManger.GoonsHitting);
+            }
             targetsStruck = Physics.OverlapBox(transform.position + transform.forward * hbOffset, hbSizeV, transform.rotation, hitLayers);
         }
         else
         {
+            if (isBoss)
+            {
+                _AudioManger.PlayRandomSoundFromArray(_AudioManger.BossHitting);
+            }
+            else
+            {
+                _AudioManger.PlayRandomSoundFromArray(_AudioManger.GoonsHitting);
+            }
             targetsStruck = Physics.OverlapBox(transform.position + transform.forward * hbOffset, hbSizeH, transform.rotation, hitLayers);
         }
 
@@ -364,7 +382,7 @@ public partial class Enemy : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        //Debug.Log("Taking damage: " + damage);
+        Debug.Log("Enemy taking damage: " + damage);
         currentHP -= damage;
         HPBar.value = currentHP;
         if (currentHP < 0)
@@ -374,6 +392,14 @@ public partial class Enemy : MonoBehaviour
         else
         {
             animator.Play("Hit");
+            if (isBoss)
+            {
+                _AudioManger.PlayRandomSoundFromArray(_AudioManger.BossHit);
+            }
+            else
+            {
+                _AudioManger.PlayRandomSoundFromArray(_AudioManger.GoonsHit);
+            }
         }
     }
 
@@ -382,6 +408,7 @@ public partial class Enemy : MonoBehaviour
         //Debug.Log("Setting to dead");
         currentEnemyState = EnemyState.Dead;
         //animator.Play("Death");
+        _AudioManger.PlayRandomSoundFromArray(_AudioManger.GoonsDying);
         StartSoulAnimation();
         //gameObject.SetActive(false);
     }

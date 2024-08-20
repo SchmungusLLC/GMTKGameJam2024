@@ -15,4 +15,9 @@ public class MainMenu : MonoBehaviour
         Debug.Log("The Case is Closed");
         Application.Quit();
     }
+
+    public void PlayLevel(string name)
+    {
+        SceneManager.LoadScene(name);
+    }
 }
