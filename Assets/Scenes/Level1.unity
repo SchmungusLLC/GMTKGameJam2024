@@ -1796,13 +1796,29 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 290882176360117748, guid: ec22d5155f541364e9b5616e32ca5421, type: 3}
+      propertyPath: ultimateRange
+      value: 900
+      objectReference: {fileID: 0}
+    - target: {fileID: 290882176360117748, guid: ec22d5155f541364e9b5616e32ca5421, type: 3}
+      propertyPath: ultimateDirector
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 290882176360117748, guid: ec22d5155f541364e9b5616e32ca5421, type: 3}
       propertyPath: heavyFlameTransform
       value: 
       objectReference: {fileID: 605113644}
     - target: {fileID: 290882176360117748, guid: ec22d5155f541364e9b5616e32ca5421, type: 3}
+      propertyPath: heavyUltimateCharge
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 290882176360117748, guid: ec22d5155f541364e9b5616e32ca5421, type: 3}
       propertyPath: lightFlameTransform
       value: 
       objectReference: {fileID: 1032741484}
+    - target: {fileID: 290882176360117748, guid: ec22d5155f541364e9b5616e32ca5421, type: 3}
+      propertyPath: lightUltimateCharge
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3714134188260971087, guid: ec22d5155f541364e9b5616e32ca5421, type: 3}
       propertyPath: m_Name
       value: Player
