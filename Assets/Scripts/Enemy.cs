@@ -75,8 +75,7 @@ public partial class Enemy : MonoBehaviour
     [Tooltip("Transform of the player's HP bar (used to lock rotation)")]
     public Transform HPBarTransform;
 
-    public GameObject soulObject;
-    public bool isSoulMoving;
+    public EnemySoul soul;
 
     public bool waitingForRecoveryMinimum;
     public float minimumRecoveryThreshold;
@@ -111,11 +110,6 @@ public partial class Enemy : MonoBehaviour
     {
         if (currentEnemyState == EnemyState.Dead)
         {
-            if (isSoulMoving)
-            {
-                MoveSoulToTarget();
-            }
-
             return;
         }
 
@@ -166,7 +160,7 @@ public partial class Enemy : MonoBehaviour
         if (!waitingForRecoveryMinimum && rb3D.velocity.magnitude < 0.1f)
         {
             // Trigger recovery animation
-            //Debug.Log("Recovering");
+            Debug.Log("Recovering");
             animator.SetTrigger("Recover");
             currentEnemyState = EnemyState.Recovering;
         }
@@ -307,10 +301,10 @@ public partial class Enemy : MonoBehaviour
 
     public void IncomingAttack(float damage, AttackState attackState)
     {
+        lastAttackTaken = attackState;
+
         //Debug.Log($"Enemy was hit from {playerAttackDir}");
         TakeDamage(damage);
-
-        lastAttackTaken = attackState;
     }
 
     public void StartHitStun()
@@ -354,65 +348,16 @@ public partial class Enemy : MonoBehaviour
 
     public void EnemyDies()
     {
-        //gameObject.SetActive(false);
+        Debug.Log("Setting to dead");
         currentEnemyState = EnemyState.Dead;
-
-        soulObject.SetActive(true);
-        soulObject.transform.SetParent(null);
-        soulObject.transform.eulerAngles = player.cameraFaceDir;
-        if (lastAttackTaken == AttackState.SmallAttack)
-        {
-            animator.Play("LightDeath");
-        }
-        else
-        {
-            animator.Play("HeavyDeath");
-        }
+        //animator.Play("Death");
+        StartSoulAnimation();
+        gameObject.SetActive(false);
     }
 
-    public void StartSoulMoving()
+    public void StartSoulAnimation()
     {
-        isSoulMoving = true;
-    }
-
-    public void MoveSoulToTarget()
-    {
-        // Get the bottom-right corner of the screen in world space
-        Vector3 targetPosition = Camera.main.ScreenToWorldPoint(player.lightSlider.transform.position);
-        //targetPosition.z = transform.position.z;
-
-        soulObject.transform.position = Vector3.MoveTowards(soulObject.transform.position, targetPosition, 200 * Time.deltaTime);
-
-        // Check if the sprite has reached the target position
-        if (Vector3.Distance(soulObject.transform.position, targetPosition) < 0.1f)
-        {
-            isSoulMoving = false;
-            // Destroy or deactivate the sprite
-            soulObject.SetActive(false);
-            animator.StopPlayback();
-            if (lastAttackTaken == AttackState.SmallAttack)
-            {
-                ChargePlayerLight();
-            }
-            else
-            {
-                ChargePlayerHeavy();
-            }
-
-            //gameObject.SetActive(false);
-        }
-    }
-
-    public void ChargePlayerLight()
-    {
-        player.AddLightUltimateCharge();
-        player.AddScalesValue(-1);
-    }
-
-    public void ChargePlayerHeavy()
-    {
-        player.AddHeavyUltimateCharge();
-        player.AddScalesValue(1);
+        soul.Appear(lastAttackTaken);
     }
 
     private void OnDrawGizmosSelected()
