@@ -10,8 +10,6 @@ public class CarMove : MonoBehaviour
     public bool isPaused;
 
     public Animator carAnimator;
-    public AudioSource carAudioSource;
-
     public float ImpactForce;
     public Rigidbody CarRb;
     public BoxCollider boxCollider;
@@ -23,7 +21,6 @@ public class CarMove : MonoBehaviour
     {
         CarRb = GetComponent<Rigidbody>();
         boxCollider = GetComponent<BoxCollider>();
-        carAudioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -41,7 +38,7 @@ public class CarMove : MonoBehaviour
         {
             StartCoroutine(PauseMovement());
             carAnimator.SetTrigger("Honk");
-            carAudioSource.Play();
+            AudioManager._AudioManger.Play("honk");
         }
     }
 

@@ -89,7 +89,7 @@ MonoBehaviour:
     name: LJFinalKill
     clip: {fileID: 8300000, guid: 41b5b399042ed4f4dbc7c8c2ce9b64c5, type: 3}
     outputAudioMixerGroup: {fileID: 4740739461355295343, guid: 37aa85f48224cf54d9cb4c905b6559dd, type: 2}
-    Volume: 0.499
+    Volume: 0.9
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -97,7 +97,7 @@ MonoBehaviour:
     name: LJFinalSpare
     clip: {fileID: 8300000, guid: c53fa65b58589d64ca90305a87d04703, type: 3}
     outputAudioMixerGroup: {fileID: 4740739461355295343, guid: 37aa85f48224cf54d9cb4c905b6559dd, type: 2}
-    Volume: 0.499
+    Volume: 0.9
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -105,7 +105,7 @@ MonoBehaviour:
     name: LJDies
     clip: {fileID: 8300000, guid: 02ab762968fa75b44beefa9c6fa5e93b, type: 3}
     outputAudioMixerGroup: {fileID: 4740739461355295343, guid: 37aa85f48224cf54d9cb4c905b6559dd, type: 2}
-    Volume: 0.499
+    Volume: 0.9
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -113,7 +113,7 @@ MonoBehaviour:
     name: LJMeetsBoss
     clip: {fileID: 8300000, guid: 73d66e8f7c4f1ca4b9a7b3f328240d58, type: 3}
     outputAudioMixerGroup: {fileID: 4740739461355295343, guid: 37aa85f48224cf54d9cb4c905b6559dd, type: 2}
-    Volume: 0.499
+    Volume: 0.9
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -226,6 +226,14 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 6992bf4c083750e4a815f9632d6bed3f, type: 3}
     outputAudioMixerGroup: {fileID: 4740739461355295343, guid: 37aa85f48224cf54d9cb4c905b6559dd, type: 2}
     Volume: 0.499
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - currentSound: 0
+    name: honk
+    clip: {fileID: 8300000, guid: 5de0d474e90ffaf4c9308e7329401034, type: 3}
+    outputAudioMixerGroup: {fileID: 4740739461355295343, guid: 37aa85f48224cf54d9cb4c905b6559dd, type: 2}
+    Volume: 0.257
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -404,7 +412,7 @@ MonoBehaviour:
     name: GoonsDying1
     clip: {fileID: 8300000, guid: 9e6428e0d04b57342b52fd2723249226, type: 3}
     outputAudioMixerGroup: {fileID: 4740739461355295343, guid: 37aa85f48224cf54d9cb4c905b6559dd, type: 2}
-    Volume: 0.5
+    Volume: 0.25
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -412,7 +420,7 @@ MonoBehaviour:
     name: GoonsDying2
     clip: {fileID: 8300000, guid: 07427beb36d9fcd4698305d78f63d8b0, type: 3}
     outputAudioMixerGroup: {fileID: 4740739461355295343, guid: 37aa85f48224cf54d9cb4c905b6559dd, type: 2}
-    Volume: 0.5
+    Volume: 0.25
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -420,7 +428,7 @@ MonoBehaviour:
     name: GoonsDying3
     clip: {fileID: 8300000, guid: 966b4bd353e153f43b6249304fe41fed, type: 3}
     outputAudioMixerGroup: {fileID: 4740739461355295343, guid: 37aa85f48224cf54d9cb4c905b6559dd, type: 2}
-    Volume: 0.5
+    Volume: 0.25
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -428,7 +436,7 @@ MonoBehaviour:
     name: GoonsDying4
     clip: {fileID: 8300000, guid: 5cce73ca5a1f7a848bae5eb3d684b7e7, type: 3}
     outputAudioMixerGroup: {fileID: 4740739461355295343, guid: 37aa85f48224cf54d9cb4c905b6559dd, type: 2}
-    Volume: 0.5
+    Volume: 0.25
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -436,7 +444,7 @@ MonoBehaviour:
     name: GoonsDying5
     clip: {fileID: 8300000, guid: 2ab7e9d8cf6cfa048bec1c26fb85e87d, type: 3}
     outputAudioMixerGroup: {fileID: 4740739461355295343, guid: 37aa85f48224cf54d9cb4c905b6559dd, type: 2}
-    Volume: 0.5
+    Volume: 0.25
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -444,7 +452,7 @@ MonoBehaviour:
     name: GoonsDying6
     clip: {fileID: 8300000, guid: 6839662c97373f64797df02c4cec074b, type: 3}
     outputAudioMixerGroup: {fileID: 4740739461355295343, guid: 37aa85f48224cf54d9cb4c905b6559dd, type: 2}
-    Volume: 0.5
+    Volume: 0.25
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -452,7 +460,7 @@ MonoBehaviour:
     name: GoonsDying7
     clip: {fileID: 8300000, guid: f23aa3abfd7a9f042a5bf975fd8e799a, type: 3}
     outputAudioMixerGroup: {fileID: 4740739461355295343, guid: 37aa85f48224cf54d9cb4c905b6559dd, type: 2}
-    Volume: 0.5
+    Volume: 0.25
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -460,7 +468,7 @@ MonoBehaviour:
     name: GoonsDying8
     clip: {fileID: 8300000, guid: fd3b68e44c548f24780a7fda3255e55c, type: 3}
     outputAudioMixerGroup: {fileID: 4740739461355295343, guid: 37aa85f48224cf54d9cb4c905b6559dd, type: 2}
-    Volume: 0.5
+    Volume: 0.25
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -468,7 +476,7 @@ MonoBehaviour:
     name: GoonsDying9
     clip: {fileID: 8300000, guid: 35908731dd8198243bed5b4e8cd95599, type: 3}
     outputAudioMixerGroup: {fileID: 4740739461355295343, guid: 37aa85f48224cf54d9cb4c905b6559dd, type: 2}
-    Volume: 0.5
+    Volume: 0.25
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -476,7 +484,7 @@ MonoBehaviour:
     name: GoonsDying10
     clip: {fileID: 8300000, guid: bbe1231574251c749b26e760645adda1, type: 3}
     outputAudioMixerGroup: {fileID: 4740739461355295343, guid: 37aa85f48224cf54d9cb4c905b6559dd, type: 2}
-    Volume: 0.5
+    Volume: 0.25
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -484,7 +492,7 @@ MonoBehaviour:
     name: GoonsDying11
     clip: {fileID: 8300000, guid: 8e267be6b9dce1245a782cc8f2677082, type: 3}
     outputAudioMixerGroup: {fileID: 4740739461355295343, guid: 37aa85f48224cf54d9cb4c905b6559dd, type: 2}
-    Volume: 0.5
+    Volume: 0.25
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -492,7 +500,7 @@ MonoBehaviour:
     name: GoonsDying12
     clip: {fileID: 8300000, guid: 3b8741a32e56dfa45ab02b504362e383, type: 3}
     outputAudioMixerGroup: {fileID: 4740739461355295343, guid: 37aa85f48224cf54d9cb4c905b6559dd, type: 2}
-    Volume: 0.5
+    Volume: 0.25
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -500,7 +508,7 @@ MonoBehaviour:
     name: GoonsDying13
     clip: {fileID: 8300000, guid: a0e8d1fdd26674f42baca8c7211b55d4, type: 3}
     outputAudioMixerGroup: {fileID: 4740739461355295343, guid: 37aa85f48224cf54d9cb4c905b6559dd, type: 2}
-    Volume: 0.5
+    Volume: 0.25
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -508,7 +516,7 @@ MonoBehaviour:
     name: GoonsDying14
     clip: {fileID: 8300000, guid: 68daefe19d436cf4c8c4eb0d3557e1fc, type: 3}
     outputAudioMixerGroup: {fileID: 4740739461355295343, guid: 37aa85f48224cf54d9cb4c905b6559dd, type: 2}
-    Volume: 0.5
+    Volume: 0.25
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -516,7 +524,7 @@ MonoBehaviour:
     name: GoonsDying15
     clip: {fileID: 8300000, guid: 30259ff643ac04a41a2c2b5939eb2a1a, type: 3}
     outputAudioMixerGroup: {fileID: 4740739461355295343, guid: 37aa85f48224cf54d9cb4c905b6559dd, type: 2}
-    Volume: 0.5
+    Volume: 0.25
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -524,7 +532,7 @@ MonoBehaviour:
     name: GoonsDying16
     clip: {fileID: 8300000, guid: c5802f76252eb234382d237a04bf817f, type: 3}
     outputAudioMixerGroup: {fileID: 4740739461355295343, guid: 37aa85f48224cf54d9cb4c905b6559dd, type: 2}
-    Volume: 0.5
+    Volume: 0.25
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -532,7 +540,7 @@ MonoBehaviour:
     name: GoonsDying17
     clip: {fileID: 8300000, guid: d1ad2ce89aaa62544b6b79f4b8158f77, type: 3}
     outputAudioMixerGroup: {fileID: 4740739461355295343, guid: 37aa85f48224cf54d9cb4c905b6559dd, type: 2}
-    Volume: 0.5
+    Volume: 0.25
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -540,7 +548,7 @@ MonoBehaviour:
     name: GoonsDying18
     clip: {fileID: 8300000, guid: 506daa7766a401c4592eea036d45f861, type: 3}
     outputAudioMixerGroup: {fileID: 4740739461355295343, guid: 37aa85f48224cf54d9cb4c905b6559dd, type: 2}
-    Volume: 0.5
+    Volume: 0.25
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -713,7 +721,7 @@ MonoBehaviour:
     name: LJHit1
     clip: {fileID: 8300000, guid: 037167ad3c997ce428666bc1a3565224, type: 3}
     outputAudioMixerGroup: {fileID: 4740739461355295343, guid: 37aa85f48224cf54d9cb4c905b6559dd, type: 2}
-    Volume: 0.5
+    Volume: 0.75
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -721,7 +729,7 @@ MonoBehaviour:
     name: LJHit2
     clip: {fileID: 8300000, guid: 3fb97a499dc4d9f46bb378c11a0113bf, type: 3}
     outputAudioMixerGroup: {fileID: 4740739461355295343, guid: 37aa85f48224cf54d9cb4c905b6559dd, type: 2}
-    Volume: 0.5
+    Volume: 0.75
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -729,7 +737,7 @@ MonoBehaviour:
     name: LJHit3
     clip: {fileID: 8300000, guid: 54f6e3566a0891748b96b0450d40cad9, type: 3}
     outputAudioMixerGroup: {fileID: 4740739461355295343, guid: 37aa85f48224cf54d9cb4c905b6559dd, type: 2}
-    Volume: 0.5
+    Volume: 0.75
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -738,7 +746,7 @@ MonoBehaviour:
     name: LJKill1
     clip: {fileID: 8300000, guid: ebe96853a8196864d84c74886ae1c5eb, type: 3}
     outputAudioMixerGroup: {fileID: 4740739461355295343, guid: 37aa85f48224cf54d9cb4c905b6559dd, type: 2}
-    Volume: 0.5
+    Volume: 0.75
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -746,7 +754,7 @@ MonoBehaviour:
     name: LJKill2
     clip: {fileID: 8300000, guid: ac1011d1d8c11d94d85f0db5885e845b, type: 3}
     outputAudioMixerGroup: {fileID: 4740739461355295343, guid: 37aa85f48224cf54d9cb4c905b6559dd, type: 2}
-    Volume: 0.5
+    Volume: 0.75
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -754,7 +762,7 @@ MonoBehaviour:
     name: LJKill3
     clip: {fileID: 8300000, guid: f80bbb320d884c94fa207ba0e81c63c0, type: 3}
     outputAudioMixerGroup: {fileID: 4740739461355295343, guid: 37aa85f48224cf54d9cb4c905b6559dd, type: 2}
-    Volume: 0.5
+    Volume: 0.75
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -762,7 +770,7 @@ MonoBehaviour:
     name: LJKill4
     clip: {fileID: 8300000, guid: 52de5c533e307e04ba1130d5d82a080e, type: 3}
     outputAudioMixerGroup: {fileID: 4740739461355295343, guid: 37aa85f48224cf54d9cb4c905b6559dd, type: 2}
-    Volume: 0.5
+    Volume: 0.75
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -770,7 +778,7 @@ MonoBehaviour:
     name: LJKill5
     clip: {fileID: 8300000, guid: 667d0124709ea50419493abf959a4ed5, type: 3}
     outputAudioMixerGroup: {fileID: 4740739461355295343, guid: 37aa85f48224cf54d9cb4c905b6559dd, type: 2}
-    Volume: 0.5
+    Volume: 0.75
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -778,7 +786,7 @@ MonoBehaviour:
     name: LJKill6
     clip: {fileID: 8300000, guid: fee082a05a8e4e949bc629cc34739157, type: 3}
     outputAudioMixerGroup: {fileID: 4740739461355295343, guid: 37aa85f48224cf54d9cb4c905b6559dd, type: 2}
-    Volume: 0.5
+    Volume: 0.75
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -786,7 +794,7 @@ MonoBehaviour:
     name: LJKill7
     clip: {fileID: 8300000, guid: 6e42b16a5ef7d4f4b99371ad198d2893, type: 3}
     outputAudioMixerGroup: {fileID: 4740739461355295343, guid: 37aa85f48224cf54d9cb4c905b6559dd, type: 2}
-    Volume: 0.5
+    Volume: 0.75
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -794,7 +802,7 @@ MonoBehaviour:
     name: LJKill8
     clip: {fileID: 8300000, guid: 47429b12787ffa24aa4733365cb6d4c0, type: 3}
     outputAudioMixerGroup: {fileID: 4740739461355295343, guid: 37aa85f48224cf54d9cb4c905b6559dd, type: 2}
-    Volume: 0.5
+    Volume: 0.75
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -802,7 +810,7 @@ MonoBehaviour:
     name: LJKill9
     clip: {fileID: 8300000, guid: bb8ee3e2467dc8644b7a197a1c037e78, type: 3}
     outputAudioMixerGroup: {fileID: 4740739461355295343, guid: 37aa85f48224cf54d9cb4c905b6559dd, type: 2}
-    Volume: 0.5
+    Volume: 0.75
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -811,7 +819,7 @@ MonoBehaviour:
     name: LJLightAttack1
     clip: {fileID: 8300000, guid: 17c400da37e341642ab0a8820bd19f16, type: 3}
     outputAudioMixerGroup: {fileID: 4740739461355295343, guid: 37aa85f48224cf54d9cb4c905b6559dd, type: 2}
-    Volume: 0.5
+    Volume: 0.75
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -819,7 +827,7 @@ MonoBehaviour:
     name: LJLightAttack2
     clip: {fileID: 8300000, guid: 8e541ed410919274dbf4af83bdeaceac, type: 3}
     outputAudioMixerGroup: {fileID: 4740739461355295343, guid: 37aa85f48224cf54d9cb4c905b6559dd, type: 2}
-    Volume: 0.5
+    Volume: 0.75
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -827,7 +835,7 @@ MonoBehaviour:
     name: LJLightAttack3
     clip: {fileID: 8300000, guid: a6ee887398a46be48b69431f365380fb, type: 3}
     outputAudioMixerGroup: {fileID: 4740739461355295343, guid: 37aa85f48224cf54d9cb4c905b6559dd, type: 2}
-    Volume: 0.5
+    Volume: 0.75
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -836,7 +844,7 @@ MonoBehaviour:
     name: LJHeavyAttack1
     clip: {fileID: 8300000, guid: 616ce54776eb17446874f99002129733, type: 3}
     outputAudioMixerGroup: {fileID: 4740739461355295343, guid: 37aa85f48224cf54d9cb4c905b6559dd, type: 2}
-    Volume: 0.5
+    Volume: 0.75
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -844,7 +852,7 @@ MonoBehaviour:
     name: LJHeavyAttack2
     clip: {fileID: 8300000, guid: 5d09c570713c82544abd0d592aea84ec, type: 3}
     outputAudioMixerGroup: {fileID: 4740739461355295343, guid: 37aa85f48224cf54d9cb4c905b6559dd, type: 2}
-    Volume: 0.5
+    Volume: 0.75
     pitch: 1
     loop: 0
     source: {fileID: 0}
