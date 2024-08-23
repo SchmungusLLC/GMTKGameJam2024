@@ -423,7 +423,7 @@ GameObject:
   - component: {fileID: 8213509462152206085}
   - component: {fileID: 8213509462152206080}
   - component: {fileID: 8213509462152206087}
-  - component: {fileID: 8213509462152206086}
+  - component: {fileID: 6291164965782961469}
   m_Layer: 0
   m_Name: hitbox
   m_TagString: Untagged
@@ -439,8 +439,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8213509462152206084}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0238, y: 0, z: -0.0076}
-  m_LocalScale: {x: 0.07337143, y: 0.063829, z: 0.016575115}
+  m_LocalPosition: {x: -0.0739, y: 0.1108, z: 0.000000011921}
+  m_LocalScale: {x: 0.0063185603, y: 0.015459097, z: 0.010077895}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7474369372721396929}
@@ -496,8 +496,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8213509462152206086
-BoxCollider:
+--- !u!136 &6291164965782961469
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -506,6 +506,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.50000006
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: -0.0000076293945, y: -0.0000005662441, z: -0.0000014305115}
