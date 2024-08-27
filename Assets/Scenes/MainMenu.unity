@@ -1127,7 +1127,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6089668238302271544, guid: 5ea74b8267268bb47b804e8c0ad67a91, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.9
       objectReference: {fileID: 0}
     - target: {fileID: 6089668238302271544, guid: 5ea74b8267268bb47b804e8c0ad67a91, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2322,11 +2322,11 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 30.56
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 27.9
   m_Range: 29.87
-  m_SpotAngle: 29.3792
-  m_InnerSpotAngle: 21.181282
+  m_SpotAngle: 37.809364
+  m_InnerSpotAngle: 30.548105
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
@@ -2380,14 +2380,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 411433793}
-  m_LocalRotation: {x: 0.67743737, y: 0.4615176, z: 0.30394503, w: 0.48548695}
-  m_LocalPosition: {x: 21.63, y: 13.182, z: 20.4}
+  m_LocalRotation: {x: 0, y: 0.92387956, z: 0, w: 0.38268343}
+  m_LocalPosition: {x: 18.9, y: 11.76, z: 26.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 27
-  m_LocalEulerAnglesHint: {x: 22.162, y: 111.794, z: 96.361}
+  m_LocalEulerAnglesHint: {x: 0, y: 135, z: 0}
 --- !u!1 &412378602
 GameObject:
   m_ObjectHideFlags: 0
@@ -10190,8 +10190,8 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 30.56
+  m_Color: {r: 0.03137255, g: 0.098039225, b: 0.09019608, a: 1}
+  m_Intensity: 155.7
   m_Range: 29.87
   m_SpotAngle: 106.666756
   m_InnerSpotAngle: 98.46885
@@ -13095,15 +13095,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 335c46afce7b4c14383a51b24ca65d9f, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.6963202
+      value: 0.169632
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 335c46afce7b4c14383a51b24ca65d9f, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.6963199
+      value: 0.169632
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 335c46afce7b4c14383a51b24ca65d9f, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.6963202
+      value: 0.169632
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 335c46afce7b4c14383a51b24ca65d9f, type: 3}
       propertyPath: m_LocalPosition.x

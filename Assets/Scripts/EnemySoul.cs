@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using static Player;
 
@@ -93,13 +94,13 @@ public class EnemySoul : MonoBehaviour
 
     public void ChargePlayerLight()
     {
-        player.AddLightUltimateCharge(0.1f);
+        player.AddLightUltimateCharge(1/player.ultimateChargeThreshold);
         player.AddScalesValue(-1);
     }
 
     public void ChargePlayerHeavy()
     {
-        player.AddHeavyUltimateCharge(0.1f);
+        player.AddHeavyUltimateCharge(1/player.ultimateChargeThreshold);
         player.AddScalesValue(1);
     }
 }

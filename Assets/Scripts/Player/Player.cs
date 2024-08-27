@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Playables;
 using UnityEngine.UI;
 using static GameManager;
 
@@ -63,6 +64,10 @@ public partial class Player : MonoBehaviour
         if (mainCamera == null)
         {
             mainCamera = Camera.main.gameObject;
+        }
+        if(ultimateDirector == null)
+        {
+            ultimateDirector = GameObject.Find("UltimateArea").GetComponent<PlayableDirector>();
         }
 
         SwordTrailVFX = SwordTrailVFXSystem.emission;

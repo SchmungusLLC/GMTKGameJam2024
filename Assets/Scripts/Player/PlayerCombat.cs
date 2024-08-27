@@ -221,10 +221,10 @@ public partial class Player
 
         lightUltimateCharge = -0.5f;
         UIAnimator.Play("LightUlt0", 1);
-        //mainVcam.SetActive(false);
-        //ultimateDirector.Play(lightUltimateTimeline);
-        //Time.timeScale = 0;
-        UltimateKillEnemies(); // temp - kill 5 enemies
+        mainVcam.SetActive(false);
+        ultimateDirector.Play(lightUltimateTimeline);
+        Time.timeScale = 0;
+        //UltimateKillEnemies(); // temp - kill 5 enemies
     }
 
     public void UseHeavyUltimate()
@@ -233,10 +233,10 @@ public partial class Player
 
         heavyUltimateCharge = -0.5f;
         UIAnimator.Play("HeavyUlt0", 0);
-        //Time.timeScale = 0;
-        //mainVcam.SetActive(false);
-        //ultimateDirector.Play(heavyUltimateTimeline);
-        UltimateKillEnemies(); // temp - kill 5 enemies
+        Time.timeScale = 0;
+        mainVcam.SetActive(false);
+        ultimateDirector.Play(heavyUltimateTimeline);
+        //UltimateKillEnemies(); // temp - kill 5 enemies
     }
 
     public void UltimateKillEnemies()
@@ -261,6 +261,8 @@ public partial class Player
                 enemyScript.TakeDamage(999);
             }
         }
+        mainVcam.SetActive(true);
+        Time.timeScale = 1;
     }
 
     public void AddLightUltimateCharge(float value)
