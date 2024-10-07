@@ -11,6 +11,7 @@ public class CarSpawnManager : MonoBehaviour
     public float spawnHighThreshold;
 
     public float nextSpawnTime;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +24,7 @@ public class CarSpawnManager : MonoBehaviour
     {
        spawnTime += Time.deltaTime;
 
-        if (spawnTime > nextSpawnTime )
+        if (spawnTime > nextSpawnTime)
         {
             SpawnCars();
         }
