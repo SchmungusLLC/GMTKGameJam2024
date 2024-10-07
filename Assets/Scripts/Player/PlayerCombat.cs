@@ -219,7 +219,7 @@ public partial class Player
     {
         if (lightUltimateCharge < 1) return;
 
-        lightUltimateCharge = -0.5f;
+        lightUltimateCharge = -0.3f;
         UIAnimator.Play("LightUlt0", 1);
         mainVcam.SetActive(false);
         ultimateDirector.Play(lightUltimateTimeline);
@@ -231,7 +231,7 @@ public partial class Player
     {
         if (heavyUltimateCharge < 1) return;
 
-        heavyUltimateCharge = -0.5f;
+        heavyUltimateCharge = -0.3f;
         UIAnimator.Play("HeavyUlt0", 0);
         Time.timeScale = 0;
         mainVcam.SetActive(false);
@@ -239,7 +239,7 @@ public partial class Player
         //UltimateKillEnemies(); // temp - kill 5 enemies
     }
 
-    public void UltimateKillEnemies()
+    public void UltimateKillEnemies(bool lightUlt)
     {
         // Find all objects with the tag "Enemy"
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
@@ -258,9 +258,11 @@ public partial class Player
             Enemy enemyScript = enemy.EnemyObject.GetComponent<Enemy>();
             if (enemyScript != null)
             {
-                enemyScript.TakeDamage(999);
+                Debug.Log("here" + lightUlt);
+                enemyScript.IncomingAttack(999, lightUlt ? AttackState.SmallAttack : AttackState.BigAttack);
             }
         }
+        Debug.Log("here2");
         mainVcam.SetActive(true);
         Time.timeScale = 1;
     }

@@ -29,6 +29,7 @@ public partial class Player : MonoBehaviour
     [Header("UI")]
     [Tooltip("Canvas GameObject holding player's in-world UI elements")]
     public GameObject playerWorldCanvas;
+    public PauseMenu pauseMenu;
     public List<Sprite> scalesSprites;
     public Image scalesImage;
 
@@ -68,6 +69,10 @@ public partial class Player : MonoBehaviour
         if(ultimateDirector == null)
         {
             ultimateDirector = GameObject.Find("UltimateArea").GetComponent<PlayableDirector>();
+        }
+        if (pauseMenu == null)
+        {
+            pauseMenu = GameObject.Find("PauseMenuCanvas").GetComponent<PauseMenu>();
         }
 
         SwordTrailVFX = SwordTrailVFXSystem.emission;
@@ -245,5 +250,10 @@ public partial class Player : MonoBehaviour
         if (isStunned) { return; }
 
         UseHeavyUltimate();
+    }
+
+    void OnPauseInput()
+    {
+        pauseMenu.PausePressed();
     }
 }

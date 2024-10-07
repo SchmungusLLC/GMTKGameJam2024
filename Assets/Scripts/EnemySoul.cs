@@ -38,7 +38,7 @@ public class EnemySoul : MonoBehaviour
     {
         if (lastAttackState == AttackState.None)
         {
-            attackState = player.currentAttackState;
+            attackState = AttackState.BigAttack;
         }
         else
         {
@@ -79,7 +79,7 @@ public class EnemySoul : MonoBehaviour
         {
             isSoulMoving = false;
             //animator.StopPlayback();
-            if (attackState == AttackState.SmallAttack)
+            if (attackState == AttackState.SmallAttack || attackState == AttackState.ComboEndAttack)
             {
                 ChargePlayerLight();
             }

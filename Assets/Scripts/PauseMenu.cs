@@ -6,25 +6,22 @@ using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
-
     public static bool GameIsPaused = false;
 
     public GameObject PauseMenuUI;
 
-    void Update()
+    public void PausePressed()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        Debug.Log("pressedesc");
+        if (GameIsPaused)
         {
-            Debug.Log("pressedesc");
-            if (GameIsPaused)
-            {
-                Resume();
-                
-            } else
-            {
-                Pause();
-                
-            }
+            Resume();
+
+        }
+        else
+        {
+            Pause();
+
         }
     }
 
